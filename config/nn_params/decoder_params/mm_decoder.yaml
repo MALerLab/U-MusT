@@ -1,6 +1,6 @@
 decoder:
-  num_layer: 4
-  num_head: 8
+  num_layer: 12
+  num_head: 16
   # dropout: 0.1
 sub_decoder:
   name: MultimodalSubDecoder

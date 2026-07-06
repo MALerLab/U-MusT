@@ -9,7 +9,7 @@ use_fp16: True
 train_params:
   device: 'cuda'
   world_size: 2
-  batch_size: 8
+  batch_size: 12
   num_iter: 600000 
   iterations_per_validation_cycle: 20000
   num_cycles_for_inference: 3
@@ -41,7 +41,7 @@ inference_params:
 finetune_params:
   finetune: False
   finetune_path: null
-  iter: 10000
+  iter: 50000
 
 general:
   seed: 0
