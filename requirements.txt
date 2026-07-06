@@ -33,6 +33,7 @@ mir_eval
 opencv-python-headless
 Pillow
 ultralytics
+requests
 pdfplumber
 
 # models

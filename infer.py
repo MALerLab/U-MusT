@@ -13,6 +13,9 @@ from pathlib import Path
 from typing import Iterator, Tuple, Union, List
 import cv2
 import numpy as np
+import requests
+
+DEVICE = "cuda"
 import torch
 import torchvision
 import PIL.Image
@@ -43,6 +46,27 @@ def wandb_style_config_to_omega_config(wandb_conf):
         if 'value' in wandb_conf[key]:
             wandb_conf[key] = wandb_conf[key]['value']
     return wandb_conf
+
+
+YOLO_MODELS_URLS = {
+    'ls-yolo-system-v2.0.0.pt': 'https://github.com/MALerLab/ls-yolo/releases/download/system-v2/ls-yolo-system-v2.0.0.pt',
+    'ls-yolo-staff-height-v2.0.0.pt': 'https://github.com/MALerLab/ls-yolo/releases/download/staff-height-v2/ls-yolo-staff-height-v2.0.0.pt',
+}
+
+
+def load_yolo_model(checkpoint_name: str, checkpoint_dir: Union[str, Path] = 'yolo') -> YOLO:
+    """Load a fine-tuned ls-yolo checkpoint, downloading it from the
+    MALerLab/ls-yolo GitHub release if it is not present locally."""
+    checkpoint_path = Path(checkpoint_dir) / checkpoint_name
+    if not checkpoint_path.exists():
+        url = YOLO_MODELS_URLS[checkpoint_name]
+        print(f"Downloading YOLO checkpoint {checkpoint_name} from {url} ...")
+        r = requests.get(url, allow_redirects=True)
+        if r.status_code != 200:
+            raise RuntimeError(f"Failed to download YOLO checkpoint {checkpoint_name} from {url}")
+        checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+        checkpoint_path.write_bytes(r.content)
+    return YOLO(checkpoint_path)
 
 
 def detect_systems_in_image(image: np.ndarray, yolo_system_model) -> List[Tuple[int, int, int, int, float]]:
@@ -82,8 +106,7 @@ def mxl_to_system_images(mxl_path: Union[str, Path], mscore_path: str, work_dir:
     image_paths = sorted(list(img_dir.glob('*.png')))
     print(f"Found {len(image_paths)} page images.")
 
-    yolo_system = YOLO('yolo/yolov8m.pt')
-    yolo_system._load(weights='yolo/250222_003_ls-yolo-system/best.pt')
+    yolo_system = load_yolo_model('ls-yolo-system-v2.0.0.pt')
     
     system_image_paths = []
     system_img_dir = work_dir / "system_images"
@@ -164,13 +187,12 @@ def load_llm(llm_path: Union[str, Path]):
         model.uncompile_model()
     
     model.eval()
-    decoder = TensorDecoder(config, model.in_vocab, model.out_vocab, Path(tempfile.mkdtemp()), device='cuda:0')
+    decoder = TensorDecoder(config, model.in_vocab, model.out_vocab, Path(tempfile.mkdtemp()), device=DEVICE)
     return model, decoder, config, dataset
 
 
 def detect_staff_height(image: np.ndarray) -> float:
-    yolo_staff = YOLO('yolo/yolov8m.pt')
-    yolo_staff._load(weights='yolo/250227_001_ls-yolo-staff/best.pt')
+    yolo_staff = load_yolo_model('ls-yolo-staff-height-v2.0.0.pt')
     try:
         left_half = image[:, :image.shape[1]//2]
         if len(left_half.shape) == 2 or left_half.shape[2] == 1:
@@ -220,9 +242,9 @@ def preprocess_system_image(image: np.ndarray, vq_version: str = 'unirqvae') -> 
 def tokenize_image(system_image: np.ndarray, model_path: str) -> torch.Tensor:
     vq_model, config = load_tokenizer(model_path)
     tensor_image = preprocess_system_image(system_image, config.data.vq_model)
-    vq_model = vq_model.to("cuda")
+    vq_model = vq_model.to(DEVICE)
     with torch.no_grad():
-        tokens = vq_model.get_codes(tensor_image.to("cuda").unsqueeze(0))
+        tokens = vq_model.get_codes(tensor_image.to(DEVICE).unsqueeze(0))
     return tokens
 
 
@@ -242,16 +264,16 @@ def decode_audio_tokens(audio_tokens: torch.Tensor, model_path: str, audio_path:
     pt_in_modal_idx = in_idx_handler.vocab_keys.index('pt')
     dac_out_modal_idx = dataset.out_idx_handler.vocab_keys.index('dac')
     modal_idx = torch.tensor([pt_in_modal_idx, dac_out_modal_idx])
-    modal_idxs = modal_idx.unsqueeze(0).to("cuda").long()
+    modal_idxs = modal_idx.unsqueeze(0).to(DEVICE).long()
     
     # We need a dummy token_heights, the actual one isn't used for dac-only decoding
-    token_heights = torch.tensor([[0, 0]], dtype=torch.int16).to("cuda")
+    token_heights = torch.tensor([[0, 0]], dtype=torch.int16).to(DEVICE)
 
     # Create temp dir inside the output folder to avoid cross-device link errors
     with tempfile.TemporaryDirectory(dir=audio_path.parent) as temp_dir:
         temp_dir = Path(temp_dir)
         decoder(
-            audio_tokens.to("cuda"),
+            audio_tokens.to(DEVICE),
             modal_idxs[:, 1],
             'dummy',
             'prediction',
@@ -290,20 +312,24 @@ if __name__ == "__main__":
     parser.add_argument("mxl_path", help="Path to the MusicXML file.")
     parser.add_argument("--instrument", choices=["piano", "strings"], default="piano", help="Instrument type.")
     parser.add_argument("-o", "--output", default="output", help="Output directory.")
-    parser.add_argument("--mscore-path", default="/app/mscore-3.6.2/AppRun", help="Path to MuseScore executable.")
+    parser.add_argument("--mscore-path", default=None, help="Path to MuseScore executable (default: auto-detect).")
     parser.add_argument("--device", default="cuda", help="Device to run inference on.")
     parser.add_argument("--seed", type=int, default=0, help="Random seed for inference.")
     parser.add_argument("--models_dir", default="models", help="Directory containing the released model checkpoints.")
     args = parser.parse_args()
+    DEVICE = args.device
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
-    
-    work_dir = Path(tempfile.mkdtemp())
-    score_name = Path(args.mxl_path).stem
 
-    print("Step 1: Converting MusicXML to system images...")
-    system_image_paths = mxl_to_system_images(args.mxl_path, args.mscore_path, work_dir)
+    if args.mscore_path is None:
+        candidates = ["/app/mscore-3.6.2/AppRun", shutil.which("mscore"), shutil.which("musescore3"), shutil.which("musescore")]
+        args.mscore_path = next((c for c in candidates if c and Path(c).exists()), None)
+        if args.mscore_path is None:
+            raise FileNotFoundError(
+                "MuseScore executable not found. Install MuseScore 3.6.2 and pass its path "
+                "with --mscore-path (in headless/server environments run it under xvfb)."
+            )
 
     instrument_to_model = {
         "piano": "run-20250225_062905-9n1554as",
@@ -314,7 +340,16 @@ if __name__ == "__main__":
     if not Path(model_path).exists():
         model_path = f"{args.models_dir}/{model_dir_name}"
     if not Path(model_path).exists():
-        raise FileNotFoundError(f"Model not found: {model_path}")
+        raise FileNotFoundError(
+            f"Model not found: {model_path}. Download the released checkpoints "
+            f"(see README) into {args.models_dir}/."
+        )
+
+    work_dir = Path(tempfile.mkdtemp())
+    score_name = Path(args.mxl_path).stem
+
+    print("Step 1: Converting MusicXML to system images...")
+    system_image_paths = mxl_to_system_images(args.mxl_path, args.mscore_path, work_dir)
 
     print(f"Step 2: Tokenizing {len(system_image_paths)} system images...")
     token_paths = []
