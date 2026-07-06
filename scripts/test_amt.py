@@ -70,7 +70,7 @@ except Exception as e:
 print(config)
 # config.data.lmx_vocab_path = 'vocab/lmx_vocab_singletoken_asap.txt'
 config.data.data_dir = args.data_dir
-# config.data.data_path[0] = ['lsyt_piano', 'latent_score_dataset_tokens/', ['dac', 'pt'], 0.02, [50000, 70000]]
+config.data.data_path = [x for x in config.data.data_path if x[0] == target_dataset]
 config.data.preload_data = False
 ckpt_paths = (run_path / 'files' / "checkpoints").glob("*.pt")
 ckpt_paths = [x for x in ckpt_paths if 'iter' in x.stem]

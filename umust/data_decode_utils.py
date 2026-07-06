@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import cv2
 import os
+import shutil
 import wandb
 
 from collections import defaultdict
@@ -118,9 +119,12 @@ class TensorDecoder:
       out_path = self.out_dir / f'{filename}:decoded_midi.mid'
     out_path.parent.mkdir(parents=True, exist_ok=True)
     note_event2midi(note_events, output_file=out_path)
-    self.fs.midi_to_audio(out_path, out_path.with_suffix('.wav'))
-    AudioSegment.from_wav(out_path.with_suffix('.wav')).export(out_path.with_suffix(".mp3"), format="mp3")
-    os.remove(out_path.with_suffix('.wav'))
+    if shutil.which('fluidsynth') is not None:
+      self.fs.midi_to_audio(out_path, out_path.with_suffix('.wav'))
+      AudioSegment.from_wav(out_path.with_suffix('.wav')).export(out_path.with_suffix(".mp3"), format="mp3")
+      os.remove(out_path.with_suffix('.wav'))
+    else:
+      print("fluidsynth not found; skipping audio rendering of decoded MIDI")
     str_out_path = out_path.with_suffix(".txt")
     with open(str_out_path, 'w') as f:
       f.write(raw_events_str)
@@ -147,9 +151,12 @@ class TensorDecoder:
         out_path = self.out_dir / f'{filename}:decoded_midi.mid'
       out_path.parent.mkdir(parents=True, exist_ok=True)
       note_event2midi(pred_events, output_file=out_path)
-      self.fs.midi_to_audio(out_path, out_path.with_suffix('.wav'))
-      AudioSegment.from_wav(out_path.with_suffix('.wav')).export(out_path.with_suffix(".mp3"), format="mp3")
-      os.remove(out_path.with_suffix('.wav'))
+      if shutil.which('fluidsynth') is not None:
+        self.fs.midi_to_audio(out_path, out_path.with_suffix('.wav'))
+        AudioSegment.from_wav(out_path.with_suffix('.wav')).export(out_path.with_suffix(".mp3"), format="mp3")
+        os.remove(out_path.with_suffix('.wav'))
+      else:
+        print("fluidsynth not found; skipping audio rendering of decoded MIDI")
       return pred_notes, (str(out_path), str(out_path.with_suffix(".mp3")))    
     else:
       return pred_notes
