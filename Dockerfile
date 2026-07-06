@@ -95,6 +95,10 @@ RUN gdown "" -O models/run-20250130_150202-x9znhap2/checkpoint.zip && \
     unzip models/run-20250130_150202-x9znhap2/checkpoint.zip -d models/run-20250130_150202-x9znhap2 && \
     rm models/run-20250130_150202-x9znhap2/checkpoint.zip
 
+# Download fine-tuned YOLO detectors (system + staff height) from MALerLab/ls-yolo releases
+RUN wget -O yolo/ls-yolo-system-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/system-v2/ls-yolo-system-v2.0.0.pt && \
+    wget -O yolo/ls-yolo-staff-height-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/staff-height-v2/ls-yolo-staff-height-v2.0.0.pt
+
 # Install Python dependencies from requirements.txt
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
