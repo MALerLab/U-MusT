@@ -7,21 +7,21 @@ venv/
 
 # experiment artifacts
 wandb/
-runs/
-outputs/
+/runs/
+/outputs/
 multirun/
 
 # model weights (downloaded at runtime / released separately)
-vq_models/
-dac_models/
-yolo/
-models/
+/vq_models/
+/dac_models/
+/yolo/
+/models/
 *.pt
 *.pth
 *.ckpt
 
 # datasets
-dataset/
+/dataset/
 
 # notebooks / editor
 .ipynb_checkpoints/
