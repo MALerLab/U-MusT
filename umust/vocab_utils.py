@@ -426,7 +426,7 @@ class TokenIdxHandler:
         total_pos[out_modal==i] = pos
       elif vocab_key == 'pt':
         if not self.out_pt_height_token:
-          # 기존 방식: padding이 아래쪽에 추가되는 경우
+          # Legacy scheme: padding is appended below the image tokens
           assert target_height is not None, 'target_height is required for pt when out_pt_height_token is False'
           heights = target_height[out_modal==i][:,1]
           assert (heights != 0).all(), 'height should be greater than 0'
@@ -453,46 +453,46 @@ class TokenIdxHandler:
               pos[row.item(), col.item():] = 0  # 0 for eos and after eos
               
         else:
-          # height token을 사용하는 새로운 방식
+          # New scheme using height tokens
           height_token_points = []
           for ht in self.pt_height_tokens:
             ht_points = torch.where(tokens[...,0].to(self.eos_shifted_tensors['pt'].device) == ht)
             for row, col in zip(*ht_points):
               height_token_points.append((row.item(), col.item(), ht))
-          height_token_points.sort(key=lambda x: (x[0], x[1]))  # batch_idx, col 순으로 정렬
+          height_token_points.sort(key=lambda x: (x[0], x[1]))  # sort by batch_idx, then col
           
           sep_points = torch.where(tokens[...,0].to(self.eos_shifted_tensors['pt'].device) == self.img_crop_cat_sep_idx)
           sep_points = list(zip(*sep_points))
           sos_eos_points = torch.where(tokens[...,0].to(self.eos_shifted_tensors['pt'].device) == self.eos_shifted_tensors['pt'][:,0])
           sos_eos_points = list(zip(*sos_eos_points))
           
-          # position 초기화
+          # Initialize positions
           pos = torch.zeros((tokens.shape[0], tokens.shape[1], 2), dtype=torch.long, device=tokens.device)
           
-          # 각 배치별로 처리
+          # Process each batch element
           for batch_idx in range(tokens.shape[0]):
-            current_x_pos = self.pos_shifts['pt'][0]  # 현재 x position
+            current_x_pos = self.pos_shifts['pt'][0]  # current x position
             current_height = None
             last_content_pos = None
-            token_count_in_crop = 0  # 현재 crop 내에서의 토큰 카운트
+            token_count_in_crop = 0  # token count within the current crop
             
-            # 각 컬럼 위치별로 처리
+            # Process each column position
             for col in range(tokens.shape[1]):
               # SOS token
               if col == 0:
                 pos[batch_idx, col] = 0
                 continue
                 
-              # height token 체크
+              # Check for a height token
               is_height_token = False
               for row, ht_col, ht in height_token_points:
                 if row == batch_idx and ht_col == col:
-                  # height token의 실제 높이 값 계산
+                  # Compute the actual height value of the height token
                   height_idx = self.pt_height_tokens.index(ht)
                   current_height = height_idx + 1
-                  token_count_in_crop = 0  # 새로운 crop 시작
+                  token_count_in_crop = 0  # a new crop starts
                   
-                  # height token position 설정: 다음 토큰과 같은 position 사용
+                  # Height token position: use the same position as the following token
                   pos[batch_idx, col] = torch.tensor([current_x_pos, self.pos_shifts['pt'][1]], 
                                                    dtype=torch.long, device=pos.device)
                   is_height_token = True
@@ -501,36 +501,36 @@ class TokenIdxHandler:
               if is_height_token:
                 continue
                 
-              # separator token 체크
+              # Check for a separator token
               is_sep = False
               for row, sep_col in sep_points:
                 if row == batch_idx and sep_col == col:
-                  # separator는 이전 content의 마지막 position을 가지고, x_pos는 1 증가
+                  # The separator keeps the previous content's last position; x_pos advances by 1
                   if last_content_pos is not None:
                     pos[batch_idx, col] = last_content_pos
-                    current_x_pos = last_content_pos[0].item() + 1  # x position 업데이트
+                    current_x_pos = last_content_pos[0].item() + 1  # update x position
                   is_sep = True
                   break
               
               if is_sep:
                 continue
                 
-              # EOS token 체크
+              # Check for the EOS token
               is_eos = False
               for row, eos_col in sos_eos_points:
                 if row == batch_idx and eos_col == col and eos_col > 0:  # EOS token (not SOS)
-                  pos[batch_idx, col:] = 0  # EOS와 그 이후는 0으로 설정
+                  pos[batch_idx, col:] = 0  # EOS and everything after it get position 0
                   is_eos = True
                   break
               
               if is_eos:
                 break
                 
-              # 일반 content token
+              # Regular content token
               if current_height is not None:
                 current_pos_y = self.pos_shifts['pt'][1] + (token_count_in_crop % current_height)
                 
-                # x position은 y가 wrap될 때마다 1씩 증가
+                # x position advances by 1 every time y wraps around
                 if token_count_in_crop > 0 and token_count_in_crop % current_height == 0:
                     current_x_pos += 1
                 
@@ -648,10 +648,10 @@ class TokenIdxHandler:
           
           # Remove padding tokens if height tokens are used
           if self.out_pt_height_token:
-            # Find padding token positions - shifted indices 사용
+            # Find padding token positions - uses shifted indices
             pad_mask = tokens_separated[..., 0] != (self.vocabs['pt'].pad_idx + self.idx_shifts['pt'])
             
-            # SOS, EOS, SEP, height tokens도 보존해야 함 - 모두 shifted indices 사용
+            # SOS, EOS, SEP, and height tokens must also be preserved - all use shifted indices
             shifted_sos = self.sos_tensors['pt'][0, 0] + self.idx_shifts['pt']
             shifted_eos = self.eos_tensors['pt'][0, 0] + self.idx_shifts['pt']
             
@@ -659,21 +659,21 @@ class TokenIdxHandler:
                                  (tokens_separated[..., 0] == shifted_eos) | \
                                  (tokens_separated[..., 0] == self.img_crop_cat_sep_idx)
             
-            # Height tokens도 보존 (pt_height_tokens 배열의 모든 토큰)
+            # Preserve height tokens too (every token in pt_height_tokens)
             for ht in self.pt_height_tokens:
                 special_tokens_mask = special_tokens_mask | (tokens_separated[..., 0] == ht)
             
-            # Combine masks: 패딩이 아니거나 특수 토큰인 위치는 유지
+            # Combine masks: keep positions that are non-padding or special tokens
             keep_mask = pad_mask | special_tokens_mask
             
-            # 토큰 및 위치 정보 필터링
+            # Filter tokens and position info
             x_shift, y_shift, seq_len, n_codebook = tokens_separated.shape
             
-            # 각 배치별 필터링된 토큰들을 저장할 리스트
+            # Lists holding the filtered tokens of each batch element
             filtered_tokens_list = []
             filtered_pos_list = []
             
-            # 최대 필터링된 길이 계산
+            # Compute the maximum filtered length
             max_filtered_len = 0
             for x in range(x_shift):
                 for y in range(y_shift):
@@ -682,13 +682,13 @@ class TokenIdxHandler:
                         filtered_len = curr_mask.sum().item()
                         max_filtered_len = max(max_filtered_len, filtered_len)
             
-            # 새로운 텐서 준비 (모든 배치에 동일한 최대 길이 적용)
+            # Prepare new tensors (same maximum length for every batch element)
             tokens_final = torch.full([x_shift, y_shift, max_filtered_len, n_codebook], 
                                      self.vocabs['pt'].pad_idx + self.idx_shifts['pt'],
                                      device=tokens_separated.device, 
                                      dtype=tokens_separated.dtype)
             
-            # 각 배치에 필터링된 토큰 할당
+            # Assign the filtered tokens of each batch element
             for x in range(x_shift):
                 for y in range(y_shift):
                     curr_mask = keep_mask[x, y]
@@ -697,14 +697,14 @@ class TokenIdxHandler:
                         filtered_len = filtered_tokens.shape[0]
                         tokens_final[x, y, :filtered_len] = filtered_tokens
             
-            # 포지션 정보 필터링
-            # 모든 배치는 같은 포지션 정보를 가지므로 하나만 선택
+            # Filter position info
+            # Every batch element shares the same position info, so pick one
             for x in range(x_shift):
                 for y in range(y_shift):
                     curr_mask = keep_mask[x, y]
                     if curr_mask.any():
                         filtered_pos = pos_separated[curr_mask]
-                        # 필요하다면 패딩
+                        # Pad if necessary
                         if filtered_pos.shape[0] < max_filtered_len:
                             pad_pos = torch.zeros([max_filtered_len - filtered_pos.shape[0], 2], 
                                                  device=filtered_pos.device, 
@@ -714,7 +714,7 @@ class TokenIdxHandler:
                             filtered_pos_padded = filtered_pos
                         return tokens_final, max_height, filtered_pos_padded
             
-            # 필터링 실패 시 원본 반환
+            # On filtering failure, return the originals
             return tokens_separated, max_height, pos_separated
             
           return tokens_separated, max_height, pos_separated

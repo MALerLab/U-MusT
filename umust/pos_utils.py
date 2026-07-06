@@ -58,54 +58,6 @@ class MultimodalPosEmbedding(nn.Module):
       pos_emb[sample_of_idx] = self.layers[i](x[sample_of_idx])
     return x + pos_emb
 
-class MultiModalTwoDimPosEmbedding(nn.Module):
-  def __init__(self, dim, height_length, width_length=200, is_encoder=False):
-    super().__init__()
-    self.dim = dim
-    self.emb_y = AbsolutePositionalEmbedding(dim, height_length)
-    self.emb_x = AbsolutePositionalEmbedding(dim, width_length)
-    self.emb_sos = nn.Embedding(1, dim)
-    self.is_encoder = is_encoder
-  
-  def forward(self, t, token_height:int):
-    sos = t[:,0:1]
-    t = t[:,1:] # remove sos
-    t_len = t.shape[1]//token_height*token_height
-    t = t[:, :t_len] # make the length of t divisible by token_height
-    t = t.reshape(-1, token_height, self.dim) # remove sos
-
-    pos_emb_2d = torch.zeros_like(twh)
-    pos_y = self.emb_y(twh).reshape(twh.shape[0], 1, twh.shape[-1])
-    pos_x = self.emb_x(twh.transpose(1,2)).reshape(1, 1, token_height, twh.shape[-1]) 
-    
-    pos_emb = pos_y + pos_x
-
-    pos_emb = pos_emb.flatten(0, 1)
-
-    return pos_emb
-  
-class MultimodalDimAdjustedPosEmbedding(nn.Module):
-  def __init__(self, hidden_size, max_token_height, max_seq, vocab_keys=None, is_encoder=False):
-    super().__init__()
-    self.vocab_keys = vocab_keys
-    self.layers = nn.ModuleList([MultiModalTwoDimPosEmbedding(hidden_size, max_token_height, max_seq, is_encoder=is_encoder) if k == 'pt' else AbsolutePositionalEmbedding(hidden_size, max_seq) for k in vocab_keys])
-
-  def forward(self, x, modal_idx, token_height):
-    assert len(token_height) == len(modal_idx)
-    pos_emb = torch.zeros_like(x)
-    for i in range(len(self.vocab_keys)):
-      sample_of_idx = (modal_idx == i)
-      if self.vocab_keys[i] == 'pt':
-        assert (token_height[sample_of_idx] > 0).all()
-        token_height_set = set(token_height[sample_of_idx].tolist()) # token_height can be different for each sample
-        for th in token_height_set: # for each token height, apply pos embedding in batch
-          sample_of_th = (token_height == th)
-          pos_emb[sample_of_th] = self.layers[i](x[sample_of_th], th)
-      else:
-        assert (token_height[sample_of_idx] == 0).all()
-        pos_emb[sample_of_idx] = self.layers[i](x[sample_of_idx])
-    return x + pos_emb
-  
 class MultimodalFlattenedPosEmbedding(nn.Module):
   def __init__(self, hidden_size, pos_idx_size, pad_idx, vocab_keys):
     super().__init__()

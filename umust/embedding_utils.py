@@ -381,15 +381,15 @@ class MultimodalRVQEmbedding(nn.Module):
     token_start_idx = vocab.idx_shifts[key]
 
     if normalize:
-      # 각 코드북의 원래 std를 저장
+      # Store each codebook's original std
       original_stds = [emb[i].std().item() for i in range(vocab.vocabs[key].n_codebook)]
       print(f"Original standard deviations: {original_stds}")
       
-      # 0번째 코드북의 statistics를 기준으로 사용
+      # Use codebook 0's statistics as the reference
       base_mean = emb[0].mean()
       base_std = emb[0].std()
       
-      # 각 코드북의 상대적 스케일 계산
+      # Compute each codebook's relative scale
       relative_scales = [std / base_std for std in original_stds]
       print(f"Relative scales to first codebook: {relative_scales}")
 
@@ -415,7 +415,7 @@ class MultimodalRVQEmbedding(nn.Module):
       assert vocab.vocabs[key].codebook_size == len(emb[i]), f"RVQ embedding length({len(emb[i])}) should be the same as the codebook size({vocab.vocabs[key].codebook_size})"
 
       if normalize:
-        # 원래의 상대적 스케일 유지
+        # Preserve the original relative scale
         print(f"Scaling the normalized {i}th RVQ embedding by relative scale: {relative_scales[i]}")
         emb[i] = ((emb[i] - emb[i].mean()) / emb[i].std()) * relative_scales[i]
 
