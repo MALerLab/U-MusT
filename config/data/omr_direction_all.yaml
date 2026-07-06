@@ -20,7 +20,7 @@ max_pt_x_len: 150
 n_codebook: 4
 codebook_size: 1024
 num_special_tokens: 1 #For multimodal_trans, this must be 1 since there is a universal pad token. single sos/eos token for each modality.
-image_height: 416 # max input height
+image_height: 400 # max input height
 image_compress_factor: 16
 midi_max_shift: 1001
 in_modal_type: ['pt', 'midi']
