@@ -180,17 +180,17 @@ class TensorDecoder:
 
     if sep_token_idxs.numel() > 0:
     
-      # 모든 sep 토큰 위치를 기준으로 출력을 분리
+      # Split the output at every sep token position
       sections = []
       start_idx = 0
       
       for sep_idx in sep_token_idxs:
-        # sep 토큰 직전까지의 섹션을 추가
+        # Add the section up to (but excluding) the sep token
         section = inferenced_output[:, start_idx:sep_idx]
         sections.append(section)
-        start_idx = sep_idx + 1  # sep 토큰 다음부터 시작
+        start_idx = sep_idx + 1  # resume right after the sep token
       
-      # 마지막 sep 토큰 이후의 섹션도 추가
+      # Also add the section after the last sep token
       if start_idx < inferenced_output.shape[1]:
         sections.append(inferenced_output[:, start_idx:])
     else:
@@ -388,7 +388,7 @@ class TensorDecoder:
       # try:
       data_id = str(custom_idx[i]) if custom_idx is not None else str(i)
       data_id = str(custom_idx[i]) + '/' + str(custom_sub_idx[i]) if custom_sub_idx is not None else data_id
-      decoded_file_fns = self.decode_tensor_by_modality(in_tensor, in_modal_str, sample_dataset_name, data_type, data_id, i_token_height, use_in=use_in, n_iter=n_iter, custom_output_fn=custom_output_fns[i])
+      decoded_file_fns = self.decode_tensor_by_modality(in_tensor, in_modal_str, sample_dataset_name, data_type, data_id, i_token_height, use_in=use_in, n_iter=n_iter, custom_output_fn=custom_output_fns[i] if custom_output_fns is not None else None)
       # except Exception as e:
       #   print(e)
       #   print(f"Failed to decode {sample_dataset_name} {in_modal_str} {data_type} {i}")
