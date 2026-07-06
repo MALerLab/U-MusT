@@ -1,0 +1,31 @@
+data_path: [
+  ['asap', 'maestro/', ['midi', 'lmx'], 1.0, [0,0]],
+]
+data_dir: dataset/
+metadata_dir: dataset_pair_paths
+exp_name: synth_only
+
+dataset: MultimodalTokenDatasetMaker
+bucket:
+  use_bucket: False
+#   class_name: TwoDimKBucketSampler # TwoDimKBucketSampler
+#   n_buckets: 6 # number of buckets
+max_seq_len: {"lmx": 1000, "midi": 1000, "pt": 1000, "dac": 1750} # pt 200: width of image token array
+max_pt_x_len: 150
+n_codebook: 1
+codebook_size: 1024
+num_special_tokens: 1 #For multimodal_trans, this must be 1 since there is a universal pad token. single sos/eos token for each modality.
+image_height: 416 # max input height
+image_compress_factor: 16
+midi_max_shift: 2001
+in_modal_type: ['lmx']
+out_modal_type: ['midi']
+modal_direction: 'omr'
+num_measure_to_slice: 6
+lmx_vocab_path: vocab/lmx_vocab_singletoken_asap.txt
+out_pt_height_token: True
+
+vq_model: null
+dac_model: null
+
+preload_data: True

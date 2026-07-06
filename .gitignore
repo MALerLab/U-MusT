@@ -1,0 +1,30 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# experiment artifacts
+wandb/
+runs/
+outputs/
+multirun/
+
+# model weights (downloaded at runtime / released separately)
+vq_models/
+dac_models/
+yolo/
+models/
+*.pt
+*.pth
+*.ckpt
+
+# datasets
+dataset/
+
+# notebooks / editor
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store

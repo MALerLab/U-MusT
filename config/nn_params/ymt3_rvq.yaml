@@ -1,0 +1,8 @@
+defaults:
+  - decoder_params: stack_decUniSelf
+  - encoder_params: YPTFMoE
+
+type: rvq
+model_name: LatentScoreAMT
+model_dim: 128
+dropout_shared: 0.1

@@ -1,0 +1,50 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+torchaudio
+torchmetrics
+numpy
+scipy
+pandas
+matplotlib
+einops
+easydict
+omegaconf
+hydra-core
+pyyaml
+tqdm
+wandb
+typing-extensions
+
+# audio
+descript-audio-codec
+librosa
+soundfile
+pydub
+midi2audio
+
+# symbolic music
+pretty_midi
+mido
+partitura
+mir_eval
+
+# image / score
+opencv-python-headless
+Pillow
+ultralytics
+pdfplumber
+
+# models
+transformers<5
+x-transformers
+vector-quantize-pytorch
+
+# evaluation
+python-Levenshtein
+scikit-learn
+
+# optional: SLakh preprocessing (umust/midi_utils/preprocess/preprocess_slakh.py)
+# mirdata
+# smart_open
+# Deprecated

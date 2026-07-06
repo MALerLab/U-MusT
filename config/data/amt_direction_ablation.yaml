@@ -1,0 +1,35 @@
+data_path: [
+  # name, path, modal_types, max weight, (start iter, max iter)
+  ['lsyt', 'latent_score_dataset_tokens/', ['dac', 'pt'], 0.01, [70000, 90000]], 
+  ['musicnet', 'musicnet/', ['midi', 'dac'], 8.0, [0, 0]],
+  ['maestro', 'maestro/', ['midi', 'dac'], 4.0, [0, 0]],
+  ['slakh', 'slakh/', ['midi', 'dac'], 2.0, [0, 0]],
+]
+data_dir: dataset/
+metadata_dir: dataset_pair_paths
+exp_name: amt_direction
+dataset: MultimodalTokenDatasetMaker
+bucket:
+  use_bucket: False
+#   class_name: TwoDimKBucketSampler # TwoDimKBucketSampler
+#   n_buckets: 6 # number of buckets
+max_seq_len: {"lmx": 1000, "midi": 1000, "pt": 1000, "dac": 1750} # pt 200: width of image token array
+max_pt_x_len: 150
+n_codebook: 4
+codebook_size: 1024
+num_special_tokens: 1 #For multimodal_trans, this must be 1 since there is a universal pad token. single sos/eos token for each modality.
+image_height: 416 # max input height
+image_compress_factor: 16
+midi_max_shift: 501
+in_modal_type: ['lmx', 'dac']
+out_modal_type: ['pt', 'midi']
+modal_direction: 'amt' # only go to pt -> lmx -> midi -> dac
+num_measure_to_slice: 4
+lmx_vocab_path: vocab/lmx_vocab_singletoken.txt
+midi_slice_len: 5
+out_pt_height_token: True
+
+vq_model: unirqvae
+dac_model: unidac4
+
+preload_data: 'midi_only'

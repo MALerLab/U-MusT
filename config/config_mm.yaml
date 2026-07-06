@@ -1,0 +1,58 @@
+defaults:
+  - nn_params: mm_translator
+  - data: multimodal_trans
+  - wandb_config: default
+
+use_ddp: True #
+use_fp16: True
+
+train_params:
+  device: 'cuda'
+  world_size: 2
+  batch_size: 8
+  num_iter: 600000 
+  iterations_per_validation_cycle: 20000
+  num_cycles_for_inference: 3
+  num_cycles_for_model_checkpoint: 2
+  iterations_per_training_cycle: 20
+
+  grad_clip: 1.0
+
+  scheduler: cosinelr # 'cosineannealingwarmuprestarts', 'not-using'
+  initial_lr: 0.0001
+  min_lr: null # eta_min for cosineannealingwarmuprestarts; 0 if null
+  min_lr_ratio: null # for cosinelr; lr decays to initial_lr * min_lr_ratio (0.1 if null)
+  decay_step_rate: 0.8 # means it will reach its lowest point at decay_step_rate * total_num_iter
+  num_steps_per_cycle: 20000
+  warmup_steps: 2000
+  max_lr: 0.00015
+  gamma: 0.6
+  num_workers: 4
+
+inference_params:
+  n_inference: 2
+  sampling:
+    method: top_p # "top_p", "typical", "eta", "argmax" or None
+    threshold: 1.0
+    temperature: 1.0
+  condition: True
+  condition_length: 200
+
+finetune_params:
+  finetune: False
+  finetune_path: null
+  iter: 10000
+
+general:
+  seed: 0
+  debug: False #
+  make_log: True #
+  resume: null
+  save_attn_output: False 
+  infer_and_log: False #
+  log_train_metric: True 
+  log_all_feature_loss: True # for cp and nb not remi 
+  save_dir: 'runs/'
+  memo: ''
+  exp_name: ''
+  ddp_port: 12355

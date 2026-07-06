@@ -1,0 +1,26 @@
+{
+    "train": [
+        {
+            "pt": "dummy/path.pt",
+            "dac": "dummy/path.dac",
+            "pt_len": 600,
+            "dac_len": 1200
+        }
+    ],
+    "valid": [
+        {
+            "pt": "dummy/path.pt",
+            "dac": "dummy/path.dac",
+            "pt_len": 600,
+            "dac_len": 1200
+        }
+    ],
+    "test": [
+        {
+            "pt": "dummy/path.pt",
+            "dac": "dummy/path.dac",
+            "pt_len": 600,
+            "dac_len": 1200
+        }
+    ]
+}
