@@ -59,21 +59,21 @@ Continuous modalities are discretized by two neural codecs trained on classical 
 - **Image — RQ-VAE** ([Lee et al. 2022](https://github.com/kakaobrain/rq-vae-transformer)): 16× compression, model dim 256, attention blocks removed, grayscale, resolution-adaptive multi-height training. Our modifications live in the vendored `rqvae/` package (dataset, trainer, LPIPS loss); training uses the original repo's stage-1 driver with these modules.
 - **Audio — DAC** ([Kumar et al. 2023](https://github.com/descriptinc/descript-audio-codec)): retrained with 4 codebooks, hop size 512 at 44.1 kHz mono (≈86 token sets/s), following the official training recipe.
 
-Pretrained tokenizer checkpoints are loaded from local directories: place the RQ-VAE checkpoint (`config.yaml` + `*.pt`) under `vq_models/<model_string>/` (e.g. `vq_models/unirqvae_f16_c1024_k4/`) and the DAC checkpoint (`weights.pth`) under `dac_models/<name>/` (e.g. `dac_models/unidac4/`). The base directories can be overridden with `+data.vq_model_dir=<path>` and `+data.dac_model_dir=<path>`. See [Pretrained checkpoints](#pretrained-checkpoints) for download links.
+Pretrained tokenizer checkpoints are loaded from local directories: place the RQ-VAE checkpoint (`config.yaml` + `*.pt`) under `vq_models/<model_string>/` (e.g. `vq_models/unirqvae_f16_c1024_k4/`) and the DAC checkpoint (`weights.pth`) under `dac_models/<name>/` (e.g. `dac_models/unidac4/`). The base directories can be overridden with `+data.vq_model_dir=<path>` and `+data.dac_model_dir=<path>`.
 
 ## Pretrained checkpoints
 
-Released weights and their expected locations:
+The tokenizer and translation-model checkpoints are **not publicly released at this time**. The pipeline expects them at the following locations:
 
-| Checkpoint | Target location | Download |
-|---|---|---|
-| RQ-VAE image tokenizer (`unirqvae`) | `vq_models/unirqvae_f16_c1024_k4/` | |
-| RQ-VAE image tokenizer (`unirqvae3`) | `vq_models/unirqvae3_f16_c1024_k4/` | |
-| DAC audio tokenizer (`unidac4`) | `dac_models/unidac4/` | |
-| I2A translation model — piano | `models/run-20250225_062905-9n1554as/` | |
-| I2A translation model — strings | `models/run-20250130_150202-x9znhap2/` | |
+| Checkpoint | Expected location |
+|---|---|
+| RQ-VAE image tokenizer (`unirqvae`) | `vq_models/unirqvae_f16_c1024_k4/` (`config.yaml` + `*.pt`) |
+| RQ-VAE image tokenizer (`unirqvae3`) | `vq_models/unirqvae3_f16_c1024_k4/` |
+| DAC audio tokenizer (`unidac4`) | `dac_models/unidac4/` (`weights.pth`) |
+| I2A translation model — piano | `models/run-20250225_062905-9n1554as/` (`files/config.yaml` + `files/checkpoints/*.pt`) |
+| I2A translation model — strings | `models/run-20250130_150202-x9znhap2/` |
 
-Each download is a zip; extract it into the target directory. The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) are downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`.
+The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) **are** released and downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`.
 
 ## Data preparation
 
@@ -81,7 +81,9 @@ Datasets used in the paper: YTSV, GrandStaff, OLiMPiC, MAESTRO, MusicNet (with M
 
 1. Download each dataset and place it under a common root (e.g. `dataset/`).
 2. Preprocess MIDI-audio datasets with `umust/midi_utils/preprocess/preprocess_{maestro,musicnet,slakh,asap}.py`.
-3. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV with the [dataset pipeline](https://github.com/MALerLab/youtube-score-video-dataset).
+3. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
+
+The YTSV image and audio tokens are produced with the [MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset) pipeline.
 
 Score images are normalized with fine-tuned YOLOv8 models (system detection + staff-height detection, staff height 18 px) as described in Appendix A-D of the paper.
 
@@ -91,12 +93,12 @@ Each translation direction is trained as a separate model with the same architec
 
 ```bash
 # Image-to-Audio direction, piano (OMR + MIDI-to-audio + image-to-audio)
-# → released "piano" checkpoint; reproduces Table VII
+# → the paper's piano I2A model; reproduces Table VII
 python3 train_multimodal.py --config-name=config_mm \
   data=omr_piano_synth_long data.data_dir=dataset/ train_params.world_size=2
 
 # Image-to-Audio direction, multi-instrument (adds MusicNet/SLakh)
-# → released "strings" checkpoint
+# → the paper's strings I2A model
 python3 train_multimodal.py --config-name=config_mm \
   data=omr_direction_all data.data_dir=dataset/ train_params.world_size=2
 
@@ -129,7 +131,7 @@ python3 scripts/test_amt.py --run_path <run_dir> --target_dataset musicnet --dat
 python3 infer.py input.mxl --instrument piano -o output/ --models_dir models/ --mscore-path <path-to-musescore>
 ```
 
-Renders the score with MuseScore, tokenizes each system image, and generates performance audio with the I2A model — or via Docker: `./docker_run.sh input.mxl output/`. Requires the translation model, tokenizer, and YOLO checkpoints from [Pretrained checkpoints](#pretrained-checkpoints) (YOLO weights download automatically). `--mscore-path` can be omitted if `mscore`/`musescore3` is on `PATH`.
+Renders the score with MuseScore, tokenizes each system image, and generates performance audio with the I2A model — or via Docker: `./docker_run.sh input.mxl output/`. Requires the translation-model and tokenizer checkpoints laid out as in [Pretrained checkpoints](#pretrained-checkpoints) (the YOLO weights download automatically). `--mscore-path` can be omitted if `mscore`/`musescore3` is on `PATH`.
 
 ## Acknowledgments
 

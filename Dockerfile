@@ -57,51 +57,21 @@ RUN wget -O mscore.AppImage https://github.com/musescore/MuseScore/releases/down
 # Ensure the extracted AppImage is executable by all users
 RUN chmod -R 755 /app/mscore-3.6.2
 
-# Upgrade pip and install gdown
-RUN python3 -m pip install --upgrade pip && \
-    pip3 install --no-cache-dir gdown
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
 
-# Create sub-directory structure
+# Create sub-directory structure.
+# The tokenizer and translation-model checkpoints are not distributed with
+# this image; bind-mount them at runtime, e.g.
+#   docker run -v /path/to/vq_models:/app/vq_models \
+#              -v /path/to/dac_models:/app/dac_models \
+#              -v /path/to/models:/app/models ...
 RUN mkdir -p models \
     yolo \
     custom_input \
     output \
     vq_models \
-    dac_models \
-    models/run-20250225_062905-9n1554as \
-    models/run-20250130_150202-x9znhap2
-
-# Download all models using gdown.
-# Set the Google Drive file id of each released checkpoint at build time, e.g.
-#   docker build --build-arg VQ_UNIRQVAE_ID=... --build-arg DAC_UNIDAC4_ID=... .
-ARG VQ_UNIRQVAE_ID=""
-ARG VQ_UNIRQVAE3_ID=""
-ARG DAC_UNIDAC4_ID=""
-ARG MODEL_PIANO_ID=""
-ARG MODEL_STRINGS_ID=""
-
-# Download VQ models
-RUN gdown "$VQ_UNIRQVAE_ID" -O vq_models/unirqvae_f16_c1024_k4.zip && \
-    unzip vq_models/unirqvae_f16_c1024_k4.zip -d vq_models && \
-    rm vq_models/unirqvae_f16_c1024_k4.zip
-
-RUN gdown "$VQ_UNIRQVAE3_ID" -O vq_models/unirqvae3_f16_c1024_k4.zip && \
-    unzip vq_models/unirqvae3_f16_c1024_k4.zip -d vq_models && \
-    rm vq_models/unirqvae3_f16_c1024_k4.zip
-
-# Download DAC model
-RUN gdown "$DAC_UNIDAC4_ID" -O dac_models/unidac4.zip && \
-    unzip dac_models/unidac4.zip -d dac_models && \
-    rm dac_models/unidac4.zip
-
-# Download LLM checkpoints
-RUN gdown "$MODEL_PIANO_ID" -O models/run-20250225_062905-9n1554as/checkpoint.zip && \
-    unzip models/run-20250225_062905-9n1554as/checkpoint.zip -d models/run-20250225_062905-9n1554as && \
-    rm models/run-20250225_062905-9n1554as/checkpoint.zip
-
-RUN gdown "$MODEL_STRINGS_ID" -O models/run-20250130_150202-x9znhap2/checkpoint.zip && \
-    unzip models/run-20250130_150202-x9znhap2/checkpoint.zip -d models/run-20250130_150202-x9znhap2 && \
-    rm models/run-20250130_150202-x9znhap2/checkpoint.zip
+    dac_models
 
 # Download fine-tuned YOLO detectors (system + staff height) from MALerLab/ls-yolo releases
 RUN wget -O yolo/ls-yolo-system-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/system-v2/ls-yolo-system-v2.0.0.pt && \
