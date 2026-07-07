@@ -10,7 +10,7 @@ from collections import defaultdict
 from pydub import AudioSegment
 from pathlib import Path
 from .vocab_utils import VQVocab, RVQVocab
-from .lmx_utils import delinearize_lmx, render_xml_with_lilypond, render_xml_with_musescore
+from .lmx_utils import delinearize_lmx, render_xml_with_musescore
 from .midi_utils.midi import note_event2midi
 from .utils import load_vq_model_mm, get_fluidsynth
 from .dac_utils import LSDAC

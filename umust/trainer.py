@@ -29,7 +29,7 @@ from .model_zoo import LatentScoreAMT, PianoRollAMT, LMX2VQAMT
 from . import data_utils
 from .data_utils import audio_token_collate_fn, pianoroll_collate_fn, lmx_vq_collate_fn, multimodal_collate_fn, CustomDistributedSampler, DistributedEvalSampler, MultimodalTokenDataset
 from .vocab_utils import VQVocab, RVQVocab
-from .lmx_utils import delinearize_lmx, render_xml_with_lilypond, render_xml_with_musescore
+from .lmx_utils import delinearize_lmx, render_xml_with_musescore
 from .evaluation_utils import LayerPeeper, use_attn_weights, draw_attention_map, Evaluator
 from .constants import *
 from .yourmt3plus.model.spectrogram import get_spectrogram_layer_from_audio_cfg

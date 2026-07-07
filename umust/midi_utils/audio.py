@@ -171,63 +171,6 @@ def slice_padded_array_for_subbatch(x: np.ndarray,
     return sliced_x
 
 
-def pitch_shift_audio(src_audio_file: os.PathLike,
-                      min_pitch_shift: int = -5,
-                      max_pitch_shift: int = 6,
-                      random_microshift_range: tuple[int, int] = (-10, 11)):
-    """
-    Pitch shift audio file using the Sox command-line tool.
-
-    NOTE: This method is currently not used. Previously, we used this for 
-    offline augmentation for GuitarSet.
-
-    Args:
-        src_audio_file: Path to the input audio file.
-        min_pitch_shift: Minimum pitch shift in semitones.
-        max_pitch_shift: Maximum pitch shift in semitones.
-        random_microshift_range: Range of random microshifts to apply in tenths of a semitone.
-
-    Returns:
-        None
-
-    Raises:
-        CalledProcessError: If the Sox command fails to execute.
-
-    """
-
-    # files
-    src_audio_dir = os.path.dirname(src_audio_file)
-    src_audio_filename = os.path.basename(src_audio_file).split('.')[0]
-
-    # load source audio
-    try:
-        audio = load_audio_file(src_audio_file, dtype=np.int16)
-        audio = audio / 2**15
-        audio = audio.astype(np.float16)
-    except Exception as e:
-        print(f"Failed to load audio file: {src_audio_file}. {e}")
-        return
-
-    # pitch shift audio for each semitone in the range
-    for pitch_shift in range(min_pitch_shift, max_pitch_shift):
-        if pitch_shift == 0:
-            continue
-
-        # pitch shift audio by sox
-        dst_audio_file = os.path.join(src_audio_dir, f'{src_audio_filename}_pshift{pitch_shift}.wav')
-        shift_semitone = 100 * pitch_shift + np.random.randint(*random_microshift_range)
-
-        # build Sox command
-        command = ['sox', src_audio_file, '-r', '16000', dst_audio_file, 'pitch', str(shift_semitone)]
-
-        try:
-            # execute Sox command and check for errors
-            subprocess.run(command, check=True)
-            print(f"Created {dst_audio_file}")
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to pitch shift audio file: {src_audio_file}, pitch_shift: {pitch_shift}. {e}")
-
-
 def write_wav_file(filename: str, x: np.ndarray, samplerate: int = 16000) -> None:
     """
     Write a mono PCM WAV file from a NumPy array of audio samples.

@@ -32,23 +32,19 @@ vocab/                  LMX token vocabularies
 mxl_render_scripts/     MusicXML → PDF/system-image rendering (MuseScore)
 train_multimodal.py     Training entry point
 infer.py                MusicXML → audio inference pipeline
+setup.sh                System-dependency installer (Ubuntu)
 ```
 
 ## Installation
 
-Python 3.10 with CUDA is assumed.
+Python 3.10 with CUDA is assumed. On Ubuntu 22.04, `./setup.sh` installs everything in one go: the pip requirements, the system packages for rendering and synthesis (`ffmpeg`, `fluidsynth` + GM soundfont, `xvfb`), [MuseScore 3.6.2](https://github.com/musescore/MuseScore/releases/tag/v3.6.2), and the fine-tuned YOLO detectors. Otherwise:
 
 ```bash
 pip install -r requirements.txt
+apt-get install ffmpeg fluidsynth fluid-soundfont-gm xvfb
 ```
 
-System dependencies for rendering and synthesis:
-
-```bash
-apt-get install ffmpeg fluidsynth fluid-soundfont-gm
-```
-
-LMX/MusicXML rendering requires [MuseScore 3.6.2](https://github.com/musescore/MuseScore/releases/tag/v3.6.2). In server (headless) environments, we recommend running it under `xvfb` (e.g. `xvfb-run -a mscore ...`) to render output.
+LMX/MusicXML rendering requires MuseScore 3.6.2. In server (headless) environments, run it under `xvfb` (e.g. `xvfb-run -a mscore ...`).
 
 A `Dockerfile` and `docker_run.sh` are provided with all of the above preinstalled.
 
@@ -73,13 +69,13 @@ The tokenizer and translation-model checkpoints are **not publicly released at t
 | I2A translation model — piano | `models/run-20250225_062905-9n1554as/` (`files/config.yaml` + `files/checkpoints/*.pt`) |
 | I2A translation model — strings | `models/run-20250130_150202-x9znhap2/` |
 
-The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) **are** released and downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`.
+The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) **are** released and downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`. Note this download happens on first use and requires internet access — on offline machines, place `ls-yolo-system-v2.0.0.pt` and `ls-yolo-staff-height-v2.0.0.pt` under `yolo/` beforehand (`setup.sh` pre-fetches them).
 
 ## Data preparation
 
 Datasets used in the paper: YTSV, GrandStaff, OLiMPiC, MAESTRO, MusicNet (with MusicNetEM labels), SLakh, and BPSD (test only).
 
-1. Download each dataset and place it under a common root (e.g. `dataset/`).
+1. Download each dataset and place it under a common root (e.g. `dataset/`). The MusicNetEM labels are hosted on [Zenodo](https://zenodo.org); downloading access-restricted Zenodo records requires a (free) personal access token — `download_and_extract` in `umust/midi_utils/utils.py` accepts one via its `zenodo_token` argument.
 2. Preprocess MIDI-audio datasets with `umust/midi_utils/preprocess/preprocess_{maestro,musicnet,slakh,asap}.py`.
 3. Normalize the score images with the fine-tuned YOLOv8 models (system detection + staff-height detection, resized to a staff height of 18 px), as described in Appendix A-D; the detectors are on the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases).
 4. Bake the shift-augmented tokens (paper §III-A3, Appendix B): `scripts/bake_image_tokens.py` encodes each normalized system image under 8×4 one-pixel spatial shifts (plus, with `--augment`, five random degradations for software-rendered scores), and `scripts/bake_audio_tokens.py` encodes 60-second audio segments under 9 temporal shifts (−20…+20 samples at 5-sample steps).
