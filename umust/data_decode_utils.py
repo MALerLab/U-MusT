@@ -370,6 +370,8 @@ class TensorDecoder:
     for i, fns in enumerate(decoded_file_fns):
       for fn in fns:
         file_ext = fn.split('.')[-1]
+        if file_ext not in ext2log_key or not os.path.exists(fn):
+          continue
         sample_key = log_keys[i] + '/' + f"{data_type}_{ext2log_key[file_ext]}"
         match file_ext:
           case 'png':
