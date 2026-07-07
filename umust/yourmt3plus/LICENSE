@@ -1,3 +1,20 @@
+PROVENANCE NOTE (U-MusT maintainers, 2026-07)
+
+The code vendored under umust/yourmt3plus/ was obtained from the
+YourMT3+ pre-release distribution published by its author at
+https://huggingface.co/spaces/mimbres/YourMT3 (files under amt/src/,
+vendored verbatim apart from import-path adjustments). That
+distribution declares `license: apache-2.0` in its metadata and every
+source file carries an Apache-2.0 header ("Copyright 2024 The YourMT3
+Authors"); the author's related 2026 release
+(https://github.com/mimbres/AMT-challenge) is likewise Apache-2.0.
+The GPL-3.0 text found at https://github.com/mimbres/YourMT3 attaches
+to a repository that has only ever contained a README and logo (no
+code). The Apache License, Version 2.0 below is therefore the license
+of the vendored code.
+
+================================================================================
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
