@@ -37,12 +37,15 @@ def delinearize_lmx(input_lmx:str) -> str:
   return output_xml
 
 def render_xml_with_musescore(
-  xml:str,  
+  xml:str,
   fmt='png', # png, pdf
   dpi:int=300,
   out=None,
   mscore_exec='musescore3',
 ):
+  if shutil.which(mscore_exec) is None:
+    warnings.warn(f"MuseScore executable '{mscore_exec}' not found; skipping score rendering")
+    return None
 
   with (
     NamedTemporaryFile(suffix=".musicxml", mode="w+") as xml_f,

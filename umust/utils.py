@@ -117,6 +117,21 @@ def get_vq_model(config):
 
   return vq_model, vq_emb
 
+def get_fluidsynth():
+  """midi2audio only looks for ~/.fluidsynth/default_sound_font.sf2; fall back
+  to the common system locations of the GM soundfont (fluid-soundfont-gm)."""
+  from midi2audio import FluidSynth, DEFAULT_SOUND_FONT
+  if os.path.exists(os.path.expanduser(DEFAULT_SOUND_FONT)):
+    return FluidSynth()
+  for candidate in (
+    '/usr/share/sounds/sf2/FluidR3_GM.sf2',
+    '/usr/share/soundfonts/FluidR3_GM.sf2',
+    '/usr/share/sounds/sf2/default-GM.sf2',
+  ):
+    if os.path.exists(candidate):
+      return FluidSynth(sound_font=candidate)
+  return FluidSynth()
+
 def get_dac_model(config):
   data_config = config.data
   dac_model_dir = Path(data_config.get("dac_model_dir", "dac_models")) / data_config.dac_model

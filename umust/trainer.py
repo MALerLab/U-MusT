@@ -16,7 +16,6 @@ import torchaudio
 import torchaudio.transforms as audioT
 
 from pydub import AudioSegment
-from midi2audio import FluidSynth
 
 import cv2
 
@@ -36,7 +35,7 @@ from .constants import *
 from .yourmt3plus.model.spectrogram import get_spectrogram_layer_from_audio_cfg
 from .yourmt3plus.model.ops import minmax_normalize
 from .midi_utils.midi import note_event2midi
-from .utils import set_seed
+from .utils import set_seed, get_fluidsynth
 from .data_decode_utils import TensorDecoder
 class BaseTrainer:
   def __init__(
@@ -434,7 +433,7 @@ class MultimodalTrainer(BaseTrainer):
   ):
     self.rq_model = rq_model
     self.dac_model = dac_model
-    self.fs = FluidSynth()
+    self.fs = get_fluidsynth()
     self.in_vocab = model.in_vocab
     self.out_vocab = model.out_vocab
 

@@ -7,13 +7,12 @@ import wandb
 
 from collections import defaultdict
 
-from midi2audio import FluidSynth
 from pydub import AudioSegment
 from pathlib import Path
 from .vocab_utils import VQVocab, RVQVocab
 from .lmx_utils import delinearize_lmx, render_xml_with_lilypond, render_xml_with_musescore
 from .midi_utils.midi import note_event2midi
-from .utils import load_vq_model_mm
+from .utils import load_vq_model_mm, get_fluidsynth
 from .dac_utils import LSDAC
 from tqdm.auto import tqdm
 from .midi_utils.event2note import merge_zipped_note_events_and_ties_to_notes
@@ -52,9 +51,7 @@ class TensorDecoder:
       self.dac_model.to(device)
       self.dac_model.eval()
     if 'midi' in config.data.out_modal_type or 'midi' in config.data.in_modal_type:
-      self.fs = FluidSynth()
-    if 'midi' in config.data.out_modal_type or 'midi' in config.data.in_modal_type:
-      self.fs = FluidSynth()
+      self.fs = get_fluidsynth()
     
     
     self.modal_vocab = {}
@@ -103,8 +100,12 @@ class TensorDecoder:
     lmx_str = self.modal_vocab['lmx'].decode(inferenced_output)
     
     xml_str = delinearize_lmx(lmx_str)
-    rendered_img = render_xml_with_musescore(xml_str)
-    
+    try:
+      rendered_img = render_xml_with_musescore(xml_str)
+    except Exception as e:
+      print(f"Score rendering failed ({e}); logging LMX text only")
+      rendered_img = None
+
     return inferenced_output, lmx_str, rendered_img
 
   def decode_midi(self, inferenced_output, filename, custom_fn=False):
