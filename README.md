@@ -44,6 +44,8 @@ pip install -r requirements.txt
 apt-get install ffmpeg fluidsynth fluid-soundfont-gm xvfb
 ```
 
+`requirements.txt` pulls PyTorch from the CUDA 12.1 wheel index; on newer GPUs (e.g. Blackwell / sm_120) install PyTorch from the `cu128` index first and then the remaining requirements.
+
 LMX/MusicXML rendering requires MuseScore 3.6.2. In server (headless) environments, run it under `xvfb` (e.g. `xvfb-run -a mscore ...`).
 
 A `Dockerfile` and `docker_run.sh` are provided with all of the above preinstalled.
@@ -107,7 +109,7 @@ The manifests for the public OMR/AMT datasets are shipped in `dataset_pair_paths
 
 Task curriculum (which tasks enter the batch mixture at which step) and dataset sampling weights are defined in the `config/data/*.yaml` recipes. Per-task fine-tuning (50k steps) is configured through `finetune_params` (set `finetune_params.finetune=True finetune_params.finetune_path=<run_dir>` and `train_params.initial_lr=1e-5`).
 
-Logging uses [Weights & Biases](https://wandb.ai); set your entity/project in `config/wandb_config/default.yaml` or disable with `general.make_log=False`.
+Logging uses [Weights & Biases](https://wandb.ai); set your entity/project in `config/wandb_config/default.yaml` or disable with `general.make_log=False`. Setting `general.infer_and_log=True` additionally decodes validation predictions (score images, MIDI, audio) to wandb at every third validation cycle. Note that validation runs over every dataset in the recipe from the first cycle — the curriculum start iterations gate only the training mixture — so all referenced manifests and (validation) data must be present.
 
 ## Evaluation
 
