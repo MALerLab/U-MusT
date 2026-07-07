@@ -44,6 +44,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libavformat-dev \
     libswscale-dev \
     ffmpeg \
+    fluidsynth \
+    fluid-soundfont-gm \
     && rm -rf /var/lib/apt/lists/*
 
 # Install MuseScore 3.6.2 using AppImage inside /app

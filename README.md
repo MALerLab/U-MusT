@@ -27,7 +27,7 @@ umust/                  Core package: model, data pipeline, tokenization, traine
 rqvae/                  Vendored & modified RQ-VAE (Kakao Brain, Apache-2.0) for image tokens
 config/                 Hydra configs (config_mm.yaml + data / nn_params / wandb groups)
 dataset_pair_paths/     Train/valid/test split manifests per dataset
-scripts/                Dataset split builders and evaluation scripts
+scripts/                Split builders, token baking, and evaluation scripts
 vocab/                  LMX token vocabularies
 mxl_render_scripts/     MusicXML → PDF/system-image rendering (MuseScore)
 train_multimodal.py     Training entry point
@@ -81,12 +81,11 @@ Datasets used in the paper: YTSV, GrandStaff, OLiMPiC, MAESTRO, MusicNet (with M
 
 1. Download each dataset and place it under a common root (e.g. `dataset/`).
 2. Preprocess MIDI-audio datasets with `umust/midi_utils/preprocess/preprocess_{maestro,musicnet,slakh,asap}.py`.
-3. Bake the shift-augmented tokens (paper §III-A3, Appendix B): `scripts/bake_image_tokens.py` encodes each system image under 8×4 one-pixel spatial shifts (plus, with `--augment`, five random degradations for software-rendered scores), and `scripts/bake_audio_tokens.py` encodes 60-second audio segments under 9 temporal shifts (−20…+20 samples at 5-sample steps).
-4. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
+3. Normalize the score images with the fine-tuned YOLOv8 models (system detection + staff-height detection, resized to a staff height of 18 px), as described in Appendix A-D; the detectors are on the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases).
+4. Bake the shift-augmented tokens (paper §III-A3, Appendix B): `scripts/bake_image_tokens.py` encodes each normalized system image under 8×4 one-pixel spatial shifts (plus, with `--augment`, five random degradations for software-rendered scores), and `scripts/bake_audio_tokens.py` encodes 60-second audio segments under 9 temporal shifts (−20…+20 samples at 5-sample steps).
+5. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public OMR/AMT datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
 
 The YTSV image and audio tokens are produced with the [MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset) pipeline.
-
-Score images are normalized with fine-tuned YOLOv8 models (system detection + staff-height detection, staff height 18 px) as described in Appendix A-D of the paper.
 
 ## Training
 
@@ -108,7 +107,7 @@ python3 train_multimodal.py --config-name=config_mm \
   data=multimodal_amt_direction data.data_dir=dataset/ train_params.world_size=2
 ```
 
-`omr_piano_synth_long` runs with the manifests shipped in `dataset_pair_paths/`. The multi-instrument and Audio-to-Image recipes additionally need the YTSV manifest (`dataset_pair_paths/lsyt.json`), built with `scripts/make_youtube_split_json.py` after processing YTSV.
+The manifests for the public OMR/AMT datasets are shipped in `dataset_pair_paths/`; the YTSV manifests each recipe references (`lsyt_piano.json` for the piano recipe, `lsyt.json` for the multi-instrument and Audio-to-Image recipes) are built with `scripts/make_youtube_split_json.py` after processing YTSV.
 
 Task curriculum (which tasks enter the batch mixture at which step) and dataset sampling weights are defined in the `config/data/*.yaml` recipes. Per-task fine-tuning (50k steps) is configured through `finetune_params` (set `finetune_params.finetune=True finetune_params.finetune_path=<run_dir>` and `train_params.initial_lr=1e-5`).
 
