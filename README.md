@@ -81,7 +81,8 @@ Datasets used in the paper: YTSV, GrandStaff, OLiMPiC, MAESTRO, MusicNet (with M
 
 1. Download each dataset and place it under a common root (e.g. `dataset/`).
 2. Preprocess MIDI-audio datasets with `umust/midi_utils/preprocess/preprocess_{maestro,musicnet,slakh,asap}.py`.
-3. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
+3. Bake the shift-augmented tokens (paper §III-A3, Appendix B): `scripts/bake_image_tokens.py` encodes each system image under 8×4 one-pixel spatial shifts (plus, with `--augment`, five random degradations for software-rendered scores), and `scripts/bake_audio_tokens.py` encodes 60-second audio segments under 9 temporal shifts (−20…+20 samples at 5-sample steps).
+4. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
 
 The YTSV image and audio tokens are produced with the [MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset) pipeline.
 
