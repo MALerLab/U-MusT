@@ -63,17 +63,17 @@ Pretrained tokenizer checkpoints are loaded from local directories: place the RQ
 
 ## Pretrained checkpoints
 
-All released weights (also fetched automatically by the `Dockerfile`):
+Released weights and their expected locations:
 
 | Checkpoint | Target location | Download |
 |---|---|---|
-| RQ-VAE image tokenizer (`unirqvae`) | `vq_models/unirqvae_f16_c1024_k4/` | `gdown ` |
-| RQ-VAE image tokenizer (`unirqvae3`) | `vq_models/unirqvae3_f16_c1024_k4/` | `gdown ` |
-| DAC audio tokenizer (`unidac4`) | `dac_models/unidac4/` | `gdown ` |
-| I2A translation model — piano | `models/run-20250225_062905-9n1554as/` | `gdown ` |
-| I2A translation model — strings | `models/run-20250130_150202-x9znhap2/` | `gdown ` |
+| RQ-VAE image tokenizer (`unirqvae`) | `vq_models/unirqvae_f16_c1024_k4/` | |
+| RQ-VAE image tokenizer (`unirqvae3`) | `vq_models/unirqvae3_f16_c1024_k4/` | |
+| DAC audio tokenizer (`unidac4`) | `dac_models/unidac4/` | |
+| I2A translation model — piano | `models/run-20250225_062905-9n1554as/` | |
+| I2A translation model — strings | `models/run-20250130_150202-x9znhap2/` | |
 
-Each `gdown <id>` downloads a zip; extract it into the target directory. The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) are downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`.
+Each download is a zip; extract it into the target directory. The fine-tuned YOLOv8 detectors for system detection and staff-height estimation (Appendix A-D) are downloaded automatically by `infer.py` from the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) into `yolo/`.
 
 ## Data preparation
 
