@@ -52,7 +52,7 @@ data_config.data_path = [x for x in data_config.data_path if 'olimpic'  in x[0]]
 
 
 model_ckpt_dir = run_path / 'files' / 'checkpoints'
-pt_fns = list(model_ckpt_dir.glob('*.pt'))
+pt_fns = [x for x in model_ckpt_dir.glob("*.pt") if x.stem.startswith("iter")]
 
 if iteration:
   model_path = Path(next(p for p in pt_fns if str(iteration) in p.stem))
