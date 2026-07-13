@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import gzip
 from typing import Union, List, Optional, Iterator
 from tqdm import tqdm
 import json
@@ -414,7 +415,10 @@ class MultimodalTokenDatasetMaker():
       if debug:
         debug_json_fn = self.metadata_dir / f'{dataset_name}_debug.json'
         if debug_json_fn.exists(): json_fn = debug_json_fn
-      with open(json_fn, 'r') as f:
+      if not json_fn.exists() and json_fn.with_suffix('.json.gz').exists():
+        json_fn = json_fn.with_suffix('.json.gz')
+      opener = gzip.open if json_fn.suffix == '.gz' else open
+      with opener(json_fn, 'rt') as f:
         pair_data = json.load(f)
         train_data_pairs[dataset_name] = self._filter_pair_by_length(pair_data['train'], modality_types)
         valid_data_pairs[dataset_name] = self._filter_pair_by_length(pair_data['valid'], modality_types)
