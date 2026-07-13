@@ -48,8 +48,6 @@ apt-get install ffmpeg fluidsynth fluid-soundfont-gm xvfb
 
 LMX/MusicXML rendering requires MuseScore 3.6.2. In server (headless) environments, run it under `xvfb` (e.g. `xvfb-run -a mscore ...`).
 
-A `Dockerfile` and `docker_run.sh` are provided with all of the above preinstalled.
-
 ## Tokenizers
 
 Continuous modalities are discretized by two neural codecs trained on classical music, both with **4 unshared codebooks × 1,024 codes**:
@@ -81,7 +79,7 @@ Datasets used in the paper: YTSV, GrandStaff, OLiMPiC, MAESTRO, MusicNet (with M
 2. Preprocess MIDI-audio datasets with `umust/midi_utils/preprocess/preprocess_{maestro,musicnet,slakh,asap}.py`.
 3. Normalize the score images with the fine-tuned YOLOv8 models (system detection + staff-height detection, resized to a staff height of 18 px), as described in Appendix A-D; the detectors are on the [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases).
 4. Bake the shift-augmented tokens (paper §III-A3, Appendix B): `scripts/bake_image_tokens.py` encodes each normalized system image under 8×4 one-pixel spatial shifts (plus, with `--augment`, five random degradations for software-rendered scores), and `scripts/bake_audio_tokens.py` encodes 60-second audio segments under 9 temporal shifts (−20…+20 samples at 5-sample steps).
-5. Build or reuse split manifests in `dataset_pair_paths/` (`scripts/make_*_split*.py`). Manifests for the public OMR/AMT datasets are included; YTSV manifests are built with `scripts/make_youtube_split_json.py` after processing YTSV.
+5. Train/valid/test split manifests for **all** datasets are shipped in `dataset_pair_paths/`, including the YTSV manifests (`lsyt.json.gz`, `lsyt_piano.json.gz` — stored gzipped and loaded transparently). Manifest entries are **relative paths**, resolved against `<data.data_dir>/<dataset subdirectory>`, where the subdirectory is the second column of the recipe's `data_path` (e.g. `dataset/latent_score_dataset_tokens/` for YTSV) — so datasets prepared under `dataset/` in the repository root work out of the box. To regenerate a manifest (e.g. after re-tokenizing), use `scripts/make_*_split*.py`; the YTSV builder is `scripts/make_youtube_split_json.py`.
 
 The YTSV image and audio tokens are produced with the [MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset) pipeline.
 
@@ -105,7 +103,7 @@ python3 train_multimodal.py --config-name=config_mm \
   data=multimodal_amt_direction data.data_dir=dataset/ train_params.world_size=2
 ```
 
-The manifests for the public OMR/AMT datasets are shipped in `dataset_pair_paths/`; the YTSV manifests each recipe references (`lsyt_piano.json` for the piano recipe, `lsyt.json` for the multi-instrument and Audio-to-Image recipes) are built with `scripts/make_youtube_split_json.py` after processing YTSV.
+All manifests the recipes reference are shipped in `dataset_pair_paths/` (see [Data preparation](#data-preparation)); each recipe expects the corresponding datasets under `data.data_dir`.
 
 Task curriculum (which tasks enter the batch mixture at which step) and dataset sampling weights are defined in the `config/data/*.yaml` recipes. Per-task fine-tuning (50k steps) is configured through `finetune_params` (set `finetune_params.finetune=True finetune_params.finetune_path=<run_dir>` and `train_params.initial_lr=1e-5`).
 
@@ -129,7 +127,7 @@ python3 scripts/test_amt.py --run_path <run_dir> --target_dataset musicnet --dat
 python3 infer.py input.mxl --instrument piano -o output/ --models_dir models/ --mscore-path <path-to-musescore>
 ```
 
-Renders the score with MuseScore, tokenizes each system image, and generates performance audio with the I2A model — or via Docker: `./docker_run.sh input.mxl output/`. Requires the translation-model and tokenizer checkpoints laid out as in [Pretrained checkpoints](#pretrained-checkpoints) (the YOLO weights download automatically). `--mscore-path` can be omitted if `mscore`/`musescore3` is on `PATH`.
+Renders the score with MuseScore, tokenizes each system image, and generates performance audio with the I2A model. Requires the translation-model and tokenizer checkpoints laid out as in [Pretrained checkpoints](#pretrained-checkpoints) (the YOLO weights download automatically). `--mscore-path` can be omitted if `mscore`/`musescore3` is on `PATH`.
 
 ## Acknowledgments
 
