@@ -1,7 +1,7 @@
 import os
 import copy
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import torch
 import torch.multiprocessing as mp
@@ -23,7 +23,9 @@ get_ts = lambda: datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 def ddp_setup(rank, world_size, backend='nccl', port=12355):
   os.environ['MASTER_ADDR'] = 'localhost'
   os.environ['MASTER_PORT'] = str(port)
-  init_process_group(backend, rank=rank, world_size=world_size)
+  # Autoregressive inference/decode cycles (general.infer_and_log) can hold a
+  # rank far past NCCL's default collective timeout; use a generous limit.
+  init_process_group(backend, rank=rank, world_size=world_size, timeout=timedelta(hours=4))
   torch.cuda.set_device(rank)
 
 def generate_experiment_name(config):
