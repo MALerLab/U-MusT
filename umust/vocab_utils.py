@@ -470,6 +470,7 @@ class TokenIdxHandler:
           pos = torch.zeros((tokens.shape[0], tokens.shape[1], 2), dtype=torch.long, device=tokens.device)
           
           # Process each batch element
+          max_x_pos = self.pos_shifts['pt'][0] + self.max_pt_x_len - 1  # clamp: degenerate generations must not overflow the position table
           for batch_idx in range(tokens.shape[0]):
             current_x_pos = self.pos_shifts['pt'][0]  # current x position
             current_height = None
@@ -508,7 +509,7 @@ class TokenIdxHandler:
                   # The separator keeps the previous content's last position; x_pos advances by 1
                   if last_content_pos is not None:
                     pos[batch_idx, col] = last_content_pos
-                    current_x_pos = last_content_pos[0].item() + 1  # update x position
+                    current_x_pos = min(last_content_pos[0].item() + 1, max_x_pos)  # update x position
                   is_sep = True
                   break
               
@@ -532,7 +533,7 @@ class TokenIdxHandler:
                 
                 # x position advances by 1 every time y wraps around
                 if token_count_in_crop > 0 and token_count_in_crop % current_height == 0:
-                    current_x_pos += 1
+                    current_x_pos = min(current_x_pos + 1, max_x_pos)
                 
                 pos[batch_idx, col] = torch.tensor([current_x_pos, current_pos_y], 
                                                  dtype=torch.long, device=pos.device)
