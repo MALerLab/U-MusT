@@ -82,7 +82,13 @@ dac_model, dac_emb = get_dac_model(config)
 dataset = get_dataset(config)
 model = get_model(config, vq_emb, dac_emb, dataset)
 
-model.load_state_dict(torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"])
+try:
+  model.load_state_dict(torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"])
+except RuntimeError:
+  # checkpoints saved from a torch.compile'd model carry _orig_mod-prefixed keys
+  model.compile_model()
+  model.load_state_dict(torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"])
+  model.uncompile_model()
 model.eval()
 model =model.cuda()
 slice_len = config.data.midi_slice_len
