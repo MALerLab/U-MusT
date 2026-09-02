@@ -249,12 +249,51 @@ If you use this code, please cite:
 
 ## License summary
 
+### Code
+
 | Component | License |
 |---|---|
 | This repository | MIT |
 | — `rqvae/` (Kakao Brain) | Apache-2.0 |
 | — `umust/yourmt3plus/` (YourMT3+) | Apache-2.0, see `umust/yourmt3plus/LICENSE` for provenance |
 | — `umust/lmx_utils/` (© 2024 Jiří Mayer) | MIT |
-| YTSV metadata (separate repository) | CC BY-NC-SA 4.0 |
+
+### Datasets
+
+**This repository redistributes no corpus audio, images, or scores.** It ships split manifests — lists of relative file paths — and the code to tokenize data you obtain yourself from each corpus's original source. The table records each corpus's license as stated by its publisher, so you can establish your own obligations before using or redistributing anything derived from it.
+
+| Corpus | License as published | Where that is stated |
+|---|---|---|
+| YTSV metadata | CC BY-NC-SA 4.0 | [youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset) |
+| MAESTRO v3.0.0 | CC BY-NC-SA 4.0 | [magenta.tensorflow.org/datasets/maestro](https://magenta.tensorflow.org/datasets/maestro) |
+| ASAP | CC BY-NC-SA 4.0 | [fosfrancesco/asap-dataset](https://github.com/fosfrancesco/asap-dataset) `LICENSE.md` |
+| MusicNet | CC BY 4.0 | [Zenodo 5120004](https://zenodo.org/records/5120004) |
+| MusicNetEM (labels) | CC BY-NC-SA 4.0 | [benadar293.github.io](https://github.com/benadar293/benadar293.github.io) `LICENSE.md` |
+| SLakh2100 | CC BY 4.0 | [Zenodo 4599666](https://zenodo.org/records/4599666) |
+| Lakh MIDI (SLakh upstream) | CC BY 4.0 | [colinraffel.com/projects/lmd](https://colinraffel.com/projects/lmd/) |
+| BPSD v2 | CC BY 3.0 | [Zenodo 12783403](https://zenodo.org/records/12783403) |
+| OLiMPiC | CC BY-SA 4.0 | [ufal/olimpic-icdar24](https://github.com/ufal/olimpic-icdar24) |
+| OpenScore Lieder (OLiMPiC upstream) | CC0 1.0 | [OpenScore/Lieder](https://github.com/OpenScore/Lieder) |
+| GrandStaff-LMX | CC BY-SA 4.0 | [LINDAT 11234/1-5423](http://hdl.handle.net/11234/1-5423) |
+| GrandStaff (score images) | **not stated by its publisher** | — |
+| KernScores source editions | CC BY-NC-SA 4.0 on some, **unstated on others** | `craigsapp/*` repository `LICENSE.txt` files |
+
+### Known license conflicts
+
+These are unresolved at the time of release. They are recorded rather than papered over, because anyone tokenizing or redistributing this data inherits them.
+
+- **GrandStaff has three layers that do not agree.** GrandStaff-LMX is published CC BY-SA 4.0; the underlying GrandStaff score images carry no license statement from their publisher; and the KernScores editions those derive from are CC BY-NC-SA 4.0 for some composers (Mozart, Scarlatti, Joplin among them) and unstated for others (Beethoven, Chopin, Hummel). **CC BY-SA 4.0 and CC BY-NC-SA 4.0 are mutually incompatible**, so no single license satisfies the whole chain. Treat GrandStaff-derived tokens as non-commercial and share-alike, which is the most restrictive verified layer, or seek written clarification from the GrandStaff and KernScores maintainers.
+- **MusicNet and MusicNetEM stack two licenses over the same audio.** MusicNet audio is CC BY 4.0; the MusicNetEM alignment labels are CC BY-NC-SA 4.0. Anything containing EM labels is governed by the more restrictive of the two. Our `musicnet/` layout interleaves both, so they must be separated before either is redistributed under its own terms.
+- **MusicNetEM is access-restricted at its source** despite a license that permits non-commercial redistribution. Its Zenodo record requires a personal access token, and its README directs commercial users to contact the author. Obtain it from the author rather than from a mirror.
+- **SLakh inherits an unresolved authorship question.** Both SLakh2100 and the Lakh MIDI Dataset it derives from are CC BY 4.0, but Lakh's maintainer explicitly disclaims being able to attribute the underlying MIDI files to their authors. CC licensing cannot cure third-party rights in those arrangements. This exposure is shared by all Lakh derivatives.
+- **ASAP data is interleaved into our MAESTRO layout.** `maestro/` contains ASAP's `lmx/` and `asap_note_events/` alongside MAESTRO-derived tokens. Both are CC BY-NC-SA 4.0, so nothing conflicts, but a directory named for one corpus holds two.
+
+### A caution on licenses
+
+The license positions above were established from each publisher's own statement and are recorded in good faith, but they are **not legal advice and may be out of date**. Licenses get revised, corpora get relicensed, and several of the statements above are unstated or ambiguous at the source.
+
+Tokenized representations are plausibly derivative works of the corpora they were computed from. If you publish tokens, trained weights, or generated audio derived from this pipeline, the obligations of the underlying corpora — attribution, share-alike, non-commercial restrictions — travel with your output. Several corpora here are non-commercial, so **a model trained on the full mixture cannot be assumed to be free of non-commercial restrictions**.
+
+Verify the current terms with each publisher before you redistribute anything or use it commercially, and satisfy yourself that your intended use is permitted. Where a corpus states no license at all, absence of a statement is not permission.
 
 This work was supported in part by the Ministry of Education of the Republic of Korea, in part by the National Research Foundation of Korea under Grant NRF-2024S1A5C3A03046168, and in part by the IITP of Korea through the Graduate School of Metaverse Convergence Program under Grant RS-2022-00156318.
