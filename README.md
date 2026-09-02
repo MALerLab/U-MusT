@@ -30,39 +30,11 @@ Everything below ships in this repository unless the Location column says otherw
 
 ## How the pieces fit together
 
-```mermaid
-flowchart LR
-  subgraph Modalities
-    I["Score image"]
-    N["Notation (MusicXML)"]
-    M["Performance MIDI"]
-    A["Performance audio"]
-  end
-  subgraph Tokenizers
-    RQ["RQ-VAE<br/>16x16 px patches"]
-    LMX["LMX<br/>linearized MusicXML"]
-    MT3["MT3-style<br/>event tokens"]
-    DAC["DAC<br/>44.1 kHz mono"]
-  end
-  subgraph Models
-    I2A["I2A model<br/>OMR + I2A + M2A"]
-    A2I["A2I model<br/>AMT + A2I + L2I"]
-  end
-  I --> RQ
-  N --> LMX
-  M --> MT3
-  A --> DAC
-  RQ --> I2A
-  MT3 --> I2A
-  I2A --> LMX
-  I2A --> DAC
-  DAC --> A2I
-  LMX --> A2I
-  A2I --> RQ
-  A2I --> MT3
-```
+![Overview of U-MusT. Two directions, each a Transformer encoder-decoder. Image-to-Audio takes score images through an RQVAE encoder or MIDI through a MIDI tokenizer, and emits audio tokens decoded by DAC or LMX tokens decoded to notation. Audio-to-Image is the reverse, taking audio through a DAC encoder or notation through an LMX tokenizer and emitting image tokens decoded by RQVAE or MIDI tokens.](figures/umust_overview.jpg)
 
-Plain-text summary: each modality is discretized by its own tokenizer — **RQ-VAE** for score images, **LMX** for notation, **MT3**-style events for MIDI, **DAC** for audio — into one shared vocabulary. Two separately trained models with identical architecture then run in opposite directions: the **I2A** model consumes image and MIDI tokens and emits notation and audio tokens, and the **A2I** model does the reverse. The two directions do not share weights.
+<sub>Figure 2 from the paper. &copy; 2025 IEEE.</sub>
+
+Each modality is discretized by its own tokenizer — **RQ-VAE** for score images, **DAC** for audio, **LMX** for notation, **MT3**-style events for MIDI — into one shared vocabulary. Notation and MIDI are already discrete and need no learned codec. Two separately trained models with identical architecture then run in opposite directions: the **I2A** model takes image or MIDI tokens and emits LMX or audio tokens, covering OMR, image-to-audio, and MIDI-to-audio synthesis; the **A2I** model takes audio or LMX tokens and emits image or MIDI tokens, covering AMT, audio-to-image, and notation-to-image. The two directions do not share weights.
 
 ## Getting started
 
