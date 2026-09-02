@@ -7,6 +7,7 @@ import torch
 from torch.nn import Module, ModuleList
 from torch.cuda.amp import autocast
 from torch import nn, einsum, broadcast_tensors, Tensor
+from umust.yourmt3plus.model.ops import optional_compiler_disable
 
 
 # helper functions
@@ -266,7 +267,7 @@ class RotaryEmbedding(Module):
         return freqs
 
     # custom method for applying rotary embeddings
-    @torch.compiler.disable
+    @optional_compiler_disable
     def apply_rotary_custom(self, t: torch.Tensor):
         """Apply rotary embeddings to queries and keys, if k is None, only q is rotated.
            Depending on the freqs type, the rotation will be different."""
