@@ -5,13 +5,11 @@ import subprocess
 import warnings
 from typing import Union, Optional
 from pathlib import Path
-from tempfile import TemporaryFile, NamedTemporaryFile, TemporaryDirectory
+from tempfile import TemporaryFile, TemporaryDirectory
 import xml.etree.ElementTree as ET
 
 import numpy as np
 import cv2
-
-import partitura as pt
 
 from .Linearizer import Linearizer
 from .Delinearizer import Delinearizer
@@ -40,32 +38,29 @@ def render_xml_with_musescore(
   fmt='png', # png, pdf
   dpi:int=300,
   out=None,
-  mscore_exec='musescore3',
+  mscore_exec=None,
 ):
-  if shutil.which(mscore_exec) is None:
+  if mscore_exec is None:
+    candidates = ["mscore3", "musescore3", "mscore", "musescore"]
+    mscore_exec = next((c for c in candidates if shutil.which(c)), None)
+    if mscore_exec is None:
+      warnings.warn(f"No MuseScore executable found among {candidates}; skipping score rendering")
+      return None
+  elif shutil.which(mscore_exec) is None:
     warnings.warn(f"MuseScore executable '{mscore_exec}' not found; skipping score rendering")
     return None
 
-  with (
-    NamedTemporaryFile(suffix=".musicxml", mode="w+") as xml_f,
-    TemporaryDirectory() as tmpdir
-  ):
-    
+  with TemporaryDirectory() as tmpdir:
+
     if out is None:
       out = Path(tmpdir)
     else:
       out = Path(out)
-    
-    xml_f.write(xml)
-    xml_f.flush()
-    xml_f.seek(0)
-    
-    pt_score = pt.load_musicxml(xml_f.name)
-    
+
     img_fh = out / f"score.{fmt}"
     xml_fh = out / "score.musicxml"
-    pt.save_musicxml(pt_score, xml_fh)
-    
+    xml_fh.write_text(xml)
+
     cmd = [
       mscore_exec,
       "-r",
@@ -101,11 +96,22 @@ def render_xml_with_musescore(
     if fmt == "png":
       # gather all generated image files
       img_files = list(sorted(Path(out).glob(f"*.{fmt}")))
-      
-      # make background white
-      o_i = cv2.imread(img_files[0], cv2.IMREAD_UNCHANGED)
-      transparent_mask = o_i[:,:,3] == 0
-      o_i[transparent_mask] = [255, 255, 255, 255]
-      o_i = cv2.cvtColor(o_i, cv2.COLOR_BGRA2BGR)
-      return o_i
+
+      first_page = None
+      for img_file in img_files:
+        # make background white
+        o_i = cv2.imread(os.fspath(img_file), cv2.IMREAD_UNCHANGED)
+        transparent_mask = o_i[:,:,3] == 0
+        o_i[transparent_mask] = [255, 255, 255, 255]
+        o_i = cv2.cvtColor(o_i, cv2.COLOR_BGRA2BGR)
+
+        if first_page is None:
+          first_page = o_i
+
+        gray = cv2.cvtColor(o_i, cv2.COLOR_BGR2GRAY)
+        if (gray < 200).mean() >= 1e-4:
+          return o_i
+
+      warnings.warn("Rendered score came out blank on every page")
+      return first_page
 
