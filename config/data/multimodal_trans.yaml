@@ -26,7 +26,7 @@ in_modal_type: ['lmx', 'midi', 'pt', 'dac']
 out_modal_type: ['lmx', 'midi', 'pt', 'dac']
 out_pt_height_token: True
 
-vq_model: unirqvae
+vq_model: unirqvae3
 dac_model: unidac4
 
 preload_data: False

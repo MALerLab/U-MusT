@@ -31,7 +31,7 @@ lmx_vocab_path: vocab/lmx_vocab_singletoken.txt
 midi_slice_len: 10
 out_pt_height_token: True
 
-vq_model: unirqvae
+vq_model: unirqvae3
 dac_model: unidac4
 
 preload_data: 'midi_only'
