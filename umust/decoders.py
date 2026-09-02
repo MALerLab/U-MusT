@@ -215,7 +215,7 @@ class MultimodalDecoderAutoregressiveWrapper(nn.Module):
     return self.net(enc_out, input_seq, target_out, enc_out_mask, modal_idx, input_pos)
   
   def _prepare_inference(self, modal_idx:torch.LongTensor, manual_seed, condition=None):
-    if manual_seed > 0:
+    if manual_seed >= 0:
       torch.manual_seed(manual_seed)
     total_out = self.net.vocab.prepare_start_token(modal_idx)
     if condition is not None:
@@ -371,7 +371,7 @@ class CrossDecoderAutoregressiveWrapper(nn.Module):
     return self.net(enc_out, input_seq, enc_out_mask, target)
   
   def _prepare_inference(self, start_token, manual_seed, condition=None, condition_length=200):
-    if manual_seed > 0:
+    if manual_seed >= 0:
       torch.manual_seed(manual_seed)
       
     total_out = []
