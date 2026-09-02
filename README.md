@@ -288,6 +288,25 @@ These are unresolved at the time of release. They are recorded rather than paper
 - **SLakh inherits an unresolved authorship question.** Both SLakh2100 and the Lakh MIDI Dataset it derives from are CC BY 4.0, but Lakh's maintainer explicitly disclaims being able to attribute the underlying MIDI files to their authors. CC licensing cannot cure third-party rights in those arrangements. This exposure is shared by all Lakh derivatives.
 - **ASAP data is interleaved into our MAESTRO layout.** `maestro/` contains ASAP's `lmx/` and `asap_note_events/` alongside MAESTRO-derived tokens. Both are CC BY-NC-SA 4.0, so nothing conflicts, but a directory named for one corpus holds two.
 
+### License conflicts in the released artifacts
+
+The Hugging Face releases split into per-corpus token repositories, one codec repository per tokenizer, and one repository for the translation weights. Because Hugging Face assigns exactly **one license tag per repository**, the conflicts above surface as concrete packaging problems.
+
+**Within a single token repository.** Two repositories cannot be tagged truthfully as their contents stand:
+
+- The MusicNet token repository would hold MusicNet-derived audio tokens (CC BY 4.0) beside MusicNetEM note events (CC BY-NC-SA 4.0). No single tag covers both. Either the EM note events move to a non-commercial repository, or the whole repository is tagged CC BY-NC-SA 4.0 and the CC BY 4.0 portion is published under terms stricter than it requires.
+- The GrandStaff token repository has no valid tag at all, for the three-layer reason above. It is withheld rather than published under a license that cannot be substantiated.
+
+The MAESTRO token repository holds ASAP-derived notation alongside MAESTRO-derived audio tokens. Both are CC BY-NC-SA 4.0, so the tag is accurate, but the repository name states only one of the two corpora it contains.
+
+**Between token repositories.** The two share-alike families in this collection are mutually incompatible. OLiMPiC tokens are **CC BY-SA 4.0** — share-alike, commercial use permitted. MAESTRO, ASAP and MusicNetEM tokens are **CC BY-NC-SA 4.0** — share-alike, commercial use forbidden. A share-alike license requires derivatives to carry the same license, and these two cannot both be satisfied by one work. Combining tokens across those repositories into a single derivative therefore has no compliant licensing outcome.
+
+**In the trained artifacts.** This matters because the models are trained on exactly that combination. The translation weights and both image codecs are derived from a mixture that includes CC BY-SA 4.0, CC BY-NC-SA 4.0 and CC BY 4.0 material, plus YTSV, whose metadata is CC BY-NC-SA 4.0. Consequently:
+
+- The most restrictive verified terms in the chain are **non-commercial and share-alike**. Any redistribution of the weights, or of audio and notation generated with them, should be treated as bound by both.
+- The `-ytsv` suffix on the codec repositories records that they were trained on YTSV-derived data. That provenance alone puts a CC BY-NC-SA 4.0 layer in the chain, independent of the other corpora.
+- Publishing a derivative of share-alike material under a license without a share-alike clause does not discharge the share-alike obligation. If you relicense any of these artifacts, check that the chosen license is compatible with every upstream layer, not only with the non-commercial ones.
+
 ### A caution on licenses
 
 The license positions above were established from each publisher's own statement and are recorded in good faith, but they are **not legal advice and may be out of date**. Licenses get revised, corpora get relicensed, and several of the statements above are unstated or ambiguous at the source.
