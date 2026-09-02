@@ -5,7 +5,7 @@ import torch
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from umust.utils import get_model, convert_wandb_style_config_to_omega_config, get_vq_model, get_dac_model, get_dataset
+from umust.utils import get_model, convert_wandb_style_config_to_omega_config, get_vq_model, get_dac_model, get_dataset, load_model_state_dict
 from umust.data_utils import MultimodalTokenDatasetMaker
 from umust.model_zoo import MultimodalTranslator
 from tqdm.auto import tqdm
@@ -25,7 +25,7 @@ try:
   config = convert_wandb_style_config_to_omega_config(config)
 except:
   pass
-config.data.vq_model = 'unirqvae'
+config.data.vq_model = 'unirqvae3'
 config.data.dac_model = 'unidac4'
 data_config = config.data
 
@@ -72,14 +72,9 @@ dac_model, dac_emb = get_dac_model(config)
 
 model = MultimodalTranslator(config.nn_params, dataset.in_idx_handler, dataset.out_idx_handler)
 
-try:
-  model.load_state_dict(torch.load(model_path, map_location='cpu')['model_state_dict'])
-  print("Loaded model state dict")
-except:
-  model.compile_model()
-  model.load_state_dict(torch.load(model_path, map_location='cpu')['model_state_dict'])
-  model.uncompile_model()
-  print("Loaded model state dict for compiled checkpoint")
+state_dict = torch.load(model_path, map_location='cpu')['model_state_dict']
+load_model_state_dict(model, state_dict)
+print("Loaded model state dict")
 model.eval()
 model.cuda()
 
