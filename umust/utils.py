@@ -324,6 +324,23 @@ def get_dataset(config):
   
   return dataset
 
+def normalize_compiled_state_dict(state_dict):
+  # torch.compile can be applied to individual submodules, so _orig_mod
+  # shows up mid-key at varying depths rather than as a single prefix
+  return {k.replace('_orig_mod.', ''): v for k, v in state_dict.items()}
+
+def load_model_state_dict(model, state_dict):
+  try:
+    model.load_state_dict(state_dict)
+  except RuntimeError:
+    state_dict = normalize_compiled_state_dict(state_dict)
+    result = model.load_state_dict(state_dict, strict=False)
+    if result.missing_keys or result.unexpected_keys:
+      raise RuntimeError(
+        f"state_dict mismatch after normalizing _orig_mod keys: "
+        f"{len(result.missing_keys)} missing, {len(result.unexpected_keys)} unexpected keys")
+  return model
+
 def get_model(config, vq_emb, dac_emb, dataset):
   nn_params = config.nn_params
   if config.finetune_params.finetune:
@@ -384,12 +401,7 @@ def get_model(config, vq_emb, dac_emb, dataset):
   if config.finetune_params.finetune:
     print(f"Loading pretrained model from {ckpt_path}")
     state_dict = torch.load(ckpt_path, map_location='cpu')['model_state_dict']
-    try:
-      model.load_state_dict(state_dict)
-    except:
-      model.compile_model()
-      model.load_state_dict(state_dict)
-      model.uncompile_model()
+    load_model_state_dict(model, state_dict)
   return model
 
 

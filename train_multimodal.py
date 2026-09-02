@@ -202,12 +202,7 @@ def prepare_trainer(config, wandb_run, save_dir, rank):
         last_ckpt['model_state_dict'][k[7:]] = v
         del last_ckpt['model_state_dict'][k]
       
-      try:
-        model.load_state_dict(last_ckpt['model_state_dict'])
-      except:
-        model.compile_model()
-        model.load_state_dict(last_ckpt['model_state_dict'])
-        model.uncompile_model()
+      load_model_state_dict(model, last_ckpt['model_state_dict'])
       model = model.to(f"cuda:{rank}")
       optimizer = torch.optim.AdamW(model.parameters(), lr=config.train_params.initial_lr, betas=(0.9, 0.95), eps=1e-08, weight_decay=0.01)
       if scheduler_dict[config.train_params.scheduler] == CosineAnnealingWarmUpRestarts:
