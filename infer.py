@@ -138,24 +138,24 @@ def mxl_to_system_images(mxl_path: Union[str, Path], mscore_path: str, work_dir:
 @functools.cache
 def load_tokenizer(tokenizer_path: Union[str, Path]):
     tokenizer_path = Path(tokenizer_path)
-    if 'run-20250225_062905-9n1554as' in str(tokenizer_path):
-        vq_version = 'unirqvae3'
-    elif 'run-20250130_150202-x9znhap2' in str(tokenizer_path):
-        vq_version = 'unirqvae'
-    else:
-        vq_version = 'unirqvae3' if 'unirqvae3' in str(tokenizer_path) else 'unirqvae'
-    
     config_path = tokenizer_path / "files" / "config.yaml"
     if not config_path.exists():
         raise FileNotFoundError(f"Config file not found: {config_path}")
-    
+
     wandb_config = OmegaConf.load(config_path)
     try:
         config = wandb_style_config_to_omega_config(wandb_config)
     except Exception:
         config = wandb_config
-    
-    config.data.vq_model = vq_version
+
+    vq_version = config.data.get('vq_model', None)
+    if not vq_version:
+        raise ValueError(
+            f"Could not determine the image tokenizer from {config_path} (missing "
+            f"data.vq_model). Refusing to guess a default, since the wrong tokenizer "
+            f"silently produces mis-sized preprocessing (see README's Tokenizers section)."
+        )
+
     config.data.dac_model = 'unidac4'
     config.data.data_dir = 'dummy'
     
@@ -179,12 +179,8 @@ def load_llm(llm_path: Union[str, Path]):
     
     last_ckpt_path = max(ckpt_paths, key=lambda p: int(p.stem.split('_')[0][4:]))
     
-    try:
-        model.load_state_dict(torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"])
-    except:
-        model.compile_model()
-        model.load_state_dict(torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"])
-        model.uncompile_model()
+    state_dict = torch.load(last_ckpt_path, map_location="cpu")["model_state_dict"]
+    load_model_state_dict(model, state_dict)
     
     model.eval()
     decoder = TensorDecoder(config, model.in_vocab, model.out_vocab, Path(tempfile.mkdtemp()), device=DEVICE)
@@ -310,12 +306,13 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Convert MusicXML to continuous audio.")
     parser.add_argument("mxl_path", help="Path to the MusicXML file.")
-    parser.add_argument("--instrument", choices=["piano", "strings"], default="piano", help="Instrument type.")
+    parser.add_argument("--instrument", choices=["piano", "strings"], default="piano", help="Instrument type; selects a released checkpoint under --models_dir. Ignored if --run_path is given.")
     parser.add_argument("-o", "--output", default="output", help="Output directory.")
     parser.add_argument("--mscore-path", default=None, help="Path to MuseScore executable (default: auto-detect).")
     parser.add_argument("--device", default="cuda", help="Device to run inference on.")
     parser.add_argument("--seed", type=int, default=0, help="Random seed for inference.")
-    parser.add_argument("--models_dir", default="models", help="Directory containing the released model checkpoints.")
+    parser.add_argument("--models_dir", default="models", help="Directory containing the released model checkpoints (used with --instrument).")
+    parser.add_argument("--run_path", default=None, help="Training run directory containing files/config.yaml and files/checkpoints/*.pt (e.g. a model you trained yourself). Takes precedence over --instrument/--models_dir.")
     args = parser.parse_args()
     DEVICE = args.device
 
@@ -331,19 +328,29 @@ if __name__ == "__main__":
                 "with --mscore-path (in headless/server environments run it under xvfb)."
             )
 
-    instrument_to_model = {
-        "piano": "run-20250225_062905-9n1554as",
-        "strings": "run-20250130_150202-x9znhap2"
-    }
-    model_dir_name = instrument_to_model[args.instrument]
-    model_path = f"{args.models_dir}/{model_dir_name}/{model_dir_name}"
-    if not Path(model_path).exists():
-        model_path = f"{args.models_dir}/{model_dir_name}"
-    if not Path(model_path).exists():
-        raise FileNotFoundError(
-            f"Model not found: {model_path}. Download the released checkpoints "
-            f"(see README) into {args.models_dir}/."
-        )
+    if args.run_path is not None:
+        model_path = args.run_path
+        if not (Path(model_path) / "files" / "config.yaml").exists():
+            raise FileNotFoundError(
+                f"--run_path {model_path} does not look like a training run directory "
+                f"(expected {model_path}/files/config.yaml)."
+            )
+    else:
+        instrument_to_model = {
+            "piano": "run-20250225_062905-9n1554as",
+            "strings": "run-20250130_150202-x9znhap2"
+        }
+        model_dir_name = instrument_to_model[args.instrument]
+        model_path = f"{args.models_dir}/{model_dir_name}/{model_dir_name}"
+        if not Path(model_path).exists():
+            model_path = f"{args.models_dir}/{model_dir_name}"
+        if not Path(model_path).exists():
+            raise FileNotFoundError(
+                f"Model not found: {model_path}. No pretrained checkpoints are publicly "
+                f"released. Either train your own model (see README's Training section) and "
+                f"pass --run_path pointing at the resulting run directory, or place a "
+                f"checkpoint directory under {args.models_dir}/."
+            )
 
     work_dir = Path(tempfile.mkdtemp())
     score_name = Path(args.mxl_path).stem
@@ -377,18 +384,12 @@ if __name__ == "__main__":
     
     sheet_paths_dict = {score_name: token_paths}
 
-    for j in tqdm(range(len(token_paths) - 1), desc="Continuous Inference"):
-        temp_paths_dict = {score_name: sheet_paths_dict[score_name][j:j+2]}
-        
-        for sheet_name, pt_paths_list in temp_paths_dict.items():
-            pt_for_sheet = []
-            for pt_path in pt_paths_list:
-                pt = torch.load(pt_path).to(torch.int16).cpu().unsqueeze(0)
-                pt_for_sheet.append(pt)
-            data, token_height, pos = in_idx_handler(pt_for_sheet, 'pt', add_height_token=False)
+    if len(token_paths) == 1:
+        pt = torch.load(token_paths[0]).to(torch.int16).cpu().unsqueeze(0)
+        data, token_height, pos = in_idx_handler([pt], 'pt', add_height_token=False)
 
         in_modal_prep, in_pos_prep, in_mask_prep = pt_collate_fn([data], [pos])
-        
+
         modal_idxs = modal_idx.repeat(len(in_modal_prep), 1)
 
         in_modal = in_modal_prep.to(args.device).long()
@@ -397,8 +398,6 @@ if __name__ == "__main__":
         modal_idxs = modal_idxs.to(args.device).long()
         token_heights = torch.stack([torch.tensor([token_height]), torch.zeros(len([token_height]))], dim=-1).to(torch.int16).to(args.device)
 
-        peeper = LayerPeeper(model.decoder.net.decoder.transformer_decoder.layers[-2][-2].attend, hook_fn=use_attn_weights)
-        
         with torch.no_grad():
             inferenced_output = model.inference(
                 in_modal=in_modal, in_pos=in_pos, modal_idx=modal_idxs, in_mask=in_mask,
@@ -406,36 +405,68 @@ if __name__ == "__main__":
                 temperature=1.0, manual_seed=args.seed, max_length=model.out_vocab.max_seq_len['dac'],
                 condition=condition
             )
-        
-        peeper.remove()
 
-        if j != 0:
-            decoder_hook_output = peeper.output[1:]
-            decoder_hook_output = [peeper.output[0][:,:,k:k+1] for k in range(peeper.output[0].size(2))] + decoder_hook_output
-        else:
-            decoder_hook_output = peeper.output
-        
-        attn_weights = torch.stack(decoder_hook_output)
-        attn_weights = attn_weights.squeeze(-2).squeeze(1)
+        out_tokens.append(inferenced_output)
+    else:
+        for j in tqdm(range(len(token_paths) - 1), desc="Continuous Inference"):
+            temp_paths_dict = {score_name: sheet_paths_dict[score_name][j:j+2]}
+            
+            for sheet_name, pt_paths_list in temp_paths_dict.items():
+                pt_for_sheet = []
+                for pt_path in pt_paths_list:
+                    pt = torch.load(pt_path).to(torch.int16).cpu().unsqueeze(0)
+                    pt_for_sheet.append(pt)
+                data, token_height, pos = in_idx_handler(pt_for_sheet, 'pt', add_height_token=False)
 
-        sep_idx = (in_modal == sep_token_id).nonzero(as_tuple=True)[1][0].item()
-        
-        audio_border = find_audio_border(attn=torch.stack([attn_weights[:,0], attn_weights[:,1], attn_weights[:,7], attn_weights[:,10]], dim=1).cpu(), sep_idx=sep_idx, thr=0.5, min_run=3)
-        if audio_border < 0:
-            audio_border = inferenced_output.size(1) - 1
-        
-        audio_border = audio_border - 10
-        cond_length = (inferenced_output.size(1) - audio_border) // 5
+            in_modal_prep, in_pos_prep, in_mask_prep = pt_collate_fn([data], [pos])
+            
+            modal_idxs = modal_idx.repeat(len(in_modal_prep), 1)
 
-        if j == 0:
-            out_tokens.append(inferenced_output[:, :audio_border])
-        elif j == len(token_paths) - 2:
-            out_tokens.append(inferenced_output[:, 1:audio_border])
-            out_tokens.append(inferenced_output[:, audio_border:])
-        else:
-            out_tokens.append(inferenced_output[:, 1:audio_border])
+            in_modal = in_modal_prep.to(args.device).long()
+            in_pos = in_pos_prep.to(args.device).long()
+            in_mask = in_mask_prep.to(args.device).bool()
+            modal_idxs = modal_idxs.to(args.device).long()
+            token_heights = torch.stack([torch.tensor([token_height]), torch.zeros(len([token_height]))], dim=-1).to(torch.int16).to(args.device)
 
-        condition = inferenced_output[:, audio_border : audio_border + cond_length]
+            peeper = LayerPeeper(model.decoder.net.decoder.transformer_decoder.layers[-2][-2].attend, hook_fn=use_attn_weights)
+            
+            with torch.no_grad():
+                inferenced_output = model.inference(
+                    in_modal=in_modal, in_pos=in_pos, modal_idx=modal_idxs, in_mask=in_mask,
+                    token_heights=token_heights, sampling_method="none", threshold=0.9,
+                    temperature=1.0, manual_seed=args.seed, max_length=model.out_vocab.max_seq_len['dac'],
+                    condition=condition
+                )
+            
+            peeper.remove()
+
+            if j != 0:
+                decoder_hook_output = peeper.output[1:]
+                decoder_hook_output = [peeper.output[0][:,:,k:k+1] for k in range(peeper.output[0].size(2))] + decoder_hook_output
+            else:
+                decoder_hook_output = peeper.output
+            
+            attn_weights = torch.stack(decoder_hook_output)
+            attn_weights = attn_weights.squeeze(-2).squeeze(1)
+
+            sep_idx = (in_modal == sep_token_id).nonzero(as_tuple=True)[1][0].item()
+            
+            audio_border = find_audio_border(attn=torch.stack([attn_weights[:,0], attn_weights[:,1], attn_weights[:,7], attn_weights[:,10]], dim=1).cpu(), sep_idx=sep_idx, thr=0.5, min_run=3)
+            if audio_border < 0:
+                audio_border = inferenced_output.size(1) - 1
+            
+            audio_border = audio_border - 10
+            cond_length = (inferenced_output.size(1) - audio_border) // 5
+
+            if j == 0:
+                out_tokens.append(inferenced_output[:, :audio_border])
+            elif j == len(token_paths) - 2:
+                out_tokens.append(inferenced_output[:, 1:audio_border])
+                out_tokens.append(inferenced_output[:, audio_border:])
+            else:
+                out_tokens.append(inferenced_output[:, 1:audio_border])
+
+            condition = inferenced_output[:, audio_border : audio_border + cond_length]
 
     final_tokens = torch.cat(out_tokens, dim=1)
     print(f"Total audio tokens generated: {final_tokens.shape}")
