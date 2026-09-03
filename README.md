@@ -26,7 +26,8 @@ Everything below ships in this repository unless the Location column says otherw
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
 | Token-baking scripts | Reproduce the image/audio token datasets | `scripts/bake_image_tokens.py`, `scripts/bake_audio_tokens.py` |
 | **YTSV dataset** | **1,341 h of paired score-image/audio — the paper's main dataset** | **[MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset)** |
-| Translation-model weights | — | **not publicly released** |
+| Translation-model weights | Three checkpoints — I2A piano, I2A strings, A2I | [malerlab/u-must](https://huggingface.co/malerlab/u-must) (gated) |
+| Tokenized datasets | Image and audio tokens for every corpus except GrandStaff | [Hugging Face](#released-weights-and-data) |
 
 ## How the pieces fit together
 
@@ -42,11 +43,16 @@ Pick the path that matches what you want to do. All three assume [Installation](
 
 ### (a) I just want to turn a score into audio
 
-No translation-model weights are publicly released, so you need a run directory of your own — either one you trained (path (c)) or one you obtained separately.
+Request access to the weights at [malerlab/u-must](https://huggingface.co/malerlab/u-must), then download them and the codecs:
 
 ```bash
-python3 infer.py input.mxl --run_path <run_dir> -o output/
+hf download malerlab/u-must --local-dir models/
+hf download malerlab/unirqvae3-ytsv --local-dir vq_models/unirqvae3_f16_c1024_k4/
+hf download malerlab/unidac4-ytsv  --local-dir dac_models/unidac4/
+python3 infer.py input.mxl --run_path models/run-20250225_062905-9n1554as -o output/
 ```
+
+`--run_path` also takes any run directory you trained yourself (path (c)).
 
 `<run_dir>` is a training run directory containing `files/config.yaml` and `files/checkpoints/*.pt`. The script renders the score with MuseScore, detects and crops each musical system with YOLO, tokenizes the crops with the RQ-VAE, generates audio tokens, and decodes them with DAC to `output/final_output.wav`. The YOLO weights download automatically on first run.
 
@@ -176,7 +182,27 @@ setup.sh                   system dependencies, MuseScore, YOLO weights
 
 ## Checkpoints
 
-**The translation-model weights are not publicly released at this time.** The tokenizers (`vq_models/`, `dac_models/`) and the YOLO detectors are, and the detectors download automatically from [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) on first use.
+### Released weights and data
+
+The translation weights are **gated**: publicly listed, with access granted on request so that the non-commercial research terms are acknowledged. Everything else is open. The YOLO detectors are not on the Hub — they download automatically from [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) on first use.
+
+| Hugging Face repo | What | Access | License |
+|---|---|---|---|
+| [malerlab/u-must](https://huggingface.co/malerlab/u-must) | translation weights, all three runs | gated | CC BY-NC-SA 4.0 |
+| [malerlab/unirqvae3-ytsv](https://huggingface.co/malerlab/unirqvae3-ytsv) | score-image codec, paper results | public | CC BY-NC-SA 4.0 |
+| [malerlab/unirqvae-ytsv](https://huggingface.co/malerlab/unirqvae-ytsv) | score-image codec, earlier generation | public | CC BY-NC-SA 4.0 |
+| [malerlab/unidac4-ytsv](https://huggingface.co/malerlab/unidac4-ytsv) | audio codec | public | CC BY-NC-SA 4.0 |
+| [malerlab/ytsv-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/ytsv-unirqvae3-ytsv) | YTSV image tokens | gated | CC BY-NC-SA 4.0 |
+| [malerlab/ytsv-unidac4-ytsv](https://huggingface.co/datasets/malerlab/ytsv-unidac4-ytsv) | YTSV audio tokens | gated | CC BY-NC-SA 4.0 |
+| [malerlab/olimpic-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/olimpic-unirqvae3-ytsv) | OLiMPiC image + notation tokens | public | **CC BY-SA 4.0** |
+| [malerlab/maestro-unidac4-ytsv](https://huggingface.co/datasets/malerlab/maestro-unidac4-ytsv) | MAESTRO + ASAP audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/musicnet-unidac4-ytsv](https://huggingface.co/datasets/malerlab/musicnet-unidac4-ytsv) | MusicNet + MusicNetEM tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/slakh-unidac4-ytsv](https://huggingface.co/datasets/malerlab/slakh-unidac4-ytsv) | SLakh audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/bpsd-unirqvae3-unidac4-ytsv](https://huggingface.co/datasets/malerlab/bpsd-unirqvae3-unidac4-ytsv) | BPSD tokens, all four modalities | public | CC BY-NC-SA 4.0 |
+
+GrandStaff tokens are **not** released; see [Known issues](#known-issues). The YTSV token repositories are sharded as one gzipped tar per collection group, because the uncompressed form runs to over a million small files — each dataset card documents the extraction.
+
+Licenses differ per repository because each follows the corpus it derives from; see [License summary](#license-summary).
 
 Every script that loads a translation model takes a run directory laid out as `<run_dir>/files/config.yaml` plus `<run_dir>/files/checkpoints/*.pt`, which is what `train_multimodal.py` writes. Pass it with `--run_path` to `infer.py` and the evaluation scripts. `infer.py` also accepts `--instrument {piano,strings}` with `--models_dir`, which resolves a fixed run-directory name under that parent; `--run_path` takes precedence and is the right flag for a model you trained yourself. The tokenizer is read from the run's own `config.data.vq_model`, so runs of either tokenizer generation load correctly.
 
