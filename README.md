@@ -309,7 +309,21 @@ If you use this code, please cite:
 
 These are unresolved at the time of release. They are recorded rather than papered over, because anyone tokenizing or redistributing this data inherits them.
 
-- **GrandStaff has three layers that do not agree.** GrandStaff-LMX is published CC BY-SA 4.0; the underlying GrandStaff score images carry no license statement from their publisher; and the KernScores editions those derive from are CC BY-NC-SA 4.0 for some composers (Mozart, Scarlatti, Joplin among them) and unstated for others (Beethoven, Chopin, Hummel). **CC BY-SA 4.0 and CC BY-NC-SA 4.0 are mutually incompatible**, so no single license satisfies the whole chain. Treat GrandStaff-derived tokens as non-commercial and share-alike, which is the most restrictive verified layer, or seek written clarification from the GrandStaff and KernScores maintainers.
+- **GrandStaff-derived data has no license under which it can be redistributed.** This was investigated against primary sources and the finding is not merely that the chain is ambiguous, but that no grant exists. The GrandStaff archive itself contains no license, readme, copyright or citation file among any of its 234,715 entries, and neither its download location nor its project pages state terms. It decomposes into seven corpora that map one-to-one onto Craig Sapp's KernScores editions, of which only three carry a grant:
+
+  | GrandStaff subtree | Upstream repository | License |
+  |---|---|---|
+  | `mozart/piano-sonatas` | `craigsapp/mozart-piano-sonatas` | CC BY-NC-SA 4.0 |
+  | `joplin/joplin` | `craigsapp/joplin` | CC BY-NC-SA 4.0 |
+  | `scarlatti-d/keyboard-sonatas` | `craigsapp/scarlatti-keyboard-sonatas` | CC BY-NC-SA 4.0 |
+  | `beethoven/piano-sonatas` | `craigsapp/beethoven-piano-sonatas` | **none** |
+  | `chopin/mazurkas` | `craigsapp/chopin-mazurkas` | **none** |
+  | `chopin/preludes` | `craigsapp/chopin-preludes` | **none**, copyright asserted |
+  | `hummel/preludes` | `craigsapp/hummel-preludes` | **none**, copyright asserted |
+
+  Four subtrees therefore fall under default copyright, two of them with an explicit `!!!YEC: Copyright 2008 by Craig Stuart Sapp` record, and absence of a license is not permission. The three that are licensed are non-commercial and require attribution which GrandStaff has already discarded — it strips every Humdrum `!!!` reference record, so no composer, editor or license notice survives into the distributed data. Separately, GrandStaff-LMX is published on LINDAT as CC BY-SA 4.0 with no recorded analysis of the upstream terms, and CC BY-SA 4.0 is incompatible with CC BY-NC-SA 4.0 in any case. A `license: mit` tag exists on a Hugging Face mirror, but on an empty card with no license file, and the same group tags its other datasets `cc-by-nc-4.0` deliberately.
+
+  Consequently no GrandStaff tokens are published. Resolving this requires a grant from Craig Stuart Sapp (`craig@ccrma.stanford.edu`) covering the four unlicensed editions — he is the decisive layer — and clarification from the GrandStaff maintainers (`arios@dlsi.ua.es`, `info-multiscore@dlsi.ua.es`). Note that the released model weights were trained on GrandStaff; training is a separate question from redistribution, but the weights' licensing inherits an unresolved layer as a result.
 - **MusicNet and MusicNetEM stack two licenses over the same audio.** MusicNet audio is CC BY 4.0; the MusicNetEM alignment labels are CC BY-NC-SA 4.0. Anything containing EM labels is governed by the more restrictive of the two. Our `musicnet/` layout interleaves both, so they must be separated before either is redistributed under its own terms.
 - **MusicNetEM is access-restricted at its source** despite a license that permits non-commercial redistribution. Its Zenodo record requires a personal access token, and its README directs commercial users to contact the author. Obtain it from the author rather than from a mirror.
 - **SLakh inherits an unresolved authorship question.** Both SLakh2100 and the Lakh MIDI Dataset it derives from are CC BY 4.0, but Lakh's maintainer explicitly disclaims being able to attribute the underlying MIDI files to their authors. CC licensing cannot cure third-party rights in those arrangements. This exposure is shared by all Lakh derivatives.
