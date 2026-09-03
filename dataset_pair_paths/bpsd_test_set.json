@@ -1,0 +1,2173 @@
+{
+  "train": [
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_0.lmx"
+    }
+  ],
+  "valid": [
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_1.lmx"
+    }
+  ],
+  "test": [
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0001_6.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0001_6.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0001_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0002_6.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0002_6.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0002_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0007_5.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0007_5.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0007_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0008_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0008_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0008_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0008_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0008_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0008_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0008_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0008_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0008_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0008_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0008_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0008_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0009_0.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0009_0.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0009_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0009_1.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0009_1.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0009_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0009_2.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0009_2.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0009_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op002No3-01/mono/unidac4_4/Beethoven_Op002No3-01@0009_3.dac",
+      "pt": "image_tokens/Beethoven_Op002No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op002No3-01:0009_3.pt",
+      "lmx": "lmx/Beethoven_Op002No3-01/Beethoven_Op002No3-01@0009_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op010No1-01/mono/unidac4_4/Beethoven_Op010No1-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op010No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op010No1-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op010No1-01/Beethoven_Op010No1-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0002_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0002_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0002_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0003_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0003_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0003_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0004_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0004_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0004_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0005_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0005_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0005_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0006_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0006_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0006_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_5.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_5.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op013-01/mono/unidac4_4/Beethoven_Op013-01@0007_6.dac",
+      "pt": "image_tokens/Beethoven_Op013-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op013-01:0007_6.pt",
+      "lmx": "lmx/Beethoven_Op013-01/Beethoven_Op013-01@0007_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No1-01/mono/unidac4_4/Beethoven_Op014No1-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No1-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op014No1-01/Beethoven_Op014No1-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0003_6.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0003_6.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0003_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0004_6.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0004_6.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0004_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0005_6.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0005_6.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0005_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op014No2-01/mono/unidac4_4/Beethoven_Op014No2-01@0006_6.dac",
+      "pt": "image_tokens/Beethoven_Op014No2-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op014No2-01:0006_6.pt",
+      "lmx": "lmx/Beethoven_Op014No2-01/Beethoven_Op014No2-01@0006_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op026-01/mono/unidac4_4/Beethoven_Op026-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op026-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op026-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op026-01/Beethoven_Op026-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0001_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0001_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0001_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0002_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0002_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0002_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0003_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0003_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0003_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0004_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0004_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0004_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0005_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0005_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0005_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0006_6.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0006_6.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0006_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0007_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0007_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0007_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_0.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_0.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_1.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_1.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_2.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_2.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_3.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_3.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_4.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_4.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op028-01/mono/unidac4_4/Beethoven_Op028-01@0008_5.dac",
+      "pt": "image_tokens/Beethoven_Op028-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op028-01:0008_5.pt",
+      "lmx": "lmx/Beethoven_Op028-01/Beethoven_Op028-01@0008_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0002_6.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0002_6.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0002_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0003_6.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0003_6.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0003_6.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No1-01/mono/unidac4_4/Beethoven_Op031No1-01@0007_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No1-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No1-01:0007_5.pt",
+      "lmx": "lmx/Beethoven_Op031No1-01/Beethoven_Op031No1-01@0007_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0000_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0000_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0000_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0001_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0001_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0001_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0002_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0002_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0002_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0003_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0003_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0003_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0004_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0004_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0004_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0005_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0005_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0005_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0006_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0006_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0006_5.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_0.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_0.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_0.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_1.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_1.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_1.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_2.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_2.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_2.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_3.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_3.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_3.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_4.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_4.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_4.lmx"
+    },
+    {
+      "dac": "audio_tokens/Beethoven_Op031No3-01/mono/unidac4_4/Beethoven_Op031No3-01@0007_5.dac",
+      "pt": "image_tokens/Beethoven_Op031No3-01/unirqvae3_f16_c1024_k4/yolo/Beethoven_Op031No3-01:0007_5.pt",
+      "lmx": "lmx/Beethoven_Op031No3-01/Beethoven_Op031No3-01@0007_5.lmx"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+name: T5Encoder
+num_layer: 12
+num_head: 12
+model_name: t5-base

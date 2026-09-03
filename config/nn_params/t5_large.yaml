@@ -1,0 +1,18 @@
+defaults:
+  - decoder_params: t5_large
+  - encoder_params: t5_large
+
+type: multimodal_trans
+model_name: MultimodalTranslator
+model_dim: 1024
+dropout_shared: 0.1
+
+use_vq_emb: True
+use_dac_emb: True
+
+pretrained:
+  use_pretrained: True
+  model: 't5-large'
+  # path: 'pretrained_weights/T5-large.pt'
+
+compile: True

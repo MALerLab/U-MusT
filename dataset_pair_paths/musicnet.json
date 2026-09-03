@@ -1,0 +1,3684 @@
+{
+  "test": [
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1819_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1819_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1819_0100.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1819_117.48.dac"
+      ],
+      "npy": "musicnet_em/1819_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2106_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2106_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2106_0100.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2106_0150.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2106_166.66.dac"
+      ],
+      "npy": "musicnet_em/2106_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2191_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2191_42.84.dac"
+      ],
+      "npy": "musicnet_em/2191_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2298_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2298_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2298_93.52.dac"
+      ],
+      "npy": "musicnet_em/2298_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2416_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2416_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2416_79.13.dac"
+      ],
+      "npy": "musicnet_em/2416_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2628_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2628_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2628_64.68.dac"
+      ],
+      "npy": "musicnet_em/2628_note_events.npy"
+    }
+  ],
+  "train": [
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2505_429.35.dac"
+      ],
+      "npy": "musicnet_em/2505_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2594_259.32.dac"
+      ],
+      "npy": "musicnet_em/2594_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2568_418.09.dac"
+      ],
+      "npy": "musicnet_em/2568_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2451_361.85.dac"
+      ],
+      "npy": "musicnet_em/2451_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2411_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2411_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2411_69.07.dac"
+      ],
+      "npy": "musicnet_em/2411_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1750_724.17.dac"
+      ],
+      "npy": "musicnet_em/1750_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2180_233.69.dac"
+      ],
+      "npy": "musicnet_em/2180_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1813_531.99.dac"
+      ],
+      "npy": "musicnet_em/1813_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2078_296.00.dac"
+      ],
+      "npy": "musicnet_em/2078_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2582_338.47.dac"
+      ],
+      "npy": "musicnet_em/2582_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1791_291.53.dac"
+      ],
+      "npy": "musicnet_em/1791_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1893_265.85.dac"
+      ],
+      "npy": "musicnet_em/1893_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2127_458.64.dac"
+      ],
+      "npy": "musicnet_em/2127_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1730_308.54.dac"
+      ],
+      "npy": "musicnet_em/1730_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2436_624.38.dac"
+      ],
+      "npy": "musicnet_em/2436_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2614_575.17.dac"
+      ],
+      "npy": "musicnet_em/2614_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2374_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2374_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2374_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2374_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2374_156.53.dac"
+      ],
+      "npy": "musicnet_em/2374_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2178_295.24.dac"
+      ],
+      "npy": "musicnet_em/2178_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2384_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2384_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2384_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2384_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2384_152.87.dac"
+      ],
+      "npy": "musicnet_em/2384_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1811_429.35.dac"
+      ],
+      "npy": "musicnet_em/1811_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2335_362.50.dac"
+      ],
+      "npy": "musicnet_em/2335_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1812_406.10.dac"
+      ],
+      "npy": "musicnet_em/1812_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0900.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_0950.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_1000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2533_1007.96.dac"
+      ],
+      "npy": "musicnet_em/2533_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2166_579.29.dac"
+      ],
+      "npy": "musicnet_em/2166_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2105_231.79.dac"
+      ],
+      "npy": "musicnet_em/2105_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1873_306.63.dac"
+      ],
+      "npy": "musicnet_em/1873_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2405_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2405_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2405_77.98.dac"
+      ],
+      "npy": "musicnet_em/2405_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2482_508.03.dac"
+      ],
+      "npy": "musicnet_em/2482_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2607_613.99.dac"
+      ],
+      "npy": "musicnet_em/2607_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2382_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2382_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2382_58.00.dac"
+      ],
+      "npy": "musicnet_em/2382_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2114_343.07.dac"
+      ],
+      "npy": "musicnet_em/2114_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2463_249.73.dac"
+      ],
+      "npy": "musicnet_em/2463_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2611_503.25.dac"
+      ],
+      "npy": "musicnet_em/2611_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2322_585.98.dac"
+      ],
+      "npy": "musicnet_em/2322_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1828_205.22.dac"
+      ],
+      "npy": "musicnet_em/1828_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1792_412.79.dac"
+      ],
+      "npy": "musicnet_em/1792_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2567_327.16.dac"
+      ],
+      "npy": "musicnet_em/2567_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2423_237.72.dac"
+      ],
+      "npy": "musicnet_em/2423_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2318_581.91.dac"
+      ],
+      "npy": "musicnet_em/2318_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2381_500.56.dac"
+      ],
+      "npy": "musicnet_em/2381_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1758_408.40.dac"
+      ],
+      "npy": "musicnet_em/1758_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1789_401.33.dac"
+      ],
+      "npy": "musicnet_em/1789_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2478_259.24.dac"
+      ],
+      "npy": "musicnet_em/2478_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2076_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2076_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2076_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2076_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2076_187.51.dac"
+      ],
+      "npy": "musicnet_em/2076_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1923_333.17.dac"
+      ],
+      "npy": "musicnet_em/1923_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1777_569.50.dac"
+      ],
+      "npy": "musicnet_em/1777_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2502_207.73.dac"
+      ],
+      "npy": "musicnet_em/2502_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2202_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2202_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2202_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2202_121.21.dac"
+      ],
+      "npy": "musicnet_em/2202_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1817_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1817_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1817_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1817_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1817_190.36.dac"
+      ],
+      "npy": "musicnet_em/1817_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2550_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2550_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2550_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2550_120.30.dac"
+      ],
+      "npy": "musicnet_em/2550_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2138_369.92.dac"
+      ],
+      "npy": "musicnet_em/2138_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2397_563.05.dac"
+      ],
+      "npy": "musicnet_em/2397_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2509_424.36.dac"
+      ],
+      "npy": "musicnet_em/2509_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2080_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2080_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2080_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2080_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2080_173.90.dac"
+      ],
+      "npy": "musicnet_em/2080_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2283_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2283_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2283_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2283_132.10.dac"
+      ],
+      "npy": "musicnet_em/2283_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1922_342.02.dac"
+      ],
+      "npy": "musicnet_em/1922_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2314_508.11.dac"
+      ],
+      "npy": "musicnet_em/2314_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1739_430.45.dac"
+      ],
+      "npy": "musicnet_em/1739_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0900.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_0950.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_1000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2315_1009.04.dac"
+      ],
+      "npy": "musicnet_em/2315_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2158_422.14.dac"
+      ],
+      "npy": "musicnet_em/2158_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2564_493.93.dac"
+      ],
+      "npy": "musicnet_em/2564_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1859_332.75.dac"
+      ],
+      "npy": "musicnet_em/1859_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2167_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2167_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2167_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2167_133.46.dac"
+      ],
+      "npy": "musicnet_em/2167_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2557_702.25.dac"
+      ],
+      "npy": "musicnet_em/2557_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2420_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2420_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2420_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2420_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2420_176.70.dac"
+      ],
+      "npy": "musicnet_em/2420_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2403_298.16.dac"
+      ],
+      "npy": "musicnet_em/2403_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1824_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1824_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1824_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1824_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1824_192.98.dac"
+      ],
+      "npy": "musicnet_em/1824_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2149_416.32.dac"
+      ],
+      "npy": "musicnet_em/2149_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2560_319.45.dac"
+      ],
+      "npy": "musicnet_em/2560_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2512_363.52.dac"
+      ],
+      "npy": "musicnet_em/2512_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2477_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2477_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2477_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2477_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2477_160.87.dac"
+      ],
+      "npy": "musicnet_em/2477_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2284_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2284_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2284_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2284_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2284_167.45.dac"
+      ],
+      "npy": "musicnet_em/2284_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1931_411.50.dac"
+      ],
+      "npy": "musicnet_em/1931_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2596_265.80.dac"
+      ],
+      "npy": "musicnet_em/2596_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2288_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2288_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2288_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2288_131.74.dac"
+      ],
+      "npy": "musicnet_em/2288_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2168_552.75.dac"
+      ],
+      "npy": "musicnet_em/2168_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2359_244.77.dac"
+      ],
+      "npy": "musicnet_em/2359_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1822_400.58.dac"
+      ],
+      "npy": "musicnet_em/1822_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2626_533.95.dac"
+      ],
+      "npy": "musicnet_em/2626_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2241_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2241_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2241_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2241_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2241_182.21.dac"
+      ],
+      "npy": "musicnet_em/2241_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2285_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2285_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2285_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2285_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2285_165.96.dac"
+      ],
+      "npy": "musicnet_em/2285_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2390_332.10.dac"
+      ],
+      "npy": "musicnet_em/2390_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2389_389.67.dac"
+      ],
+      "npy": "musicnet_em/2389_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2295_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2295_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2295_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2295_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2295_199.45.dac"
+      ],
+      "npy": "musicnet_em/2295_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2622_447.25.dac"
+      ],
+      "npy": "musicnet_em/2622_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2348_433.71.dac"
+      ],
+      "npy": "musicnet_em/2348_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2633_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2633_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2633_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2633_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2633_167.00.dac"
+      ],
+      "npy": "musicnet_em/2633_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2177_430.84.dac"
+      ],
+      "npy": "musicnet_em/2177_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2156_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2156_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2156_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2156_132.03.dac"
+      ],
+      "npy": "musicnet_em/2156_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2341_400.88.dac"
+      ],
+      "npy": "musicnet_em/2341_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1772_357.46.dac"
+      ],
+      "npy": "musicnet_em/1772_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2398_850.86.dac"
+      ],
+      "npy": "musicnet_em/2398_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2204_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2204_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2204_72.41.dac"
+      ],
+      "npy": "musicnet_em/2204_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0900.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_0950.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2443_975.13.dac"
+      ],
+      "npy": "musicnet_em/2443_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2410_253.47.dac"
+      ],
+      "npy": "musicnet_em/2410_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2219_200.99.dac"
+      ],
+      "npy": "musicnet_em/2219_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2556_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2556_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/2556_91.46.dac"
+      ],
+      "npy": "musicnet_em/2556_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2218_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2218_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2218_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2218_139.97.dac"
+      ],
+      "npy": "musicnet_em/2218_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2365_342.36.dac"
+      ],
+      "npy": "musicnet_em/2365_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1751_415.66.dac"
+      ],
+      "npy": "musicnet_em/1751_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2540_203.52.dac"
+      ],
+      "npy": "musicnet_em/2540_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1742_864.53.dac"
+      ],
+      "npy": "musicnet_em/1742_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1872_449.47.dac"
+      ],
+      "npy": "musicnet_em/1872_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2221_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2221_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2221_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2221_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2221_181.16.dac"
+      ],
+      "npy": "musicnet_em/2221_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2562_270.61.dac"
+      ],
+      "npy": "musicnet_em/2562_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2243_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2243_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2243_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2243_133.96.dac"
+      ],
+      "npy": "musicnet_em/2243_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1768_230.87.dac"
+      ],
+      "npy": "musicnet_em/1768_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2476_414.44.dac"
+      ],
+      "npy": "musicnet_em/2476_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_0900.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2531_932.10.dac"
+      ],
+      "npy": "musicnet_em/2531_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2522_303.96.dac"
+      ],
+      "npy": "musicnet_em/2522_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2422_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2422_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2422_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2422_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2422_181.55.dac"
+      ],
+      "npy": "musicnet_em/2422_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2157_601.03.dac"
+      ],
+      "npy": "musicnet_em/2157_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2491_271.08.dac"
+      ],
+      "npy": "musicnet_em/2491_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2081_239.91.dac"
+      ],
+      "npy": "musicnet_em/2081_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2404_339.12.dac"
+      ],
+      "npy": "musicnet_em/2404_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2415_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2415_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2415_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2415_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2415_167.97.dac"
+      ],
+      "npy": "musicnet_em/2415_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2462_429.43.dac"
+      ],
+      "npy": "musicnet_em/2462_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1729_384.50.dac"
+      ],
+      "npy": "musicnet_em/1729_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1775_518.22.dac"
+      ],
+      "npy": "musicnet_em/1775_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2159_406.52.dac"
+      ],
+      "npy": "musicnet_em/2159_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2222_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2222_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2222_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2222_142.03.dac"
+      ],
+      "npy": "musicnet_em/2222_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2573_280.11.dac"
+      ],
+      "npy": "musicnet_em/2573_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2371_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2371_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2371_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2371_145.27.dac"
+      ],
+      "npy": "musicnet_em/2371_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1749_636.37.dac"
+      ],
+      "npy": "musicnet_em/1749_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1733_486.01.dac"
+      ],
+      "npy": "musicnet_em/1733_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2217_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2217_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2217_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2217_126.28.dac"
+      ],
+      "npy": "musicnet_em/2217_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1916_615.02.dac"
+      ],
+      "npy": "musicnet_em/1916_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2593_452.89.dac"
+      ],
+      "npy": "musicnet_em/2593_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1818_347.46.dac"
+      ],
+      "npy": "musicnet_em/1818_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2169_459.26.dac"
+      ],
+      "npy": "musicnet_em/2169_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2678_412.37.dac"
+      ],
+      "npy": "musicnet_em/2678_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2506_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2506_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2506_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2506_127.95.dac"
+      ],
+      "npy": "musicnet_em/2506_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2082_281.81.dac"
+      ],
+      "npy": "musicnet_em/2082_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1728_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1728_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1728_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1728_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1728_191.14.dac"
+      ],
+      "npy": "musicnet_em/1728_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2603_358.25.dac"
+      ],
+      "npy": "musicnet_em/2603_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2392_377.58.dac"
+      ],
+      "npy": "musicnet_em/2392_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2632_281.89.dac"
+      ],
+      "npy": "musicnet_em/2632_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2296_231.92.dac"
+      ],
+      "npy": "musicnet_em/2296_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1776_666.10.dac"
+      ],
+      "npy": "musicnet_em/1776_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2490_459.18.dac"
+      ],
+      "npy": "musicnet_em/2490_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1764_378.26.dac"
+      ],
+      "npy": "musicnet_em/1764_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2161_337.19.dac"
+      ],
+      "npy": "musicnet_em/2161_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2527_326.12.dac"
+      ],
+      "npy": "musicnet_em/2527_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2282_253.26.dac"
+      ],
+      "npy": "musicnet_em/2282_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_0850.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2366_881.17.dac"
+      ],
+      "npy": "musicnet_em/2366_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2220_242.00.dac"
+      ],
+      "npy": "musicnet_em/2220_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1918_307.15.dac"
+      ],
+      "npy": "musicnet_em/1918_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1932_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1932_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1932_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1932_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1932_190.06.dac"
+      ],
+      "npy": "musicnet_em/1932_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2530_502.05.dac"
+      ],
+      "npy": "musicnet_em/2530_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2083_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2083_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2083_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2083_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2083_185.00.dac"
+      ],
+      "npy": "musicnet_em/2083_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2334_349.52.dac"
+      ],
+      "npy": "musicnet_em/2334_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2186_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2186_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2186_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2186_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2186_154.39.dac"
+      ],
+      "npy": "musicnet_em/2186_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2424_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2424_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2424_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2424_142.76.dac"
+      ],
+      "npy": "musicnet_em/2424_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2471_393.54.dac"
+      ],
+      "npy": "musicnet_em/2471_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1735_654.92.dac"
+      ],
+      "npy": "musicnet_em/1735_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1807_384.42.dac"
+      ],
+      "npy": "musicnet_em/1807_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1790_263.86.dac"
+      ],
+      "npy": "musicnet_em/1790_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1765_616.60.dac"
+      ],
+      "npy": "musicnet_em/1765_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1756_311.49.dac"
+      ],
+      "npy": "musicnet_em/1756_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2293_250.15.dac"
+      ],
+      "npy": "musicnet_em/2293_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2529_215.51.dac"
+      ],
+      "npy": "musicnet_em/2529_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2629_457.96.dac"
+      ],
+      "npy": "musicnet_em/2629_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1734_265.62.dac"
+      ],
+      "npy": "musicnet_em/1734_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2393_323.16.dac"
+      ],
+      "npy": "musicnet_em/2393_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2483_307.44.dac"
+      ],
+      "npy": "musicnet_em/2483_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1829_361.33.dac"
+      ],
+      "npy": "musicnet_em/1829_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2516_327.92.dac"
+      ],
+      "npy": "musicnet_em/2516_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2480_335.62.dac"
+      ],
+      "npy": "musicnet_em/2480_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2364_236.99.dac"
+      ],
+      "npy": "musicnet_em/2364_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2466_245.74.dac"
+      ],
+      "npy": "musicnet_em/2466_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2179_445.05.dac"
+      ],
+      "npy": "musicnet_em/2179_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2372_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2372_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2372_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2372_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2372_168.57.dac"
+      ],
+      "npy": "musicnet_em/2372_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2472_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2472_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2472_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2472_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2472_155.41.dac"
+      ],
+      "npy": "musicnet_em/2472_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2532_488.41.dac"
+      ],
+      "npy": "musicnet_em/2532_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2112_837.52.dac"
+      ],
+      "npy": "musicnet_em/2112_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2368_374.65.dac"
+      ],
+      "npy": "musicnet_em/2368_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2510_392.10.dac"
+      ],
+      "npy": "musicnet_em/2510_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2588_462.87.dac"
+      ],
+      "npy": "musicnet_em/2588_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2538_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2538_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2538_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2538_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2538_152.17.dac"
+      ],
+      "npy": "musicnet_em/2538_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2342_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2342_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2342_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2342_132.29.dac"
+      ],
+      "npy": "musicnet_em/2342_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2494_237.06.dac"
+      ],
+      "npy": "musicnet_em/2494_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2523_498.62.dac"
+      ],
+      "npy": "musicnet_em/2523_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1788_453.19.dac"
+      ],
+      "npy": "musicnet_em/1788_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2487_279.70.dac"
+      ],
+      "npy": "musicnet_em/2487_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2113_292.86.dac"
+      ],
+      "npy": "musicnet_em/2113_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2537_226.93.dac"
+      ],
+      "npy": "musicnet_em/2537_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2131_214.55.dac"
+      ],
+      "npy": "musicnet_em/2131_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1773_247.38.dac"
+      ],
+      "npy": "musicnet_em/1773_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2297_274.26.dac"
+      ],
+      "npy": "musicnet_em/2297_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2319_560.90.dac"
+      ],
+      "npy": "musicnet_em/2319_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2148_762.65.dac"
+      ],
+      "npy": "musicnet_em/2148_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2659_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2659_48.33.dac"
+      ],
+      "npy": "musicnet_em/2659_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2570_447.01.dac"
+      ],
+      "npy": "musicnet_em/2570_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2247_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2247_21.24.dac"
+      ],
+      "npy": "musicnet_em/2247_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2343_272.88.dac"
+      ],
+      "npy": "musicnet_em/2343_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1793_444.89.dac"
+      ],
+      "npy": "musicnet_em/1793_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1933_291.62.dac"
+      ],
+      "npy": "musicnet_em/1933_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1919_374.30.dac"
+      ],
+      "npy": "musicnet_em/1919_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2358_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2358_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2358_77.93.dac"
+      ],
+      "npy": "musicnet_em/2358_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2608_330.53.dac"
+      ],
+      "npy": "musicnet_em/2608_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1755_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1755_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1755_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1755_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1755_169.80.dac"
+      ],
+      "npy": "musicnet_em/1755_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2591_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2591_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2591_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2591_119.49.dac"
+      ],
+      "npy": "musicnet_em/2591_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2151_473.34.dac"
+      ],
+      "npy": "musicnet_em/2151_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2575_243.88.dac"
+      ],
+      "npy": "musicnet_em/2575_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2075_269.01.dac"
+      ],
+      "npy": "musicnet_em/2075_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2155_546.12.dac"
+      ],
+      "npy": "musicnet_em/2155_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2313_533.87.dac"
+      ],
+      "npy": "musicnet_em/2313_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2572_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2572_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2572_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2572_141.04.dac"
+      ],
+      "npy": "musicnet_em/2572_note_events.npy"
+    },
+    {
+      "dac": [
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1759_0000.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1759_0050.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1759_0100.dac",
+        "test_data/audio_tokens/mono_augmented/unidac4_4/1759_134.66.dac"
+      ],
+      "npy": "musicnet_em/1759_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2388_413.68.dac"
+      ],
+      "npy": "musicnet_em/2388_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2406_552.05.dac"
+      ],
+      "npy": "musicnet_em/2406_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2486_388.16.dac"
+      ],
+      "npy": "musicnet_em/2486_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2507_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2507_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2507_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2507_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2507_157.81.dac"
+      ],
+      "npy": "musicnet_em/2507_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2433_401.48.dac"
+      ],
+      "npy": "musicnet_em/2433_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2203_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2203_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2203_96.19.dac"
+      ],
+      "npy": "musicnet_em/2203_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2677_385.26.dac"
+      ],
+      "npy": "musicnet_em/2677_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2442_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2442_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2442_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2442_115.05.dac"
+      ],
+      "npy": "musicnet_em/2442_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1766_367.36.dac"
+      ],
+      "npy": "musicnet_em/1766_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1727_387.06.dac"
+      ],
+      "npy": "musicnet_em/1727_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2345_383.01.dac"
+      ],
+      "npy": "musicnet_em/2345_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2497_234.19.dac"
+      ],
+      "npy": "musicnet_em/2497_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1752_302.71.dac"
+      ],
+      "npy": "musicnet_em/1752_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2079_218.70.dac"
+      ],
+      "npy": "musicnet_em/2079_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2330_472.17.dac"
+      ],
+      "npy": "musicnet_em/2330_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2528_403.73.dac"
+      ],
+      "npy": "musicnet_em/2528_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2244_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2244_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2244_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2244_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2244_154.36.dac"
+      ],
+      "npy": "musicnet_em/2244_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2294_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2294_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2294_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2294_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2294_168.44.dac"
+      ],
+      "npy": "musicnet_em/2294_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2346_275.91.dac"
+      ],
+      "npy": "musicnet_em/2346_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1876_296.47.dac"
+      ],
+      "npy": "musicnet_em/1876_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2391_413.39.dac"
+      ],
+      "npy": "musicnet_em/2391_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2379_274.26.dac"
+      ],
+      "npy": "musicnet_em/2379_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2147_441.81.dac"
+      ],
+      "npy": "musicnet_em/2147_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2620_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2620_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2620_99.87.dac"
+      ],
+      "npy": "musicnet_em/2620_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2160_386.98.dac"
+      ],
+      "npy": "musicnet_em/2160_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2576_219.72.dac"
+      ],
+      "npy": "musicnet_em/2576_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2350_216.24.dac"
+      ],
+      "npy": "musicnet_em/2350_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2289_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2289_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2289_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2289_143.36.dac"
+      ],
+      "npy": "musicnet_em/2289_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0750.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_0800.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2154_834.22.dac"
+      ],
+      "npy": "musicnet_em/2154_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2417_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2417_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2417_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2417_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2417_167.63.dac"
+      ],
+      "npy": "musicnet_em/2417_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2521_691.97.dac"
+      ],
+      "npy": "musicnet_em/2521_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2586_369.40.dac"
+      ],
+      "npy": "musicnet_em/2586_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1757_650.61.dac"
+      ],
+      "npy": "musicnet_em/1757_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0600.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0650.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_0700.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2444_710.66.dac"
+      ],
+      "npy": "musicnet_em/2444_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1771_587.37.dac"
+      ],
+      "npy": "musicnet_em/1771_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2140_321.54.dac"
+      ],
+      "npy": "musicnet_em/2140_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1805_296.78.dac"
+      ],
+      "npy": "musicnet_em/1805_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_0550.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2542_591.00.dac"
+      ],
+      "npy": "musicnet_em/2542_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0450.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_0500.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2376_521.30.dac"
+      ],
+      "npy": "musicnet_em/2376_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2627_263.03.dac"
+      ],
+      "npy": "musicnet_em/2627_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2432_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2432_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2432_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2432_133.88.dac"
+      ],
+      "npy": "musicnet_em/2432_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2336_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2336_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2336_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2336_137.83.dac"
+      ],
+      "npy": "musicnet_em/2336_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_163.71.dac"
+      ],
+      "npy": "musicnet_em/2555_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_190.12.dac"
+      ],
+      "npy": "musicnet_em/2077_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_420.71.dac"
+      ],
+      "npy": "musicnet_em/2492_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_323.82.dac"
+      ],
+      "npy": "musicnet_em/2383_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_176.88.dac"
+      ],
+      "npy": "musicnet_em/1835_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_178.50.dac"
+      ],
+      "npy": "musicnet_em/2619_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_297.67.dac"
+      ],
+      "npy": "musicnet_em/2357_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_311.71.dac"
+      ],
+      "npy": "musicnet_em/2104_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_304.17.dac"
+      ],
+      "npy": "musicnet_em/2618_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_252.74.dac"
+      ],
+      "npy": "musicnet_em/2242_note_events.npy"
+    }
+  ],
+  "valid": [
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2555_163.71.dac"
+      ],
+      "npy": "musicnet_em/2555_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2077_190.12.dac"
+      ],
+      "npy": "musicnet_em/2077_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0350.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_0400.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2492_420.71.dac"
+      ],
+      "npy": "musicnet_em/2492_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2383_323.82.dac"
+      ],
+      "npy": "musicnet_em/2383_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/1835_176.88.dac"
+      ],
+      "npy": "musicnet_em/1835_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2619_178.50.dac"
+      ],
+      "npy": "musicnet_em/2619_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2357_297.67.dac"
+      ],
+      "npy": "musicnet_em/2357_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2104_311.71.dac"
+      ],
+      "npy": "musicnet_em/2104_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_0300.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2618_304.17.dac"
+      ],
+      "npy": "musicnet_em/2618_note_events.npy"
+    },
+    {
+      "dac": [
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0000.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0050.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0100.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0150.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0200.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_0250.dac",
+        "train_data/audio_tokens/mono_augmented/unidac4_4/2242_252.74.dac"
+      ],
+      "npy": "musicnet_em/2242_note_events.npy"
+    }
+  ]
+}

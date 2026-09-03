@@ -1,0 +1,13 @@
+decoder:
+  num_layer: 6
+  num_head: 6
+  # dropout: 0.1
+sub_decoder:
+  name: MultimodalSubDecoder
+  decout_window_size: 1 # 1 means no previous decoding output added
+  num_layer: 1
+  num_head: 8
+  feature_enricher_use: False
+
+tf_dropout: 0.1
+model_name: t5-small

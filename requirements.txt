@@ -1,0 +1,53 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+# >=2.2 required: einx's torch-backend gate (x-transformers dep) and torch.compiler API both need it; no known upper bound, do not tighten to an exact pin
+torch>=2.2
+torchvision
+torchaudio
+torchmetrics
+numpy
+scipy
+pandas
+matplotlib
+einops
+easydict
+omegaconf
+hydra-core
+pyyaml
+tqdm
+wandb
+typing-extensions
+
+# audio
+descript-audio-codec
+descript-audiotools
+librosa
+soundfile
+pydub
+midi2audio
+
+# symbolic music
+pretty_midi
+mido
+mir_eval
+
+# image / score
+opencv-python-headless
+Pillow
+ultralytics
+requests
+pdfplumber
+
+# models
+transformers<5
+# pinned: 2.28.2 has gamma-only LayerNorm matching the released checkpoints;
+# older releases register an extra beta buffer on torch<2.1 that the checkpoints lack
+x-transformers==2.28.2
+
+# evaluation
+python-Levenshtein
+scikit-learn
+
+# optional: SLakh preprocessing (umust/midi_utils/preprocess/preprocess_slakh.py)
+# mirdata
+# smart_open
+# Deprecated

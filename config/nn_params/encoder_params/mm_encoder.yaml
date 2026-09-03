@@ -1,0 +1,3 @@
+name: mm_encoder
+num_layer: 12
+num_head: 16

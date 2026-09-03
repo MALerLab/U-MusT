@@ -1,0 +1,4 @@
+name: T5Encoder
+num_layer: 24
+num_head: 16
+model_name: t5-large

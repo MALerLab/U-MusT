@@ -1,0 +1,18 @@
+defaults:
+  - decoder_params: t5_base
+  - encoder_params: t5_base
+
+type: multimodal_trans
+model_name: MultimodalTranslator
+model_dim: 768
+dropout_shared: 0.1
+
+use_vq_emb: True
+use_dac_emb: True
+
+pretrained:
+  use_pretrained: True
+  model: 'T5-base'
+  path: 'pretrained_weights/T5-base.pt'
+
+compile: False
