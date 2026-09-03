@@ -26,7 +26,7 @@ Everything below ships in this repository unless the Location column says otherw
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
 | Token-baking scripts | Reproduce the image/audio token datasets | `scripts/bake_image_tokens.py`, `scripts/bake_audio_tokens.py` |
 | **YTSV dataset** | **1,341 h of paired score-image/audio — the paper's main dataset** | **[MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset)** |
-| Translation-model weights | Three checkpoints — I2A piano, I2A strings, A2I | [malerlab/u-must](https://huggingface.co/malerlab/u-must) (gated) |
+| Translation-model weights | Three checkpoints — I2A piano, I2A strings, A2I | [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) |
 | Tokenized datasets | Image and audio tokens for every corpus except GrandStaff | [Hugging Face](#released-weights-and-data) |
 
 ## How the pieces fit together
@@ -43,7 +43,7 @@ Pick the path that matches what you want to do. All three assume [Installation](
 
 ### (a) I just want to turn a score into audio
 
-Request access to the weights at [malerlab/u-must](https://huggingface.co/malerlab/u-must), then download them and the codecs:
+Request access to the weights at [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must), then download them and the codecs:
 
 ```bash
 hf download malerlab/u-must --local-dir models/
@@ -186,20 +186,20 @@ setup.sh                   system dependencies, MuseScore, YOLO weights
 
 The translation weights are **gated**: publicly listed, with access granted on request so that the non-commercial research terms are acknowledged. Everything else is open. The YOLO detectors are not on the Hub — they download automatically from [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) on first use.
 
-| Hugging Face repo | What | Access | License |
+| Repository | What | Access | License |
 |---|---|---|---|
-| [malerlab/u-must](https://huggingface.co/malerlab/u-must) | translation weights, all three runs | gated | CC BY-NC-SA 4.0 |
-| [malerlab/unirqvae3-ytsv](https://huggingface.co/malerlab/unirqvae3-ytsv) | score-image codec, paper results | public | CC BY-NC-SA 4.0 |
-| [malerlab/unirqvae-ytsv](https://huggingface.co/malerlab/unirqvae-ytsv) | score-image codec, earlier generation | public | CC BY-NC-SA 4.0 |
-| [malerlab/unidac4-ytsv](https://huggingface.co/malerlab/unidac4-ytsv) | audio codec | public | CC BY-NC-SA 4.0 |
-| [malerlab/ytsv-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/ytsv-unirqvae3-ytsv) | YTSV image tokens | gated | CC BY-NC-SA 4.0 |
-| [malerlab/ytsv-unidac4-ytsv](https://huggingface.co/datasets/malerlab/ytsv-unidac4-ytsv) | YTSV audio tokens | gated | CC BY-NC-SA 4.0 |
-| [malerlab/olimpic-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/olimpic-unirqvae3-ytsv) | OLiMPiC image + notation tokens | public | **CC BY-SA 4.0** |
-| [malerlab/maestro-unidac4-ytsv](https://huggingface.co/datasets/malerlab/maestro-unidac4-ytsv) | MAESTRO + ASAP audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
-| [malerlab/musicnet-unidac4-ytsv](https://huggingface.co/datasets/malerlab/musicnet-unidac4-ytsv) | MusicNet + MusicNetEM tokens | public | CC BY-NC-SA 4.0 |
-| [malerlab/slakh-unidac4-ytsv](https://huggingface.co/datasets/malerlab/slakh-unidac4-ytsv) | SLakh audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
-| [malerlab/bpsd-unirqvae3-unidac4-ytsv](https://huggingface.co/datasets/malerlab/bpsd-unirqvae3-unidac4-ytsv) | BPSD tokens, all four modalities | public | CC BY-NC-SA 4.0 |
-| [malerlab/grandstaff-lmx-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv) | GrandStaff image + notation tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) | translation weights, all three runs | gated | CC BY-NC-SA 4.0 |
+| [malerlab/unirqvae3-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae3-ytsv) | score-image codec, paper results | public | CC BY-NC-SA 4.0 |
+| [malerlab/unirqvae-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae-ytsv) | score-image codec, earlier generation | public | CC BY-NC-SA 4.0 |
+| [malerlab/unidac4-ytsv (Hugging Face)](https://huggingface.co/malerlab/unidac4-ytsv) | audio codec | public | CC BY-NC-SA 4.0 |
+| [malerlab/ytsv-unirqvae3-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/ytsv-unirqvae3-ytsv) | YTSV image tokens | gated | CC BY-NC-SA 4.0 |
+| [malerlab/ytsv-unidac4-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/ytsv-unidac4-ytsv) | YTSV audio tokens | gated | CC BY-NC-SA 4.0 |
+| [malerlab/olimpic-unirqvae3-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/olimpic-unirqvae3-ytsv) | OLiMPiC image + notation tokens | public | **CC BY-SA 4.0** |
+| [malerlab/maestro-unidac4-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/maestro-unidac4-ytsv) | MAESTRO + ASAP audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/musicnet-unidac4-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/musicnet-unidac4-ytsv) | MusicNet + MusicNetEM tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/slakh-unidac4-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/slakh-unidac4-ytsv) | SLakh audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
+| [malerlab/bpsd-unirqvae3-unidac4-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/bpsd-unirqvae3-unidac4-ytsv) | BPSD tokens, all four modalities | public | CC BY-NC-SA 4.0 |
+| [malerlab/grandstaff-lmx-unirqvae3-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv) | GrandStaff image + notation tokens | public | CC BY-NC-SA 4.0 |
 
 GrandStaff tokens carry an unresolved upstream licensing position; read [Known issues](#known-issues) before relying on them. The GrandStaff and YTSV token repositories are sharded as one gzipped tar per collection group, because the uncompressed form runs to over a million small files — each dataset card documents the extraction.
 
@@ -324,7 +324,7 @@ These are unresolved at the time of release. They are recorded rather than paper
 
   Four subtrees therefore fall under default copyright, two of them with an explicit `!!!YEC: Copyright 2008 by Craig Stuart Sapp` record, and absence of a license is not permission. The three that are licensed are non-commercial and require attribution which GrandStaff has already discarded — it strips every Humdrum `!!!` reference record, so no composer, editor or license notice survives into the distributed data. Separately, GrandStaff-LMX is published on LINDAT as CC BY-SA 4.0 with no recorded analysis of the upstream terms, and CC BY-SA 4.0 is incompatible with CC BY-NC-SA 4.0 in any case. A `license: mit` tag exists on a Hugging Face mirror, but on an empty card with no license file, and the same group tags its other datasets `cc-by-nc-4.0` deliberately.
 
-  GrandStaff tokens **are** published, at [malerlab/grandstaff-lmx-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv), under CC BY-NC-SA 4.0 — chosen as the strictest of the terms actually stated upstream rather than as a grant that can be fully substantiated. That release reproduces the per-subtree attribution to Craig Stuart Sapp's editions which GrandStaff itself discards, and carries a takedown offer for rights holders. Two notes on the reasoning: GrandStaff-LMX's CC BY-SA 4.0 was applied with no recorded analysis of the upstream terms, and the Hugging Face mirror `PRAIG/fp-grandstaff` tags itself `mit` while simultaneously declaring a non-commercial-only agreement, so the upstream layers are internally inconsistent as well as mutually inconsistent.
+  GrandStaff tokens **are** published, at [malerlab/grandstaff-lmx-unirqvae3-ytsv (Hugging Face)](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv), under CC BY-NC-SA 4.0 — chosen as the strictest of the terms actually stated upstream rather than as a grant that can be fully substantiated. That release reproduces the per-subtree attribution to Craig Stuart Sapp's editions which GrandStaff itself discards, and carries a takedown offer for rights holders. Two notes on the reasoning: GrandStaff-LMX's CC BY-SA 4.0 was applied with no recorded analysis of the upstream terms, and the Hugging Face mirror `PRAIG/fp-grandstaff` tags itself `mit` while simultaneously declaring a non-commercial-only agreement, so the upstream layers are internally inconsistent as well as mutually inconsistent.
 
   Clarification would still be worth having, from the GrandStaff maintainers (`arios@dlsi.ua.es`, `info-multiscore@dlsi.ua.es`) on what license governs their rendered images, and from Craig Stuart Sapp (`craig@ccrma.stanford.edu`) on the four editions that carry no LICENSE. Note also that Sapp is **not** an author of the GrandStaff paper and is credited nowhere in it beyond a tool citation, so there is no existing relationship to rely on. The released model weights were trained on GrandStaff; training is a separate question from redistribution, but the weights' licensing inherits the unresolved layer as a result.
 - **MusicNet and MusicNetEM stack two licenses over the same audio.** MusicNet audio is CC BY 4.0; the MusicNetEM alignment labels are CC BY-NC-SA 4.0. Anything containing EM labels is governed by the more restrictive of the two. Our `musicnet/` layout interleaves both, so they must be separated before either is redistributed under its own terms.
