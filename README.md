@@ -199,8 +199,9 @@ The translation weights are **gated**: publicly listed, with access granted on r
 | [malerlab/musicnet-unidac4-ytsv](https://huggingface.co/datasets/malerlab/musicnet-unidac4-ytsv) | MusicNet + MusicNetEM tokens | public | CC BY-NC-SA 4.0 |
 | [malerlab/slakh-unidac4-ytsv](https://huggingface.co/datasets/malerlab/slakh-unidac4-ytsv) | SLakh audio/MIDI tokens | public | CC BY-NC-SA 4.0 |
 | [malerlab/bpsd-unirqvae3-unidac4-ytsv](https://huggingface.co/datasets/malerlab/bpsd-unirqvae3-unidac4-ytsv) | BPSD tokens, all four modalities | public | CC BY-NC-SA 4.0 |
+| [malerlab/grandstaff-lmx-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv) | GrandStaff image + notation tokens | public | CC BY-NC-SA 4.0 |
 
-GrandStaff tokens are **not** released; see [Known issues](#known-issues). The YTSV token repositories are sharded as one gzipped tar per collection group, because the uncompressed form runs to over a million small files — each dataset card documents the extraction.
+GrandStaff tokens carry an unresolved upstream licensing position; read [Known issues](#known-issues) before relying on them. The GrandStaff and YTSV token repositories are sharded as one gzipped tar per collection group, because the uncompressed form runs to over a million small files — each dataset card documents the extraction.
 
 Licenses differ per repository because each follows the corpus it derives from; see [License summary](#license-summary).
 
@@ -302,7 +303,7 @@ If you use this code, please cite:
 | OLiMPiC | CC BY-SA 4.0 | [ufal/olimpic-icdar24](https://github.com/ufal/olimpic-icdar24) |
 | OpenScore Lieder (OLiMPiC upstream) | CC0 1.0 | [OpenScore/Lieder](https://github.com/OpenScore/Lieder) |
 | GrandStaff-LMX | CC BY-SA 4.0 | [LINDAT 11234/1-5423](http://hdl.handle.net/11234/1-5423) |
-| GrandStaff (score images) | **not stated by its publisher** | — |
+| GrandStaff (score images) | **not stated by its publisher**; our token release applies CC BY-NC-SA 4.0 | — |
 | KernScores source editions | CC BY-NC-SA 4.0 on some, **unstated on others** | `craigsapp/*` repository `LICENSE.txt` files |
 
 ### Known license conflicts
@@ -323,7 +324,9 @@ These are unresolved at the time of release. They are recorded rather than paper
 
   Four subtrees therefore fall under default copyright, two of them with an explicit `!!!YEC: Copyright 2008 by Craig Stuart Sapp` record, and absence of a license is not permission. The three that are licensed are non-commercial and require attribution which GrandStaff has already discarded — it strips every Humdrum `!!!` reference record, so no composer, editor or license notice survives into the distributed data. Separately, GrandStaff-LMX is published on LINDAT as CC BY-SA 4.0 with no recorded analysis of the upstream terms, and CC BY-SA 4.0 is incompatible with CC BY-NC-SA 4.0 in any case. A `license: mit` tag exists on a Hugging Face mirror, but on an empty card with no license file, and the same group tags its other datasets `cc-by-nc-4.0` deliberately.
 
-  Consequently no GrandStaff tokens are published. Resolving this requires a grant from Craig Stuart Sapp (`craig@ccrma.stanford.edu`) covering the four unlicensed editions — he is the decisive layer — and clarification from the GrandStaff maintainers (`arios@dlsi.ua.es`, `info-multiscore@dlsi.ua.es`). Note that the released model weights were trained on GrandStaff; training is a separate question from redistribution, but the weights' licensing inherits an unresolved layer as a result.
+  GrandStaff tokens **are** published, at [malerlab/grandstaff-lmx-unirqvae3-ytsv](https://huggingface.co/datasets/malerlab/grandstaff-lmx-unirqvae3-ytsv), under CC BY-NC-SA 4.0 — chosen as the strictest of the terms actually stated upstream rather than as a grant that can be fully substantiated. That release reproduces the per-subtree attribution to Craig Stuart Sapp's editions which GrandStaff itself discards, and carries a takedown offer for rights holders. Two notes on the reasoning: GrandStaff-LMX's CC BY-SA 4.0 was applied with no recorded analysis of the upstream terms, and the Hugging Face mirror `PRAIG/fp-grandstaff` tags itself `mit` while simultaneously declaring a non-commercial-only agreement, so the upstream layers are internally inconsistent as well as mutually inconsistent.
+
+  Clarification would still be worth having, from the GrandStaff maintainers (`arios@dlsi.ua.es`, `info-multiscore@dlsi.ua.es`) on what license governs their rendered images, and from Craig Stuart Sapp (`craig@ccrma.stanford.edu`) on the four editions that carry no LICENSE. Note also that Sapp is **not** an author of the GrandStaff paper and is credited nowhere in it beyond a tool citation, so there is no existing relationship to rely on. The released model weights were trained on GrandStaff; training is a separate question from redistribution, but the weights' licensing inherits the unresolved layer as a result.
 - **MusicNet and MusicNetEM stack two licenses over the same audio.** MusicNet audio is CC BY 4.0; the MusicNetEM alignment labels are CC BY-NC-SA 4.0. Anything containing EM labels is governed by the more restrictive of the two. Our `musicnet/` layout interleaves both, so they must be separated before either is redistributed under its own terms.
 - **MusicNetEM is access-restricted at its source** despite a license that permits non-commercial redistribution. Its Zenodo record requires a personal access token, and its README directs commercial users to contact the author. Obtain it from the author rather than from a mirror.
 - **SLakh inherits an unresolved authorship question.** Both SLakh2100 and the Lakh MIDI Dataset it derives from are CC BY 4.0, but Lakh's maintainer explicitly disclaims being able to attribute the underlying MIDI files to their authors. CC licensing cannot cure third-party rights in those arrangements. This exposure is shared by all Lakh derivatives.
