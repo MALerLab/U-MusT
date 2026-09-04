@@ -9,7 +9,8 @@ variables:
     yolo/ls-yolo-*.pt                                         UMUST_YOLO_DIR
 
 The translation weights are gated on the Hub, so downloading them needs a
-token (`HF_TOKEN`) whose owner has been granted access. The codecs and YOLO
+token (`HF_TOKEN`) whose owner has been granted access; `UMUST_HF_WEIGHTS_REPO`
+selects another repository with the same layout. The codecs and YOLO
 detectors are public.
 """
 import os
@@ -22,7 +23,10 @@ import requests
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 PIANO_RUN = "run-20250225_062905-9n1554as"
-HF_WEIGHTS_REPO = "malerlab/u-must"
+# Hub repository holding the translation weights. Override with
+# UMUST_HF_WEIGHTS_REPO to point a Space at a mirror the deploying account can
+# read (the run directory layout must be the same).
+HF_WEIGHTS_REPO = os.environ.get("UMUST_HF_WEIGHTS_REPO", "malerlab/u-must")
 HF_CODEC_REPOS = {
   "unirqvae3": "malerlab/unirqvae3-ytsv",
   "unirqvae": "malerlab/unirqvae-ytsv",
