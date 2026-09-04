@@ -48,6 +48,49 @@ def write_png(img: np.ndarray, path: Path) -> Path:
   return path
 
 
+def label_image(img: np.ndarray, text: str, scale: float = 1.0) -> np.ndarray:
+  """Burn a caption into the top-left corner (Replicate shows images without
+  their file names and does not keep the output order)."""
+  import PIL.Image
+  import PIL.ImageDraw
+  import PIL.ImageFont
+  pil = PIL.Image.fromarray(img).convert("RGB")
+  size = max(18, int(min(pil.width, 1600) / 45 * scale))
+  try:
+    font = PIL.ImageFont.load_default(size=size)
+  except TypeError:  # Pillow < 10.1
+    font = PIL.ImageFont.load_default()
+  draw = PIL.ImageDraw.Draw(pil)
+  x0, y0, x1, y1 = draw.textbbox((0, 0), text, font=font)
+  pad = size // 3
+  banner = PIL.Image.new("RGB", (pil.width, y1 - y0 + 2 * pad + 4), (255, 255, 255))
+  out = PIL.Image.new("RGB", (pil.width, banner.height + pil.height), (255, 255, 255))
+  out.paste(banner, (0, 0))
+  out.paste(pil, (0, banner.height))
+  draw = PIL.ImageDraw.Draw(out)
+  draw.rectangle([0, 0, x1 - x0 + 2 * pad, y1 - y0 + 2 * pad], fill=(40, 40, 40))
+  draw.text((pad - x0, pad - y0), text, font=font, fill=(255, 255, 255))
+  return np.array(out)
+
+
+def stack_images(items, width: int = 1600, gap: int = 24) -> np.ndarray:
+  """Stack (image, caption) pairs vertically at a common width, in order."""
+  import PIL.Image
+  tiles = []
+  for img, caption in items:
+    pil = PIL.Image.fromarray(label_image(img, caption)).convert("RGB")
+    if pil.width != width:
+      pil = pil.resize((width, max(1, round(pil.height * width / pil.width))), PIL.Image.LANCZOS)
+    tiles.append(pil)
+  height = sum(t.height for t in tiles) + gap * max(0, len(tiles) - 1)
+  out = PIL.Image.new("RGB", (width, max(1, height)), (255, 255, 255))
+  y = 0
+  for t in tiles:
+    out.paste(t, (0, y))
+    y += t.height + gap
+  return np.array(out)
+
+
 def write_text(text: str, path: Path) -> Path:
   path.write_text(text, encoding="utf-8")
   return path

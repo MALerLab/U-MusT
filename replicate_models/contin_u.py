@@ -1,9 +1,10 @@
 """Replicate model: Contin-U — a PDF piano score -> one continuous performance.
 
-Output files (order may vary):
+Output files (order may vary, so every image carries its label):
   contin-u.wav     the whole performance
   meta.json        {"duration_sec", "n_pages", "n_systems", "notes"}
-  pPP_sSS.png      the system crops in playback order (page, system)
+  systems.png      all system crops stacked in playback order
+  pPP_sSS.png      each system crop (page, system)
 """
 from __future__ import annotations
 
@@ -12,7 +13,7 @@ from typing import List
 from cog import BasePredictor, Input
 from cog import Path
 
-from replicate_models.common import audio_notes, load_engine, out_dir, pdf_to_page_images, write_json, write_png, write_wav
+from replicate_models.common import audio_notes, label_image, load_engine, out_dir, pdf_to_page_images, stack_images, write_json, write_png, write_wav
 
 
 class Predictor(BasePredictor):
@@ -41,5 +42,8 @@ class Predictor(BasePredictor):
     files.append(Path(write_json({"duration_sec": round(res.duration, 2), "n_pages": len(pages), "n_systems": len(systems),
                                   "notes": audio_notes(res, f"{len(systems)} systems stitched with Contin-U ({max(len(systems) - 1, 1)} windows).")},
                                  d / "meta.json")))
-    files += [Path(write_png(s.image, d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s in systems]
+    n = len(systems)
+    labels = [f"{i + 1} / {n} · page {s.page + 1} system {s.index + 1}" for i, s in enumerate(systems)]
+    files.append(Path(write_png(stack_images([(s.image, l) for s, l in zip(systems, labels)], width=1200), d / "systems.png")))
+    files += [Path(write_png(label_image(s.image, l), d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s, l in zip(systems, labels)]
     return files

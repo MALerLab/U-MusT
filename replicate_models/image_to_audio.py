@@ -1,9 +1,10 @@
 """Replicate model: score image -> piano audio (direct image-to-audio).
 
-Output files (order may vary):
+Output files (order may vary, so every image carries its label):
   u-must.wav       generated audio
   meta.json        {"duration_sec", "n_systems", "notes"}
-  system_NN.png    the system crops that were played, in order
+  systems.png      all played system crops stacked in playback order
+  system_NN.png    each played system crop
 """
 from __future__ import annotations
 
@@ -12,7 +13,7 @@ from typing import List
 from cog import BasePredictor, Input
 from cog import Path
 
-from replicate_models.common import audio_notes, load_engine, out_dir, select_systems, systems_from_image, write_json, write_png, write_wav
+from replicate_models.common import audio_notes, label_image, load_engine, out_dir, select_systems, stack_images, systems_from_image, write_json, write_png, write_wav
 
 
 class Predictor(BasePredictor):
@@ -32,5 +33,8 @@ class Predictor(BasePredictor):
     files: List[Path] = [Path(write_wav(res, d / "u-must.wav"))]
     files.append(Path(write_json({"duration_sec": round(res.duration, 2), "n_systems": len(systems),
                                   "notes": audio_notes(res, f"{len(systems)} system(s), {mode}.")}, d / "meta.json")))
-    files += [Path(write_png(s.image, d / f"system_{i + 1:02d}.png")) for i, s in enumerate(systems)]
+    n = len(systems)
+    labels = [f"System {i + 1} / {n} ({s.label})" for i, s in enumerate(systems)]
+    files.append(Path(write_png(stack_images([(s.image, l) for s, l in zip(systems, labels)], width=1600), d / "systems.png")))
+    files += [Path(write_png(label_image(s.image, l), d / f"system_{i + 1:02d}.png")) for i, (s, l) in enumerate(zip(systems, labels))]
     return files
