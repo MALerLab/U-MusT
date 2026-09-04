@@ -1,0 +1,53 @@
+# Python dependencies of the Hugging Face Space (see demo/build_space.py).
+# Mirrors the repository requirements.txt minus training-only packages, plus
+# the demo UI. gradio 6 requires huggingface_hub>=1, which transformers<5
+# cannot use, so gradio stays on 5.x here.
+torch>=2.2
+torchvision
+torchaudio
+torchmetrics
+numpy
+scipy
+pandas
+matplotlib
+einops
+easydict
+omegaconf
+hydra-core
+pyyaml
+tqdm
+wandb
+typing-extensions
+
+# audio
+descript-audio-codec
+descript-audiotools
+librosa
+soundfile
+pydub
+midi2audio
+
+# symbolic music
+pretty_midi
+mido
+mir_eval
+
+# image / score
+opencv-python-headless
+Pillow
+ultralytics
+requests
+pymupdf
+verovio
+
+# models
+transformers<5
+x-transformers==2.28.2
+
+# evaluation utilities imported by umust.evaluation_utils
+python-Levenshtein
+scikit-learn
+
+# demo
+gradio<6
+huggingface_hub

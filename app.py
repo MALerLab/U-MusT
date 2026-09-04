@@ -1,0 +1,403 @@
+#!/usr/bin/env python3
+"""Gradio demo for U-MusT (Image-to-Audio piano model).
+
+Four tabs share one loaded model:
+
+  1. OMR            score image  -> Linearized MusicXML -> MusicXML (+ engraving)
+  2. MIDI-to-Audio  performance MIDI -> piano audio (windowed, prefix-conditioned)
+  3. Image-to-Audio score image  -> piano audio (systems detected with ls-yolo)
+  4. Contin-U       full PDF score -> one continuous performance
+                    (two-system sliding window with cross-attention boundaries)
+
+Run locally:   python app.py            (env: UMUST_DEVICE, GRADIO_SERVER_PORT)
+On HF Spaces:  see demo/space/README.md
+"""
+from __future__ import annotations
+
+import os
+import tempfile
+import traceback
+from pathlib import Path
+from typing import List, Optional
+
+import gradio as gr
+import numpy as np
+
+from demo import weights as W
+from demo.engine import (
+  AudioResult,
+  SystemCrop,
+  UMusTEngine,
+  find_musescore,
+  load_image_rgb,
+  musicxml_to_pdf,
+  pdf_to_page_images,
+  piano_roll_image,
+  render_musicxml_svg,
+)
+
+# --------------------------------------------------------------------------- #
+# optional ZeroGPU support
+# --------------------------------------------------------------------------- #
+try:  # pragma: no cover - only present on Hugging Face Spaces
+  import spaces  # type: ignore
+
+  def gpu(duration):
+    """`duration` is seconds, or a callable of the wrapped function's arguments."""
+    return spaces.GPU(duration=duration)
+except ImportError:  # local run
+  def gpu(duration):  # noqa: ARG001
+    def deco(fn):
+      return fn
+    return deco
+
+
+# rough per-call budgets (seconds) for ZeroGPU; one autoregressive window takes ~30 s on an A10G
+def _omr_budget(systems, choice, *_):
+  return 30 + 15 * len(_select(systems, choice))
+
+
+def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_):
+  n_windows = 1 if not max_sec or max_sec <= 0 else max(1, int(max_sec // max(window_sec - overlap_sec, 1)) + 1)
+  return min(60 + 40 * n_windows, 1800)
+
+
+def _i2a_budget(systems, choice, *_):
+  return 60 + 40 * max(1, len(_select(systems, choice)) - 1)
+
+
+def _contin_u_budget(systems, *_):
+  return min(60 + 40 * max(1, len(systems) - 1), 1800)
+
+EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
+OUT_DIR = Path(tempfile.mkdtemp(prefix="umust_demo_"))
+DEVICE = os.environ.get("UMUST_DEVICE")  # None -> cuda if available
+
+print("Loading U-MusT engine ...")
+ENGINE = UMusTEngine(device=DEVICE)
+MSCORE = find_musescore()
+print(f"Loaded {ENGINE.checkpoint_name} on {ENGINE.device}; MuseScore: {MSCORE or 'not found'}")
+
+ALL_SYSTEMS = "All systems"
+
+
+# --------------------------------------------------------------------------- #
+# helpers
+# --------------------------------------------------------------------------- #
+
+def _gallery(systems: List[SystemCrop]):
+  return [(s.image, s.label) for s in systems]
+
+
+def _choices(systems: List[SystemCrop]):
+  return [ALL_SYSTEMS] + [s.label for s in systems]
+
+
+def _select(systems: List[SystemCrop], choice: Optional[str]) -> List[SystemCrop]:
+  if not systems:
+    return []
+  if not choice or choice == ALL_SYSTEMS:
+    return list(systems)
+  for s in systems:
+    if s.label == choice:
+      return [s]
+  return list(systems)
+
+
+def _audio_out(result: AudioResult):
+  audio = np.clip(result.audio, -1.0, 1.0)
+  return (result.sample_rate, (audio * 32767).astype(np.int16))
+
+
+def _status(result: AudioResult, extra: str = "") -> str:
+  lines = [f"**{result.duration:.1f} s** of audio from **{result.n_tokens}** audio-token steps."]
+  if extra:
+    lines.append(extra)
+  lines += [f"- {n}" for n in result.notes]
+  return "\n\n".join(lines)
+
+
+def _progress_adapter(progress: gr.Progress):
+  def fn(fraction: float, desc: str = ""):
+    progress(min(max(fraction, 0.0), 1.0), desc=desc)
+  return fn
+
+
+def _error_md(e: Exception) -> str:
+  traceback.print_exc()
+  return f"⚠️ **{type(e).__name__}**: {e}"
+
+
+def detect_from_image(image_path: Optional[str]):
+  """Shared by the OMR and Image-to-Audio tabs."""
+  if not image_path:
+    return [], [], gr.update(choices=[ALL_SYSTEMS], value=ALL_SYSTEMS), "Upload a score image."
+  try:
+    page = load_image_rgb(image_path)
+    systems = ENGINE.systems_from_images([page])
+    detected = any(s.conf > 0 for s in systems)
+    msg = (f"Detected **{len(systems)}** system(s)." if detected
+           else "No system detected by YOLO; treating the whole image as one system.")
+    return systems, _gallery(systems), gr.update(choices=_choices(systems), value=ALL_SYSTEMS), msg
+  except Exception as e:  # noqa: BLE001
+    return [], [], gr.update(choices=[ALL_SYSTEMS], value=ALL_SYSTEMS), _error_md(e)
+
+
+# --------------------------------------------------------------------------- #
+# tab 1: OMR
+# --------------------------------------------------------------------------- #
+
+@gpu(duration=_omr_budget)
+def run_omr(systems: List[SystemCrop], choice: str, greedy: bool, temperature: float, seed: int,
+            progress=gr.Progress()):
+  chosen = _select(systems, choice)
+  if not chosen:
+    return "", "", None, "Upload an image first."
+  try:
+    res = ENGINE.omr(chosen, greedy=greedy, temperature=temperature, seed=int(seed), progress=_progress_adapter(progress))
+  except Exception as e:  # noqa: BLE001
+    return "", "", None, _error_md(e)
+
+  xml_path = None
+  svg_html = ""
+  status = [f"Transcribed **{len(chosen)}** system(s), **{len(res.lmx.split())}** LMX tokens."]
+  if res.musicxml:
+    xml_path = OUT_DIR / f"omr_{abs(hash(res.lmx)) % 10**8}.musicxml"
+    xml_path.write_text(res.musicxml, encoding="utf-8")
+    svg = render_musicxml_svg(res.musicxml)
+    if svg:
+      svg_html = f'<div style="background:white;overflow:auto;max-height:70vh">{svg}</div>'
+    else:
+      status.append("Engraving preview unavailable (Verovio could not render this MusicXML).")
+  if res.error:
+    status.append(f"MusicXML conversion failed: `{res.error}`. The raw LMX is still shown.")
+  lmx_text = "\n\n".join(f"[system {i + 1}]\n{l}" for i, l in enumerate(res.lmx_per_system))
+  return svg_html, lmx_text, (str(xml_path) if xml_path else None), "\n\n".join(status)
+
+
+# --------------------------------------------------------------------------- #
+# tab 2: MIDI -> audio
+# --------------------------------------------------------------------------- #
+
+def preview_midi(midi_path: Optional[str]):
+  if not midi_path:
+    return None, ""
+  try:
+    _, _, duration = ENGINE.load_midi_notes(midi_path)
+    return piano_roll_image(midi_path), f"MIDI duration: **{duration:.1f} s**"
+  except Exception as e:  # noqa: BLE001
+    return None, _error_md(e)
+
+
+@gpu(duration=_midi_budget)
+def run_midi_to_audio(midi_path: Optional[str], window_sec: float, overlap_sec: float, max_sec: float, seed: int,
+                      progress=gr.Progress()):
+  if not midi_path:
+    return None, "Upload a MIDI file first."
+  try:
+    res = ENGINE.midi_to_audio(midi_path, window_sec=window_sec, overlap_sec=overlap_sec,
+                               max_duration_sec=max_sec if max_sec > 0 else None, seed=int(seed),
+                               progress=_progress_adapter(progress))
+    return _audio_out(res), _status(res)
+  except Exception as e:  # noqa: BLE001
+    return None, _error_md(e)
+
+
+# --------------------------------------------------------------------------- #
+# tab 3: image -> audio
+# --------------------------------------------------------------------------- #
+
+@gpu(duration=_i2a_budget)
+def run_image_to_audio(systems: List[SystemCrop], choice: str, seed: int, progress=gr.Progress()):
+  chosen = _select(systems, choice)
+  if not chosen:
+    return None, [], "Upload an image first."
+  try:
+    previews = [(ENGINE.preprocess_system(s.image)[1], s.label) for s in chosen]
+    res = ENGINE.image_to_audio(chosen, seed=int(seed), progress=_progress_adapter(progress))
+    mode = ("single window" if len(chosen) <= 2 else "Contin-U sliding window")
+    return _audio_out(res), previews, _status(res, f"{len(chosen)} system(s), {mode}.")
+  except Exception as e:  # noqa: BLE001
+    return None, [], _error_md(e)
+
+
+# --------------------------------------------------------------------------- #
+# tab 4: Contin-U (PDF -> full performance)
+# --------------------------------------------------------------------------- #
+
+def detect_from_document(doc_path: Optional[str], first_page: int, last_page: int, dpi: int):
+  if not doc_path:
+    return [], [], "Upload a PDF score."
+  try:
+    path = Path(doc_path)
+    if path.suffix.lower() in {".mxl", ".musicxml", ".xml"}:
+      if MSCORE is None:
+        return [], [], "MusicXML input needs MuseScore 3.6.2 (not available here). Please upload a PDF."
+      pdf = musicxml_to_pdf(str(path), OUT_DIR / f"{path.stem}.pdf", MSCORE)
+      path = pdf
+    last = int(last_page) if last_page and last_page > 0 else None
+    pages = pdf_to_page_images(str(path), dpi=int(dpi), first_page=int(first_page), last_page=last)
+    systems = ENGINE.systems_from_images(pages, fallback_whole_image=False)
+    if not systems:
+      return [], [], "No musical system detected on the selected pages."
+    est = sum(1 for _ in systems)
+    msg = (f"**{len(pages)}** page(s), **{len(systems)}** systems detected. "
+           f"Generation runs {max(est - 1, 1)} two-system window(s).")
+    return systems, _gallery(systems), msg
+  except Exception as e:  # noqa: BLE001
+    return [], [], _error_md(e)
+
+
+@gpu(duration=_contin_u_budget)
+def run_contin_u(systems: List[SystemCrop], doc_path: Optional[str], first_page: int, last_page: int, dpi: int,
+                 seed: int, attn_thr: float, progress=gr.Progress()):
+  if not systems:
+    systems, gallery, msg = detect_from_document(doc_path, first_page, last_page, dpi)
+    if not systems:
+      return None, gallery, msg, systems
+  else:
+    gallery = _gallery(systems)
+  try:
+    res = ENGINE.contin_u(systems, seed=int(seed), attn_threshold=attn_thr, progress=_progress_adapter(progress))
+    return _audio_out(res), gallery, _status(res, f"{len(systems)} systems stitched with Contin-U."), systems
+  except Exception as e:  # noqa: BLE001
+    return None, gallery, _error_md(e), systems
+
+
+# --------------------------------------------------------------------------- #
+# UI
+# --------------------------------------------------------------------------- #
+
+HEADER = f"""
+# U-MusT · Score Images ⇄ Symbolic Music ⇄ Performance Audio
+
+Interactive demo of the **Image-to-Audio (piano)** model from
+*U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio*
+(Jung, Kim et al., IEEE TASLP 2026) and the **Contin-U** full-score inference method.
+One encoder–decoder Transformer performs every task below; only the target modality changes.
+
+Score images are cropped into musical systems with the fine-tuned **ls-yolo** system detector and rescaled with the
+**staff-height** detector before RQ-VAE tokenization. Audio is decoded with the retrained 44.1 kHz DAC codec.
+
+<sub>Checkpoint `{ENGINE.checkpoint_name}` · device `{ENGINE.device}` · outputs are for research use (CC BY-NC-SA 4.0 weights).</sub>
+"""
+
+with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
+  gr.Markdown(HEADER)
+
+  # ------------------------------------------------------------------ OMR --- #
+  with gr.Tab("1 · OMR (Image → MusicXML)"):
+    gr.Markdown("Upload a **piano score image** (a whole page or a single system). Each detected system is transcribed "
+                "to Linearized MusicXML (LMX) and the systems are joined into one MusicXML file.")
+    omr_state = gr.State([])
+    with gr.Row():
+      with gr.Column(scale=1):
+        omr_image = gr.Image(type="filepath", label="Score image", sources=["upload", "clipboard"])
+        omr_choice = gr.Dropdown(choices=[ALL_SYSTEMS], value=ALL_SYSTEMS, label="Systems to transcribe")
+        with gr.Accordion("Decoding options", open=False):
+          omr_greedy = gr.Checkbox(value=True, label="Greedy decoding (argmax)")
+          omr_temp = gr.Slider(0.05, 1.0, value=0.1, step=0.05, label="Sampling temperature (when not greedy)")
+          omr_seed = gr.Number(value=0, precision=0, label="Seed")
+        omr_btn = gr.Button("Transcribe", variant="primary")
+        omr_status = gr.Markdown()
+      with gr.Column(scale=2):
+        omr_gallery = gr.Gallery(label="Detected systems", columns=1, height=260, object_fit="contain")
+        omr_render = gr.HTML(label="Engraved result (Verovio)")
+        omr_file = gr.File(label="MusicXML download")
+        omr_lmx = gr.Textbox(label="LMX tokens", lines=8, show_copy_button=True)
+    gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude_page1.png")]], inputs=[omr_image],
+                label="Example (public-domain engraving from the Mutopia Project)")
+    omr_image.change(detect_from_image, [omr_image], [omr_state, omr_gallery, omr_choice, omr_status])
+    omr_btn.click(run_omr, [omr_state, omr_choice, omr_greedy, omr_temp, omr_seed],
+                  [omr_render, omr_lmx, omr_file, omr_status])
+
+  # --------------------------------------------------------- MIDI -> audio --- #
+  with gr.Tab("2 · MIDI → Audio"):
+    gr.Markdown("Upload a **piano MIDI** file. The model was trained on ≤20 s segments, so the piece is rendered in "
+                "overlapping windows: each window's audio is cut to the duration of its MIDI content, the tokens for "
+                "the overlap prime the next window as a decoder prefix, and the joined stream is decoded once.")
+    with gr.Row():
+      with gr.Column(scale=1):
+        midi_file = gr.File(label="MIDI file", file_types=[".mid", ".midi"], type="filepath")
+        midi_window = gr.Slider(8, 20, value=18, step=0.5, label="Window length (s) — the model was trained on 19–20 s slices")
+        midi_overlap = gr.Slider(0, 6, value=2, step=0.5, label="Overlap / conditioning length (s)")
+        midi_max = gr.Slider(0, 300, value=60, step=10, label="Max duration to render (s, 0 = whole file)")
+        midi_seed = gr.Number(value=0, precision=0, label="Seed")
+        midi_btn = gr.Button("Synthesize", variant="primary")
+        midi_status = gr.Markdown()
+      with gr.Column(scale=2):
+        midi_roll = gr.Image(label="Input piano roll", interactive=False)
+        midi_audio = gr.Audio(label="Generated audio", type="numpy")
+    gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude.mid")]], inputs=[midi_file], label="Example")
+    midi_file.change(preview_midi, [midi_file], [midi_roll, midi_status])
+    midi_btn.click(run_midi_to_audio, [midi_file, midi_window, midi_overlap, midi_max, midi_seed],
+                   [midi_audio, midi_status])
+
+  # -------------------------------------------------------- image -> audio --- #
+  with gr.Tab("3 · Image → Audio"):
+    gr.Markdown("Direct score-image-to-audio generation. Pick one system, or all detected systems: one or two systems "
+                "are generated in a single pass, more are stitched with the Contin-U sliding window.")
+    i2a_state = gr.State([])
+    with gr.Row():
+      with gr.Column(scale=1):
+        i2a_image = gr.Image(type="filepath", label="Score image", sources=["upload", "clipboard"])
+        i2a_choice = gr.Dropdown(choices=[ALL_SYSTEMS], value=ALL_SYSTEMS, label="Systems to play")
+        i2a_seed = gr.Number(value=0, precision=0, label="Seed")
+        i2a_btn = gr.Button("Generate audio", variant="primary")
+        i2a_status = gr.Markdown()
+      with gr.Column(scale=2):
+        i2a_gallery = gr.Gallery(label="Detected systems", columns=1, height=260, object_fit="contain")
+        i2a_audio = gr.Audio(label="Generated audio", type="numpy")
+        i2a_prep = gr.Gallery(label="Model input (staff-height normalized, binarized)", columns=1, height=200,
+                              object_fit="contain")
+    gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude_page1.png")]], inputs=[i2a_image], label="Example")
+    i2a_image.change(detect_from_image, [i2a_image], [i2a_state, i2a_gallery, i2a_choice, i2a_status])
+    i2a_btn.click(run_image_to_audio, [i2a_state, i2a_choice, i2a_seed], [i2a_audio, i2a_prep, i2a_status])
+
+  # --------------------------------------------------------------- Contin-U --- #
+  with gr.Tab("4 · Contin-U (PDF → full performance)"):
+    gr.Markdown(
+      "Upload a **PDF piano score**" + (" (or MusicXML, engraved with MuseScore 3.6.2)" if MSCORE else "") +
+      ". Pages are rasterized, systems are detected and ordered, and the model slides over consecutive system pairs. "
+      "Cross-attention to the `[SEP]` token marks where the audio of system *j* ends; that boundary splices the "
+      "windows and the following tokens prime the next window, giving one continuous performance without retraining."
+    )
+    cu_state = gr.State([])
+    with gr.Row():
+      with gr.Column(scale=1):
+        cu_doc = gr.File(label="Score (PDF" + (", MusicXML" if MSCORE else "") + ")",
+                         file_types=[".pdf"] + ([".mxl", ".musicxml", ".xml"] if MSCORE else []), type="filepath")
+        with gr.Row():
+          cu_first = gr.Number(value=1, precision=0, label="First page")
+          cu_last = gr.Number(value=0, precision=0, label="Last page (0 = end)")
+        cu_dpi = gr.Slider(150, 300, value=300, step=50, label="Rasterization DPI")
+        with gr.Accordion("Generation options", open=False):
+          cu_seed = gr.Number(value=0, precision=0, label="Seed")
+          cu_thr = gr.Slider(0.3, 0.8, value=0.5, step=0.05, label="Attention boundary threshold")
+        with gr.Row():
+          cu_detect = gr.Button("Detect systems")
+          cu_btn = gr.Button("Generate full audio", variant="primary")
+        cu_status = gr.Markdown()
+      with gr.Column(scale=2):
+        cu_audio = gr.Audio(label="Continuous performance", type="numpy")
+        cu_gallery = gr.Gallery(label="Systems in playback order", columns=2, height=420, object_fit="contain")
+    gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude.pdf")]], inputs=[cu_doc],
+                label="Example (J. S. Bach, Prelude in C major BWV 846 — Mutopia Project, public domain)")
+    cu_doc.change(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
+    cu_detect.click(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
+    cu_btn.click(run_contin_u, [cu_state, cu_doc, cu_first, cu_last, cu_dpi, cu_seed, cu_thr],
+                 [cu_audio, cu_gallery, cu_status, cu_state])
+
+  gr.Markdown(
+    "Paper: [IEEE TASLP 10.1109/TASLPRO.2025.3648794](https://doi.org/10.1109/TASLPRO.2025.3648794) · "
+    "Code: [MALerLab/U-MusT](https://github.com/MALerLab/U-MusT) · "
+    "Weights: [malerlab/u-must](https://huggingface.co/malerlab/u-must) · "
+    "Audio examples: [sakem.in/u-must](https://sakem.in/u-must/)"
+  )
+
+if __name__ == "__main__":
+  demo.queue(default_concurrency_limit=1).launch(
+    server_name=os.environ.get("GRADIO_SERVER_NAME", "0.0.0.0"),
+    server_port=int(os.environ.get("GRADIO_SERVER_PORT", "7860")),
+    share=os.environ.get("GRADIO_SHARE", "0") == "1",
+  )

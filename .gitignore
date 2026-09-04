@@ -28,3 +28,7 @@ multirun/
 .vscode/
 .idea/
 .DS_Store
+
+# demo / Hugging Face Space assembly
+/build/
+/mscore-3.6.2/

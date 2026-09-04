@@ -3,6 +3,7 @@
 [![Paper](https://img.shields.io/badge/IEEE%20TASLP-10.1109%2FTASLPRO.2025.3648794-blue)](https://doi.org/10.1109/TASLPRO.2025.3648794)
 [![IEEE Xplore](https://img.shields.io/badge/IEEE%20Xplore-11316398-00629B)](https://ieeexplore.ieee.org/document/11316398)
 [![Demo](https://img.shields.io/badge/Demo-sakem.in%2Fu--must-green)](https://sakem.in/u-must/)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-U--MusT%20demo-yellow)](https://huggingface.co/spaces/malerlab/u-must-demo)
 
 Official implementation of
 > **U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio**<br>
@@ -21,6 +22,7 @@ Everything below ships in this repository unless the Location column says otherw
 | Training entry point | Hydra-configured multi-task trainer | `train_multimodal.py` |
 | Evaluation | OMR symbol error rate, AMT note-onset F1 | `scripts/test_olimpic.py`, `scripts/test_amt.py` |
 | Inference | MusicXML → performance audio, end to end | `infer.py` |
+| Interactive demo | Gradio app: OMR, MIDI-to-audio, image-to-audio, Contin-U full-score synthesis | `app.py`, `demo/` |
 | Tokenizer checkpoints | RQ-VAE (score images), DAC (audio) | `vq_models/`, `dac_models/` |
 | Score-layout detectors | YOLO system + staff-height models | [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) (auto-downloaded) |
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
@@ -39,7 +41,7 @@ Each modality is discretized by its own tokenizer — **RQ-VAE** for score image
 
 ## Getting started
 
-Pick the path that matches what you want to do. All three assume [Installation](#installation) is done first.
+Pick the path that matches what you want to do. All four assume [Installation](#installation) is done first.
 
 ### (a) I just want to turn a score into audio
 
@@ -55,6 +57,19 @@ python3 infer.py input.mxl --run_path models/run-20250225_062905-9n1554as -o out
 `--run_path` also takes any run directory you trained yourself (path (c)).
 
 `<run_dir>` is a training run directory containing `files/config.yaml` and `files/checkpoints/*.pt`. The script renders the score with MuseScore, detects and crops each musical system with YOLO, tokenizes the crops with the RQ-VAE, generates audio tokens, and decodes them with DAC to `output/final_output.wav`. The YOLO weights download automatically on first run.
+
+### (d) I want to try it in a browser
+
+```bash
+pip install -r requirements-demo.txt          # gradio, pymupdf, verovio on top of requirements.txt
+python app.py                                 # http://localhost:7860
+```
+
+`app.py` loads the I2A piano checkpoint once and serves four tabs — **OMR** (score image → LMX → MusicXML, engraved with Verovio), **MIDI → Audio**, **Image → Audio**, and **Contin-U** (a PDF score → one continuous performance, see below). Weights are resolved the same way as for `infer.py` (`models/`, `vq_models/`, `dac_models/`, `yolo/`) and downloaded on first run when missing; set `HF_TOKEN` to a token with access to the gated weights. `UMUST_DEVICE`, `GRADIO_SERVER_PORT` and `UMUST_RUN_PATH` override the defaults. MusicXML input in the Contin-U tab needs MuseScore 3.6.2 (`./setup.sh`, or `MSCORE_PATH`); PDF input needs nothing beyond pip.
+
+The same app runs on Hugging Face Spaces: `python demo/build_space.py --push <owner>/u-must-demo --hardware t4-small --secret-token <token-with-weight-access>` assembles the Space (code, vocabularies, example score) and uploads it; see [`demo/space/README.md`](demo/space/README.md).
+
+**Contin-U.** The model is trained on windows of one to three systems (≤ 20 s of audio), so a full score is rendered with a two-system sliding window: for systems (*j*, *j*+1) the decoder is primed with the audio tokens generated for system *j* in the previous window, the cross-attention of a late decoder layer onto the tokens after `[SEP]` marks where system *j*'s audio ends, and the stream is spliced there. This is the procedure of `infer.py`, exposed in the demo for PDF input (pages are rasterized with PyMuPDF, systems detected with the YOLO models). MIDI longer than one window is handled the same way, with the overlap region's audio tokens as the prefix of the next window.
 
 ### (b) I want to reproduce the paper's numbers
 
@@ -140,7 +155,7 @@ Because a one-pixel or one-sample offset changes token assignments entirely, tra
 
 ## Installation
 
-Python 3.10 or newer is required (the data pipeline uses `match`).
+Python 3.10 or newer is required (the data pipeline uses `match`); 3.11 and 3.12 are tested for inference and the demo.
 
 ```bash
 pip install -r requirements.txt
@@ -177,6 +192,8 @@ yolo/                      system + staff-height detectors
 models/                    expected location for translation-model runs
 train_multimodal.py        training entry point
 infer.py                   MusicXML -> audio inference
+app.py                     Gradio demo (OMR, MIDI-to-audio, image-to-audio, Contin-U)
+demo/                      demo engine, example score, Hugging Face Space template and build script
 setup.sh                   system dependencies, MuseScore, YOLO weights
 ```
 
