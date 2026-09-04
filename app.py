@@ -39,8 +39,10 @@ from demo.engine import (
 # --------------------------------------------------------------------------- #
 # optional ZeroGPU support
 # --------------------------------------------------------------------------- #
+ZEROGPU = False
 try:  # pragma: no cover - only present on Hugging Face Spaces
   import spaces  # type: ignore
+  ZEROGPU = bool(os.environ.get("SPACE_ID"))
 
   def gpu(duration):
     """`duration` is seconds, or a callable of the wrapped function's arguments."""
@@ -51,23 +53,34 @@ except ImportError:  # local run
       return fn
     return deco
 
+# ZeroGPU compares the *requested* duration with the visitor's remaining daily
+# quota (2 min anonymous, 5 min free account, 40 min PRO), so budgets are kept
+# tight: one autoregressive window (<= 20 s of audio) costs about
+# UMUST_SEC_PER_WINDOW seconds of GPU time. Raise it if tasks get cut off.
+SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
+SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
 
-# rough per-call budgets (seconds) for ZeroGPU; one autoregressive window takes ~30 s on an A10G
+
 def _omr_budget(systems, choice, *_):
-  return 30 + 15 * len(_select(systems, choice))
+  return int(10 + SEC_PER_OMR_SYSTEM * max(1, len(_select(systems, choice))))
+
+
+def _midi_windows(window_sec, overlap_sec, max_sec):
+  if not max_sec or max_sec <= 0:
+    return 8  # unknown file length: assume a few minutes
+  return max(1, int(max_sec // max(window_sec - overlap_sec, 1)) + 1)
 
 
 def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_):
-  n_windows = 1 if not max_sec or max_sec <= 0 else max(1, int(max_sec // max(window_sec - overlap_sec, 1)) + 1)
-  return min(60 + 40 * n_windows, 1800)
+  return int(min(10 + SEC_PER_WINDOW * _midi_windows(window_sec, overlap_sec, max_sec), 3600))
 
 
 def _i2a_budget(systems, choice, *_):
-  return 60 + 40 * max(1, len(_select(systems, choice)) - 1)
+  return int(10 + SEC_PER_WINDOW * max(1, len(_select(systems, choice)) - 1))
 
 
 def _contin_u_budget(systems, *_):
-  return min(60 + 40 * max(1, len(systems) - 1), 1800)
+  return int(min(10 + SEC_PER_WINDOW * max(1, len(systems) - 1), 3600))
 
 EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
 OUT_DIR = Path(tempfile.mkdtemp(prefix="umust_demo_"))
@@ -138,7 +151,8 @@ def detect_from_image(image_path: Optional[str]):
     detected = any(s.conf > 0 for s in systems)
     msg = (f"Detected **{len(systems)}** system(s)." if detected
            else "No system detected by YOLO; treating the whole image as one system.")
-    return systems, _gallery(systems), gr.update(choices=_choices(systems), value=ALL_SYSTEMS), msg
+    default = systems[0].label if (ZEROGPU and systems) else ALL_SYSTEMS
+    return systems, _gallery(systems), gr.update(choices=_choices(systems), value=default), msg
   except Exception as e:  # noqa: BLE001
     return [], [], gr.update(choices=[ALL_SYSTEMS], value=ALL_SYSTEMS), _error_md(e)
 
@@ -280,7 +294,11 @@ Score images are cropped into musical systems with the fine-tuned **ls-yolo** sy
 **staff-height** detector before RQ-VAE tokenization. Audio is decoded with the retrained 44.1 kHz DAC codec.
 
 <sub>Checkpoint `{ENGINE.checkpoint_name}` · device `{ENGINE.device}` · outputs are for research use (CC BY-NC-SA 4.0 weights).</sub>
-"""
+""" + ("""
+> **Running on ZeroGPU.** Each generation window (≤ 20 s of audio) takes roughly half a minute of GPU time, and the
+> daily GPU quota is about 2 min for anonymous visitors, 5 min for free accounts and 40 min for PRO. Log in to
+> Hugging Face for longer pieces, or start with a single system / a short MIDI excerpt.
+""" if ZEROGPU else "")
 
 with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
   gr.Markdown(HEADER)
@@ -321,7 +339,7 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
         midi_file = gr.File(label="MIDI file", file_types=[".mid", ".midi"], type="filepath")
         midi_window = gr.Slider(8, 20, value=18, step=0.5, label="Window length (s) — the model was trained on 19–20 s slices")
         midi_overlap = gr.Slider(0, 6, value=2, step=0.5, label="Overlap / conditioning length (s)")
-        midi_max = gr.Slider(0, 300, value=60, step=10, label="Max duration to render (s, 0 = whole file)")
+        midi_max = gr.Slider(0, 300, value=20 if ZEROGPU else 60, step=10, label="Max duration to render (s, 0 = whole file)")
         midi_seed = gr.Number(value=0, precision=0, label="Seed")
         midi_btn = gr.Button("Synthesize", variant="primary")
         midi_status = gr.Markdown()
@@ -369,7 +387,7 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
                          file_types=[".pdf"] + ([".mxl", ".musicxml", ".xml"] if MSCORE else []), type="filepath")
         with gr.Row():
           cu_first = gr.Number(value=1, precision=0, label="First page")
-          cu_last = gr.Number(value=0, precision=0, label="Last page (0 = end)")
+          cu_last = gr.Number(value=1 if ZEROGPU else 0, precision=0, label="Last page (0 = end)")
         cu_dpi = gr.Slider(150, 300, value=300, step=50, label="Rasterization DPI")
         with gr.Accordion("Generation options", open=False):
           cu_seed = gr.Number(value=0, precision=0, label="Seed")

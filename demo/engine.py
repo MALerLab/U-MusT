@@ -17,6 +17,7 @@ audio-prefix conditioning to stitch consecutive windows.
 from __future__ import annotations
 
 import math
+import os
 import re
 import tempfile
 from dataclasses import dataclass, field
@@ -190,6 +191,9 @@ class UMusTEngine:
     self.dac_model = dac_model.eval().to(self.device)
     self._yolo_system = None
     self._yolo_staff = None
+    # The detectors are cheap; running them on CPU keeps them usable outside
+    # GPU-decorated functions on ZeroGPU and off the model's GPU elsewhere.
+    self.yolo_device = os.environ.get("UMUST_YOLO_DEVICE", "cpu")
 
     self.vq_version = self.config.data.vq_model
     self.target_staff_height = 18 if self.vq_version == "unirqvae3" else 20
@@ -224,7 +228,7 @@ class UMusTEngine:
 
   def detect_systems(self, page_rgb: np.ndarray, page_index: int = 0, conf_threshold: float = 0.4) -> List[SystemCrop]:
     """Detect musical systems on one page image, sorted top-to-bottom."""
-    results = self.yolo_system([page_rgb], verbose=False)
+    results = self.yolo_system([page_rgb], verbose=False, device=self.yolo_device)
     crops = []
     for result in results:
       if len(result.boxes) == 0:
@@ -258,7 +262,7 @@ class UMusTEngine:
     left_half = crop_rgb[:, : max(1, crop_rgb.shape[1] // 2)]
     if left_half.ndim == 2 or left_half.shape[2] == 1:
       left_half = cv2.cvtColor(left_half, cv2.COLOR_GRAY2RGB)
-    results = self.yolo_staff([left_half], verbose=False)
+    results = self.yolo_staff([left_half], verbose=False, device=self.yolo_device)
     heights = []
     for result in results:
       boxes = result.boxes.xyxy.int().tolist()
