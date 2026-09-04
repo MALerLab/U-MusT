@@ -41,6 +41,7 @@ ultralytics
 requests
 pymupdf
 verovio
+resvg-py
 
 # models
 transformers<5

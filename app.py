@@ -52,7 +52,9 @@ from demo.engine import (
   musicxml_to_pdf,
   pdf_to_page_images,
   piano_roll_image,
-  render_musicxml_svg,
+  render_lmx_image,
+  render_musicxml_svgs,
+  svg_to_image,
 )
 
 # ZeroGPU compares the *requested* duration with the visitor's remaining daily
@@ -168,27 +170,42 @@ def run_omr(systems: List[SystemCrop], choice: str, greedy: bool, temperature: f
             progress=gr.Progress()):
   chosen = _select(systems, choice)
   if not chosen:
-    return "", "", None, "Upload an image first."
+    return [], [], None, "", "Upload an image first."
   try:
     res = ENGINE.omr(chosen, greedy=greedy, temperature=temperature, seed=int(seed), progress=_progress_adapter(progress))
   except Exception as e:  # noqa: BLE001
-    return "", "", None, _error_md(e)
+    return [], [], None, "", _error_md(e)
 
-  xml_path = None
-  svg_html = ""
   status = [f"Transcribed **{len(chosen)}** system(s), **{len(res.lmx.split())}** LMX tokens."]
-  if res.musicxml:
-    xml_path = OUT_DIR / f"omr_{abs(hash(res.lmx)) % 10**8}.musicxml"
-    xml_path.write_text(res.musicxml, encoding="utf-8")
-    svg = render_musicxml_svg(res.musicxml)
-    if svg:
-      svg_html = f'<div style="background:white;overflow:auto;max-height:70vh">{svg}</div>'
+  # input crop next to the engraving of its own transcription, one row per system
+  progress(0.9, desc="engraving")
+  pairs = []
+  for i, (crop, lmx) in enumerate(zip(chosen, res.lmx_per_system)):
+    pairs.append((crop.image, f"input · {crop.label}"))
+    img, err = render_lmx_image(lmx, layout="system")
+    if img is not None:
+      pairs.append((img, f"transcription · system {i + 1}"))
     else:
-      status.append("Engraving preview unavailable (Verovio could not render this MusicXML).")
+      pairs.append((np.full((120, 800, 3), 255, dtype=np.uint8), f"system {i + 1}: not rendered ({err})"))
+      status.append(f"System {i + 1} could not be engraved: `{err}`.")
+
+  files, pages = [], []
+  if res.musicxml:
+    tag = f"omr_{abs(hash(res.lmx)) % 10**8}"
+    xml_path = OUT_DIR / f"{tag}.musicxml"
+    xml_path.write_text(res.musicxml, encoding="utf-8")
+    files.append(str(xml_path))
+    for k, svg in enumerate(render_musicxml_svgs(res.musicxml, layout="page")):
+      svg_path = OUT_DIR / f"{tag}_page{k + 1}.svg"
+      svg_path.write_text(svg, encoding="utf-8")
+      files.append(str(svg_path))
+      img = svg_to_image(svg, width=2000)
+      if img is not None:
+        pages.append((img, f"page {k + 1}"))
   if res.error:
-    status.append(f"MusicXML conversion failed: `{res.error}`. The raw LMX is still shown.")
+    status.append(f"Joining the systems into one MusicXML failed: `{res.error}`. The raw LMX is still shown.")
   lmx_text = "\n\n".join(f"[system {i + 1}]\n{l}" for i, l in enumerate(res.lmx_per_system))
-  return svg_html, lmx_text, (str(xml_path) if xml_path else None), "\n\n".join(status)
+  return pairs, pages, (files or None), lmx_text, "\n\n".join(status)
 
 
 # --------------------------------------------------------------------------- #
@@ -308,7 +325,8 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
   # ------------------------------------------------------------------ OMR --- #
   with gr.Tab("1 · OMR (Image → MusicXML)"):
     gr.Markdown("Upload a **piano score image** (a whole page or a single system). Each detected system is transcribed "
-                "to Linearized MusicXML (LMX) and the systems are joined into one MusicXML file.")
+                "to Linearized MusicXML (LMX), engraved again with Verovio next to its input crop, and all systems are "
+                "joined into one downloadable MusicXML file.")
     omr_state = gr.State([])
     with gr.Row():
       with gr.Column(scale=1):
@@ -321,15 +339,17 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
         omr_btn = gr.Button("Transcribe", variant="primary")
         omr_status = gr.Markdown()
       with gr.Column(scale=2):
-        omr_gallery = gr.Gallery(label="Detected systems", columns=1, height=260, object_fit="contain")
-        omr_render = gr.HTML(label="Engraved result (Verovio)")
-        omr_file = gr.File(label="MusicXML download")
+        omr_gallery = gr.Gallery(label="Detected systems", columns=1, height=220, object_fit="contain")
+        omr_pairs = gr.Gallery(label="Input system (left) vs. engraved transcription (right)", columns=2, rows=None,
+                               height=420, object_fit="contain", preview=False)
+        omr_pages = gr.Gallery(label="Full transcription as pages (Verovio)", columns=2, height=360, object_fit="contain")
+        omr_file = gr.File(label="Downloads: MusicXML + SVG pages", file_count="multiple")
         omr_lmx = gr.Textbox(label="LMX tokens", lines=8, show_copy_button=True)
     gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude_page1.png")]], inputs=[omr_image],
                 label="Example (public-domain engraving from the Mutopia Project)")
     omr_image.change(detect_from_image, [omr_image], [omr_state, omr_gallery, omr_choice, omr_status])
     omr_btn.click(run_omr, [omr_state, omr_choice, omr_greedy, omr_temp, omr_seed],
-                  [omr_render, omr_lmx, omr_file, omr_status])
+                  [omr_pairs, omr_pages, omr_file, omr_lmx, omr_status])
 
   # --------------------------------------------------------- MIDI -> audio --- #
   with gr.Tab("2 · MIDI → Audio"):

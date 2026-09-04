@@ -697,19 +697,60 @@ def piano_roll_image(midi_path: str, max_sec: Optional[float] = None) -> np.ndar
   return buf
 
 
-def render_musicxml_svg(xml: str, scale: int = 35) -> Optional[str]:
-  """Engrave MusicXML to SVG with Verovio (pure pip dependency)."""
+def render_musicxml_svgs(xml: str, layout: str = "page", scale: int = 40) -> List[str]:
+  """Engrave MusicXML with Verovio (pure pip dependency) and return one SVG
+  document per page. `layout="system"` puts the whole content on a single
+  line (one system), which mirrors the system crops the OMR model reads;
+  `layout="page"` breaks it into A4-proportioned pages."""
   try:
     import verovio
   except ImportError:
-    return None
+    return []
   tk = verovio.toolkit()
-  tk.setOptions({
-    "scale": scale, "adjustPageHeight": True, "breaks": "auto", "pageWidth": 2100,
-    "footer": "none", "header": "none", "svgViewBox": True, "spacingStaff": 12,
-  })
+  options = {
+    "scale": scale, "adjustPageHeight": True, "footer": "none", "header": "none", "svgViewBox": True,
+    "pageMarginLeft": 40, "pageMarginRight": 40, "pageMarginTop": 40, "pageMarginBottom": 40,
+  }
+  if layout == "system":
+    options.update({"breaks": "none", "adjustPageWidth": True, "pageWidth": 60000})
+  else:
+    options.update({"breaks": "auto", "pageWidth": 2100, "spacingSystem": 8})
+  tk.setOptions(options)
   if not tk.loadData(xml):
+    return []
+  return [tk.renderToSVG(p) for p in range(1, tk.getPageCount() + 1)]
+
+
+def render_musicxml_svg(xml: str, scale: int = 35) -> Optional[str]:
+  """Backward-compatible helper: all pages joined into one HTML fragment."""
+  svgs = render_musicxml_svgs(xml, layout="page", scale=scale)
+  return "\n".join(svgs) if svgs else None
+
+
+def svg_to_image(svg: str, width: int = 2400) -> Optional[np.ndarray]:
+  """Rasterize an SVG document to an RGB array (resvg, pure pip); None if unavailable."""
+  try:
+    import resvg_py
+  except ImportError:
     return None
-  n_pages = tk.getPageCount()
-  svgs = [tk.renderToSVG(p) for p in range(1, n_pages + 1)]
-  return "\n".join(svgs)
+  import io
+  try:
+    png = bytes(resvg_py.svg_to_bytes(svg_string=svg, width=width, background="white"))
+  except Exception:  # noqa: BLE001 - malformed SVG or renderer failure
+    return None
+  return np.array(PIL.Image.open(io.BytesIO(png)).convert("RGB"))
+
+
+def render_lmx_image(lmx: str, layout: str = "system", width: int = 2400) -> Tuple[Optional[np.ndarray], Optional[str]]:
+  """LMX string -> engraved RGB image (first page/system). Returns (image, error)."""
+  if not lmx.strip():
+    return None, "empty LMX"
+  try:
+    xml = delinearize_lmx(lmx)
+  except Exception as e:  # noqa: BLE001
+    return None, f"{type(e).__name__}: {e}"
+  svgs = render_musicxml_svgs(xml, layout=layout)
+  if not svgs:
+    return None, "Verovio could not engrave this MusicXML"
+  img = svg_to_image(svgs[0], width=width)
+  return img, (None if img is not None else "SVG rasterization unavailable")
