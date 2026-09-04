@@ -5,15 +5,15 @@ from typing import Optional
 
 import numpy as np
 from cog import BaseModel, BasePredictor, Input
-from cog import Path as CogPath
+from cog import Path
 
 from replicate_models.common import audio_notes, load_engine, out_dir, write_wav
 from demo.synth import render_midi_reference
 
 
 class Output(BaseModel):
-  audio: CogPath
-  reference_audio: Optional[CogPath]
+  audio: Path
+  reference_audio: Optional[Path]
   duration_sec: float
   n_tokens: int
   notes: str
@@ -25,7 +25,7 @@ class Predictor(BasePredictor):
 
   def predict(
     self,
-    midi: CogPath = Input(description="Piano MIDI file (.mid)."),
+    midi: Path = Input(description="Piano MIDI file (.mid)."),
     window_sec: float = Input(default=18.0, ge=8.0, le=20.0, description="Generation window length in seconds (the model was trained on 19-20 s slices)."),
     overlap_sec: float = Input(default=2.0, ge=0.0, le=6.0, description="Overlap between windows; its generated audio primes the next window."),
     max_duration_sec: float = Input(default=0.0, ge=0.0, description="Only render the first N seconds of the MIDI; 0 = whole file."),
@@ -52,8 +52,8 @@ class Predictor(BasePredictor):
         how = f"Reference unavailable: {how}."
 
     return Output(
-      audio=CogPath(audio),
-      reference_audio=CogPath(ref_path) if ref_path else None,
+      audio=Path(audio),
+      reference_audio=Path(ref_path) if ref_path else None,
       duration_sec=round(res.duration, 2),
       n_tokens=res.n_tokens,
       notes=audio_notes(res, how),

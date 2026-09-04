@@ -1,22 +1,21 @@
 """Replicate model: optical music recognition (score image -> LMX -> MusicXML)."""
 from __future__ import annotations
 
-from pathlib import Path
 from typing import List, Optional
 
 from cog import BaseModel, BasePredictor, Input
-from cog import Path as CogPath
+from cog import Path
 
 from replicate_models.common import load_engine, out_dir, select_systems, systems_from_image, write_png
 from demo.engine import render_lmx_image, render_musicxml_svgs, svg_to_image
 
 
 class Output(BaseModel):
-  musicxml: Optional[CogPath]
+  musicxml: Optional[Path]
   lmx: str
   n_systems: int
-  transcriptions: List[CogPath]
-  pages: List[CogPath]
+  transcriptions: List[Path]
+  pages: List[Path]
   error: Optional[str]
 
 
@@ -26,7 +25,7 @@ class Predictor(BasePredictor):
 
   def predict(
     self,
-    image: CogPath = Input(description="Piano score image: a full page or a single system (PNG/JPG)."),
+    image: Path = Input(description="Piano score image: a full page or a single system (PNG/JPG)."),
     system: int = Input(default=0, ge=0, description="1-based index of one detected system to transcribe; 0 = all systems."),
     greedy: bool = Input(default=True, description="Greedy (argmax) decoding; off = sample with `temperature`."),
     temperature: float = Input(default=0.1, ge=0.05, le=1.0, description="Sampling temperature when not greedy."),
@@ -40,17 +39,17 @@ class Predictor(BasePredictor):
     for i, lmx in enumerate(res.lmx_per_system):
       img, _ = render_lmx_image(lmx, layout="system", width=1600)
       if img is not None:
-        transcriptions.append(CogPath(write_png(img, d / f"system_{i + 1:02d}.png")))
+        transcriptions.append(Path(write_png(img, d / f"system_{i + 1:02d}.png")))
 
     musicxml, pages = None, []
     if res.musicxml:
       xml_path = d / "transcription.musicxml"
       xml_path.write_text(res.musicxml, encoding="utf-8")
-      musicxml = CogPath(xml_path)
+      musicxml = Path(xml_path)
       for k, svg in enumerate(render_musicxml_svgs(res.musicxml, layout="page")):
         img = svg_to_image(svg, width=1600)
         if img is not None:
-          pages.append(CogPath(write_png(img, d / f"page_{k + 1:02d}.png")))
+          pages.append(Path(write_png(img, d / f"page_{k + 1:02d}.png")))
 
     return Output(
       musicxml=musicxml,

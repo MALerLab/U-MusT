@@ -4,17 +4,17 @@ from __future__ import annotations
 from typing import List, Optional
 
 from cog import BaseModel, BasePredictor, Input
-from cog import Path as CogPath
+from cog import Path
 
 from replicate_models.common import audio_notes, load_engine, out_dir, pdf_to_page_images, write_png, write_wav
 
 
 class Output(BaseModel):
-  audio: CogPath
+  audio: Path
   duration_sec: float
   n_pages: int
   n_systems: int
-  systems: List[CogPath]
+  systems: List[Path]
   notes: str
 
 
@@ -24,7 +24,7 @@ class Predictor(BasePredictor):
 
   def predict(
     self,
-    score: CogPath = Input(description="Piano score as a PDF (pages are rasterized and every system is detected in reading order)."),
+    score: Path = Input(description="Piano score as a PDF (pages are rasterized and every system is detected in reading order)."),
     first_page: int = Input(default=1, ge=1, description="First page to render (1-based)."),
     last_page: int = Input(default=0, ge=0, description="Last page to render; 0 = until the end."),
     dpi: int = Input(default=300, ge=150, le=300, description="Rasterization resolution."),
@@ -40,9 +40,9 @@ class Predictor(BasePredictor):
       systems = systems[:max_systems]
     res = self.engine.contin_u(systems, seed=seed, attn_threshold=attention_threshold)
     d = out_dir()
-    crops = [CogPath(write_png(s.image, d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s in systems]
+    crops = [Path(write_png(s.image, d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s in systems]
     return Output(
-      audio=CogPath(write_wav(res, d / "contin-u.wav")),
+      audio=Path(write_wav(res, d / "contin-u.wav")),
       duration_sec=round(res.duration, 2),
       n_pages=len(pages),
       n_systems=len(systems),
