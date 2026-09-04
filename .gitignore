@@ -32,3 +32,6 @@ multirun/
 # demo / Hugging Face Space assembly
 /build/
 /mscore-3.6.2/
+
+# cog build artifacts
+/.cog/
