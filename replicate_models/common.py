@@ -1,9 +1,9 @@
 """Shared helpers for the Replicate predictors.
 
-Outputs are returned as a flat, ordered list of files (cog's runtime only
-uploads top-level `Path` / `List[Path]` outputs; files nested inside a
-`BaseModel` are inlined as data URIs, which Replicate does not store), so
-every model also writes a `meta.json` with its scalar results.
+The predictors return named `cog.BaseModel` outputs. The cog 0.17+ runtime
+does not upload files nested in a BaseModel (it inlines them as data URIs,
+which Replicate shows as "(not stored)"), so the images are built with the
+legacy cog 0.16.x CLI, whose server uploads nested files — see push.sh.
 """
 from __future__ import annotations
 

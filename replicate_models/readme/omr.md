@@ -20,11 +20,11 @@ jointly on OMR, MIDI-to-audio and image-to-audio (OLiMPiC scanned SER 13.67 %).
 
 ## Outputs
 
-A list of files (order may vary): `transcription.musicxml` (when the systems could be joined into one score),
-`transcription.lmx` (the LMX text, one block per system), `meta.json` (`n_systems`, `lmx_tokens`, `error`),
-`comparison.png` (every input system above its engraved transcription, in order), `system_NN.png` (each system's
-transcription engraved with Verovio) and `page_NN.png` (the joined transcription engraved as pages). Every image
-carries its label ("System 3 / 6 · transcription") because Replicate does not keep the output order.
+`musicxml` (file, when the systems could be joined into one score), `lmx` (text, one block per system),
+`n_systems`, `comparison` (every input system above its engraved transcription, in order), `transcriptions`
+(each system's transcription engraved with Verovio), `pages` (the joined transcription engraved as pages) and
+`error` (set when joining failed; the LMX is still returned). Every image carries its label ("System 3 / 6 ·
+transcription") because Replicate does not keep list order.
 
 ## Notes
 

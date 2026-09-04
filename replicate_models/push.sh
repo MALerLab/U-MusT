@@ -10,7 +10,15 @@
 # local `cog predict` smoke test on the example score before pushing.
 # UMUST_HF_WEIGHTS_REPO overrides the weight repository baked into the image
 # (default MALer-Lab/u-must-i2a-piano; malerlab/u-must for the gated release).
+#
+# COG_BIN selects the cog CLI. The default prefers a legacy 0.16.x binary
+# (installed as `cog-0.16`) because the 0.17+ runtime does not upload files
+# nested inside a BaseModel output — they come back as data URIs that
+# Replicate does not store:
+#   curl -L -o ~/.local/bin/cog-0.16 https://github.com/replicate/cog/releases/download/v0.16.12/cog_$(uname -s)_$(uname -m)
 set -euo pipefail
+COG_BIN="${COG_BIN:-$(command -v cog-0.16 || command -v cog)}"
+echo "using $($COG_BIN --version)"
 cd "$(dirname "$0")/.."
 
 OWNER="malerlab"; HARDWARE="gpu-l40s"; TEST=0; TASKS=()
@@ -60,13 +68,13 @@ for task in "${TASKS[@]}"; do
   ensure_model "$name"
   echo "== $OWNER/$name  (cog.$task.yaml)"
   if [ "$TEST" = 1 ]; then
-    cog build -f "cog.$task.yaml" -t "u-must-$task:test" --secret "id=hf_token,src=$SECRET_FILE"
+    "$COG_BIN" build -f "cog.$task.yaml" -t "u-must-$task:test" --secret "id=hf_token,src=$SECRET_FILE"
     case "$task" in
-      omr)            cog predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
-      midi-to-audio)  cog predict -f "cog.$task.yaml" "u-must-$task:test" -i midi=@demo/examples/bach_bwv846_prelude.mid -i max_duration_sec=20 ;;
-      image-to-audio) cog predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
-      contin-u)       cog predict -f "cog.$task.yaml" "u-must-$task:test" -i score=@demo/examples/bach_bwv846_prelude.pdf -i last_page=1 -i max_systems=3 ;;
+      omr)            "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
+      midi-to-audio)  "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i midi=@demo/examples/bach_bwv846_prelude.mid -i max_duration_sec=20 ;;
+      image-to-audio) "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
+      contin-u)       "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i score=@demo/examples/bach_bwv846_prelude.pdf -i last_page=1 -i max_systems=3 ;;
     esac
   fi
-  cog push -f "cog.$task.yaml" "r8.im/$OWNER/$name" --secret "id=hf_token,src=$SECRET_FILE"
+  "$COG_BIN" push -f "cog.$task.yaml" "r8.im/$OWNER/$name" --secret "id=hf_token,src=$SECRET_FILE"
 done
