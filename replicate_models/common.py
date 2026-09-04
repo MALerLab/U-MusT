@@ -1,4 +1,10 @@
-"""Shared helpers for the Replicate predictors."""
+"""Shared helpers for the Replicate predictors.
+
+Outputs are returned as a flat, ordered list of files (cog's runtime only
+uploads top-level `Path` / `List[Path]` outputs; files nested inside a
+`BaseModel` are inlined as data URIs, which Replicate does not store), so
+every model also writes a `meta.json` with its scalar results.
+"""
 from __future__ import annotations
 
 import os
@@ -39,6 +45,17 @@ def write_wav(result: AudioResult, path: Path) -> Path:
 def write_png(img: np.ndarray, path: Path) -> Path:
   import PIL.Image
   PIL.Image.fromarray(img).save(str(path))
+  return path
+
+
+def write_text(text: str, path: Path) -> Path:
+  path.write_text(text, encoding="utf-8")
+  return path
+
+
+def write_json(obj: dict, path: Path) -> Path:
+  import json
+  path.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
   return path
 
 

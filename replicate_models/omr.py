@@ -1,22 +1,21 @@
-"""Replicate model: optical music recognition (score image -> LMX -> MusicXML)."""
+"""Replicate model: optical music recognition (score image -> LMX -> MusicXML).
+
+Output files, in order:
+  transcription.musicxml   (when the systems could be joined into one score)
+  transcription.lmx        Linearized MusicXML text, one block per system
+  meta.json                {"n_systems", "lmx_tokens", "error"}
+  system_NN.png            each system's transcription engraved with Verovio
+  page_NN.png              the joined transcription engraved as pages
+"""
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
-from cog import BaseModel, BasePredictor, Input
+from cog import BasePredictor, Input
 from cog import Path
 
-from replicate_models.common import load_engine, out_dir, select_systems, systems_from_image, write_png
+from replicate_models.common import load_engine, out_dir, select_systems, systems_from_image, write_json, write_png, write_text
 from demo.engine import render_lmx_image, render_musicxml_svgs, svg_to_image
-
-
-class Output(BaseModel):
-  musicxml: Optional[Path]
-  lmx: str
-  n_systems: int
-  transcriptions: List[Path]
-  pages: List[Path]
-  error: Optional[str]
 
 
 class Predictor(BasePredictor):
@@ -30,32 +29,25 @@ class Predictor(BasePredictor):
     greedy: bool = Input(default=True, description="Greedy (argmax) decoding; off = sample with `temperature`."),
     temperature: float = Input(default=0.1, ge=0.05, le=1.0, description="Sampling temperature when not greedy."),
     seed: int = Input(default=0, description="Random seed for sampling."),
-  ) -> Output:
+  ) -> List[Path]:
     systems = select_systems(systems_from_image(self.engine, str(image)), system)
     res = self.engine.omr(systems, greedy=greedy, temperature=temperature, seed=seed)
     d = out_dir()
+    files: List[Path] = []
 
-    transcriptions = []
+    if res.musicxml:
+      files.append(Path(write_text(res.musicxml, d / "transcription.musicxml")))
+    lmx_text = "\n\n".join(f"[system {i + 1}]\n{l}" for i, l in enumerate(res.lmx_per_system))
+    files.append(Path(write_text(lmx_text, d / "transcription.lmx")))
+    files.append(Path(write_json({"n_systems": len(systems), "lmx_tokens": len(res.lmx.split()), "error": res.error}, d / "meta.json")))
+
     for i, lmx in enumerate(res.lmx_per_system):
       img, _ = render_lmx_image(lmx, layout="system", width=1600)
       if img is not None:
-        transcriptions.append(Path(write_png(img, d / f"system_{i + 1:02d}.png")))
-
-    musicxml, pages = None, []
+        files.append(Path(write_png(img, d / f"system_{i + 1:02d}.png")))
     if res.musicxml:
-      xml_path = d / "transcription.musicxml"
-      xml_path.write_text(res.musicxml, encoding="utf-8")
-      musicxml = Path(xml_path)
       for k, svg in enumerate(render_musicxml_svgs(res.musicxml, layout="page")):
         img = svg_to_image(svg, width=1600)
         if img is not None:
-          pages.append(Path(write_png(img, d / f"page_{k + 1:02d}.png")))
-
-    return Output(
-      musicxml=musicxml,
-      lmx="\n\n".join(f"[system {i + 1}]\n{l}" for i, l in enumerate(res.lmx_per_system)),
-      n_systems=len(systems),
-      transcriptions=transcriptions,
-      pages=pages,
-      error=res.error,
-    )
+          files.append(Path(write_png(img, d / f"page_{k + 1:02d}.png")))
+    return files

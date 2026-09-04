@@ -1,21 +1,18 @@
-"""Replicate model: Contin-U — a PDF piano score -> one continuous performance."""
+"""Replicate model: Contin-U — a PDF piano score -> one continuous performance.
+
+Output files, in order:
+  contin-u.wav     the whole performance
+  meta.json        {"duration_sec", "n_pages", "n_systems", "notes"}
+  pPP_sSS.png      the system crops in playback order (page, system)
+"""
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
-from cog import BaseModel, BasePredictor, Input
+from cog import BasePredictor, Input
 from cog import Path
 
-from replicate_models.common import audio_notes, load_engine, out_dir, pdf_to_page_images, write_png, write_wav
-
-
-class Output(BaseModel):
-  audio: Path
-  duration_sec: float
-  n_pages: int
-  n_systems: int
-  systems: List[Path]
-  notes: str
+from replicate_models.common import audio_notes, load_engine, out_dir, pdf_to_page_images, write_json, write_png, write_wav
 
 
 class Predictor(BasePredictor):
@@ -31,7 +28,7 @@ class Predictor(BasePredictor):
     seed: int = Input(default=0, description="Random seed."),
     attention_threshold: float = Input(default=0.5, ge=0.3, le=0.8, description="Cross-attention mass on the second system that marks the boundary between two systems' audio."),
     max_systems: int = Input(default=0, ge=0, description="Stop after this many systems; 0 = all."),
-  ) -> Output:
+  ) -> List[Path]:
     pages = pdf_to_page_images(str(score), dpi=dpi, first_page=first_page, last_page=last_page if last_page > 0 else None)
     systems = self.engine.systems_from_images(pages, fallback_whole_image=False)
     if not systems:
@@ -40,12 +37,9 @@ class Predictor(BasePredictor):
       systems = systems[:max_systems]
     res = self.engine.contin_u(systems, seed=seed, attn_threshold=attention_threshold)
     d = out_dir()
-    crops = [Path(write_png(s.image, d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s in systems]
-    return Output(
-      audio=Path(write_wav(res, d / "contin-u.wav")),
-      duration_sec=round(res.duration, 2),
-      n_pages=len(pages),
-      n_systems=len(systems),
-      systems=crops,
-      notes=audio_notes(res, f"{len(systems)} systems stitched with Contin-U ({max(len(systems) - 1, 1)} windows)."),
-    )
+    files: List[Path] = [Path(write_wav(res, d / "contin-u.wav"))]
+    files.append(Path(write_json({"duration_sec": round(res.duration, 2), "n_pages": len(pages), "n_systems": len(systems),
+                                  "notes": audio_notes(res, f"{len(systems)} systems stitched with Contin-U ({max(len(systems) - 1, 1)} windows).")},
+                                 d / "meta.json")))
+    files += [Path(write_png(s.image, d / f"p{s.page + 1:02d}_s{s.index + 1:02d}.png")) for s in systems]
+    return files

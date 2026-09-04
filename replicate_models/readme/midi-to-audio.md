@@ -23,7 +23,8 @@ rendering of the same file (FluidSynth, FluidR3 GM) is returned alongside for co
 
 ## Outputs
 
-`audio` (WAV, U-MusT), `reference_audio` (WAV, soundfont), `duration_sec`, `n_tokens`, `notes`.
+A list of files, in this order: `u-must.wav` (the model's rendition), `reference.wav` (the soundfont rendering,
+when `reference` is on) and `meta.json` (`duration_sec`, `n_tokens`, `notes`).
 
 ## Notes
 

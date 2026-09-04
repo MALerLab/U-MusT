@@ -20,9 +20,10 @@ jointly on OMR, MIDI-to-audio and image-to-audio (OLiMPiC scanned SER 13.67 %).
 
 ## Outputs
 
-`musicxml` (file), `lmx` (text, one block per system), `transcriptions` (one engraved PNG per system),
-`pages` (the joined transcription engraved as pages), `n_systems`, `error` (set when the systems could not be
-joined into a valid MusicXML; the LMX is still returned).
+A list of files, in this order: `transcription.musicxml` (when the systems could be joined into one score),
+`transcription.lmx` (the LMX text, one block per system), `meta.json` (`n_systems`, `lmx_tokens`, `error`),
+`system_NN.png` (each system's transcription engraved with Verovio) and `page_NN.png` (the joined transcription
+engraved as pages).
 
 ## Notes
 
