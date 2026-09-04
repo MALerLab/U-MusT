@@ -704,9 +704,15 @@ def render_musicxml_svgs(xml: str, layout: str = "page", scale: int = 40) -> Lis
   `layout="page"` breaks it into A4-proportioned pages."""
   try:
     import verovio
+    from importlib.resources import files as _files
   except ImportError:
     return []
-  tk = verovio.toolkit()
+  # Verovio keeps its *default* resource path in thread-local storage, so a
+  # toolkit created in a worker thread (Gradio runs handlers in a thread pool)
+  # silently fails to load its fonts. Set the path on the instance instead.
+  tk = verovio.toolkit(False)
+  if not tk.setResourcePath(str(_files("verovio") / "data")):
+    return []
   options = {
     "scale": scale, "adjustPageHeight": True, "footer": "none", "header": "none", "svgViewBox": True,
     "pageMarginLeft": 40, "pageMarginRight": 40, "pageMarginTop": 40, "pageMarginBottom": 40,
