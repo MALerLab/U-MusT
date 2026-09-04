@@ -30,6 +30,8 @@ Interactive demo of the **Image-to-Audio (piano)** model from
 > *IEEE Transactions on Audio, Speech and Language Processing*, vol. 34, 2026 · [doi:10.1109/TASLPRO.2025.3648794](https://doi.org/10.1109/TASLPRO.2025.3648794)
 
 and of **Contin-U**, the two-system sliding-window inference that turns the same model into a full-score renderer.
+Contin-U was the MALerLab entry to [RenCon 2025](https://ren-con2025.vercel.app/), the expressive piano performance
+rendering contest held as a MIREX task at ISMIR 2025 ([paper](https://futuremirex.com/portal/wp-content/uploads/2025/rencon/Contin-U.pdf)).
 
 | Tab | Input | Output |
 |---|---|---|
