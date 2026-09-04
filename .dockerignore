@@ -1,0 +1,21 @@
+# build context for the Replicate images (cog.*.yaml): code + vocab only
+.git
+.orca
+.venv*
+build/
+models/
+vq_models/
+dac_models/
+yolo/
+mscore-3.6.2/
+dataset/
+dataset_pair_paths/
+figures/
+wandb/
+runs/
+outputs/
+__pycache__/
+*.pyc
+*.pt
+*.pth
+*.ckpt

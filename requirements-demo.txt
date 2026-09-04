@@ -6,3 +6,7 @@ huggingface_hub
 pymupdf
 verovio
 resvg-py
+# reference rendering of the input MIDI: pyfluidsynth needs libfluidsynth + a GM soundfont
+# (apt install fluidsynth fluid-soundfont-gm); without them install the pure-pip fallback with
+#   pip install --no-deps tinysoundfont
+pyfluidsynth

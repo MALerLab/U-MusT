@@ -1,0 +1,50 @@
+# Python dependencies of the Replicate images (cog.*.yaml). torch matches the
+# cog base image selected by `cuda`/`python_version` in cog.*.yaml.
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
+torchmetrics
+numpy
+scipy
+pandas
+matplotlib
+einops
+easydict
+omegaconf
+hydra-core
+pyyaml
+tqdm
+wandb
+typing-extensions
+
+# audio
+descript-audio-codec
+descript-audiotools
+librosa
+soundfile
+pydub
+midi2audio
+pyfluidsynth
+
+# symbolic music
+pretty_midi
+mido
+mir_eval
+
+# image / score
+opencv-python-headless
+Pillow
+ultralytics
+requests
+pymupdf
+verovio
+resvg-py
+
+# models
+transformers<5
+x-transformers==2.28.2
+
+# imported by umust.evaluation_utils
+python-Levenshtein
+scikit-learn
+huggingface_hub

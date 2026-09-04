@@ -23,6 +23,7 @@ Everything below ships in this repository unless the Location column says otherw
 | Evaluation | OMR symbol error rate, AMT note-onset F1 | `scripts/test_olimpic.py`, `scripts/test_amt.py` |
 | Inference | MusicXML → performance audio, end to end | `infer.py` |
 | Interactive demo | Gradio app: OMR, MIDI-to-audio, image-to-audio, Contin-U full-score synthesis | `app.py`, `demo/` |
+| Replicate models | One Cog model per task (OMR, MIDI-to-audio, image-to-audio, Contin-U) | `cog.*.yaml`, `replicate_models/` |
 | Tokenizer checkpoints | RQ-VAE (score images), DAC (audio) | `vq_models/`, `dac_models/` |
 | Score-layout detectors | YOLO system + staff-height models | [MALerLab/ls-yolo releases](https://github.com/MALerLab/ls-yolo/releases) (auto-downloaded) |
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
@@ -68,6 +69,8 @@ python app.py                                 # http://localhost:7860
 `app.py` loads the I2A piano checkpoint once and serves four tabs — **OMR** (score image → LMX → MusicXML, engraved with Verovio), **MIDI → Audio**, **Image → Audio**, and **Contin-U** (a PDF score → one continuous performance, see below). Weights are resolved the same way as for `infer.py` (`models/`, `vq_models/`, `dac_models/`, `yolo/`) and downloaded on first run when missing; set `HF_TOKEN` to a token with access to the gated weights. `UMUST_DEVICE`, `GRADIO_SERVER_PORT` and `UMUST_RUN_PATH` override the defaults. MusicXML input in the Contin-U tab needs MuseScore 3.6.2 (`./setup.sh`, or `MSCORE_PATH`); PDF input needs nothing beyond pip.
 
 The same app runs on Hugging Face Spaces: `python demo/build_space.py --push <owner>/u-must-demo --hardware t4-small --secret-token <token-with-weight-access>` assembles the Space (code, vocabularies, example score) and uploads it; see [`demo/space/README.md`](demo/space/README.md).
+
+**Replicate.** Each task is also packaged as its own [Cog](https://github.com/replicate/cog) model for Replicate: `cog.omr.yaml`, `cog.midi-to-audio.yaml`, `cog.image-to-audio.yaml` and `cog.contin-u.yaml` at the repository root, with the predictors in `replicate_models/`. Weights are downloaded into the image at build time (the Hugging Face token is passed as a build secret, never stored in the image). `replicate_models/push.sh [owner] [task ...] [--test]` creates the models when missing, optionally runs a local `cog predict` smoke test on the example score, and pushes them; see the script header for the required environment variables.
 
 **Contin-U.** Contin-U was the MALerLab entry to [RenCon 2025](https://ren-con2025.vercel.app/), the expressive piano performance rendering contest revived as a MIREX task at ISMIR 2025; the contest supplies MusicXML, which is engraved to page images and rendered by this unchanged image-to-audio model ([paper](https://futuremirex.com/portal/wp-content/uploads/2025/rencon/Contin-U.pdf)). The model is trained on windows of one to three systems (≤ 20 s of audio), so a full score is rendered with a two-system sliding window: for systems (*j*, *j*+1) the decoder is primed with the audio tokens generated for system *j* in the previous window, the cross-attention of a late decoder layer onto the tokens after `[SEP]` marks where system *j*'s audio ends, and the stream is spliced there. This is the procedure of `infer.py`, exposed in the demo for PDF input (pages are rasterized with PyMuPDF, systems detected with the YOLO models). MIDI longer than one window is handled the same way, with the overlap region's audio tokens as the prefix of the next window.
 
@@ -194,6 +197,7 @@ train_multimodal.py        training entry point
 infer.py                   MusicXML -> audio inference
 app.py                     Gradio demo (OMR, MIDI-to-audio, image-to-audio, Contin-U)
 demo/                      demo engine, example score, Hugging Face Space template and build script
+cog.*.yaml, replicate_models/  Cog configurations and predictors for the four Replicate models
 setup.sh                   system dependencies, MuseScore, YOLO weights
 ```
 

@@ -1,1 +1,3 @@
 ffmpeg
+fluidsynth
+fluid-soundfont-gm

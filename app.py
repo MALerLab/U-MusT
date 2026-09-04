@@ -43,6 +43,7 @@ import gradio as gr
 import numpy as np
 
 from demo import weights as W
+from demo.synth import render_midi_reference
 from demo.engine import (
   AudioResult,
   SystemCrop,
@@ -277,13 +278,22 @@ def run_omr(systems: List[SystemCrop], choice: str, greedy: bool, temperature: f
 # --------------------------------------------------------------------------- #
 
 def preview_midi(midi_path: Optional[str]):
+  """Piano roll plus a plain soundfont rendering of the input, for comparison."""
   if not midi_path:
-    return None, ""
+    return None, None, ""
   try:
     _, _, duration = ENGINE.load_midi_notes(midi_path)
-    return piano_roll_image(midi_path), f"MIDI duration: **{duration:.1f} s**"
+    reference, how = render_midi_reference(midi_path)
+    ref_out = None
+    if reference is not None:
+      sr, audio = reference
+      ref_out = (sr, (np.clip(audio, -1, 1) * 32767).astype(np.int16))
+      how = f"Reference rendering: {how} (no expressive model involved)."
+    else:
+      how = f"Reference rendering unavailable: {how}."
+    return piano_roll_image(midi_path), ref_out, f"MIDI duration: **{duration:.1f} s**. {how}"
   except Exception as e:  # noqa: BLE001
-    return None, _error_md(e)
+    return None, None, _error_md(e)
 
 
 @gpu(duration=_midi_budget)
@@ -433,10 +443,11 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
         midi_btn = gr.Button("Synthesize", variant="primary")
         midi_status = gr.Markdown()
       with gr.Column(scale=2):
+        midi_audio = gr.Audio(label="Generated audio (U-MusT)", type="numpy")
+        midi_ref = gr.Audio(label="Input MIDI rendered with a GM soundfont (FluidSynth reference)", type="numpy")
         midi_roll = gr.Image(label="Input piano roll", interactive=False)
-        midi_audio = gr.Audio(label="Generated audio", type="numpy")
     gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude.mid")]], inputs=[midi_file], label="Example")
-    midi_file.change(preview_midi, [midi_file], [midi_roll, midi_status])
+    midi_file.change(preview_midi, [midi_file], [midi_roll, midi_ref, midi_status])
     midi_btn.click(run_midi_to_audio, [midi_file, midi_window, midi_overlap, midi_max, midi_seed],
                    [midi_audio, midi_status])
 

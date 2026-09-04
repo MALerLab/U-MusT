@@ -54,3 +54,5 @@ scikit-learn
 # demo
 gradio==5.49.1
 huggingface_hub
+# reference rendering of input MIDI (libfluidsynth + GM soundfont come from packages.txt)
+pyfluidsynth
