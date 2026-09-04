@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>U-MusT demo</title>
+  <!-- Static Hugging Face Space: the model runs on a self-hosted Gradio server
+       (see demo/build_space.py --static --backend-url). The Gradio web
+       component below renders that app in place; a plain iframe is used as a
+       fallback when the component cannot load. -->
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.49.1/gradio.js"></script>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #fafafa; color: #222; }
+    header { padding: 14px 20px 8px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+    header h1 { font-size: 1.15rem; margin: 0 0 4px; }
+    header p { margin: 0; font-size: 0.9rem; color: #555; }
+    header a { color: #4b5bd6; }
+    main { min-height: 80vh; }
+    gradio-app, iframe { width: 100%; min-height: 85vh; border: 0; }
+    #offline { display: none; padding: 40px 20px; text-align: center; color: #555; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>U-MusT · Score Images ⇄ Symbolic Music ⇄ Performance Audio</h1>
+    <p>
+      Image-to-Audio piano model from <a href="https://doi.org/10.1109/TASLPRO.2025.3648794">U-MusT (IEEE TASLP 2026)</a>
+      and the Contin-U full-score inference. The model runs on the authors' GPU server; this page only hosts the interface.
+      Code: <a href="https://github.com/MALerLab/U-MusT">MALerLab/U-MusT</a>.
+    </p>
+  </header>
+  <main>
+    <gradio-app id="app" src="__BACKEND_URL__" eager></gradio-app>
+    <div id="offline">
+      The demo server is currently offline. Audio examples remain available at
+      <a href="https://sakem.in/u-must/">sakem.in/u-must</a>.
+    </div>
+  </main>
+  <script>
+    // If the backend cannot be reached, say so instead of showing a blank page.
+    const url = "__BACKEND_URL__";
+    fetch(url.replace(/\/$/, "") + "/config", { mode: "cors" })
+      .catch(() => {
+        document.getElementById("app").style.display = "none";
+        document.getElementById("offline").style.display = "block";
+      });
+  </script>
+</body>
+</html>

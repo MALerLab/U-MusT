@@ -1,7 +1,8 @@
 # Python dependencies of the Hugging Face Space (see demo/build_space.py).
 # Mirrors the repository requirements.txt minus training-only packages, plus
 # the demo UI. gradio 6 requires huggingface_hub>=1, which transformers<5
-# cannot use, so gradio stays on 5.x here.
+# cannot use, so gradio stays on 5.x here; 5.49.1 is the last version whose
+# web-component bundle (used by the static Space) is published.
 torch>=2.2
 torchvision
 torchaudio
@@ -49,5 +50,5 @@ python-Levenshtein
 scikit-learn
 
 # demo
-gradio<6
+gradio==5.49.1
 huggingface_hub

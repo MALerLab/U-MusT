@@ -1,7 +1,7 @@
 # Extra dependencies for the Gradio demo (app.py). Install on top of the base
 # requirements:  pip install -r requirements.txt -r requirements-demo.txt
 # gradio 6 needs huggingface_hub>=1, which transformers<5 cannot use.
-gradio<6
+gradio==5.49.1
 huggingface_hub
 pymupdf
 verovio
