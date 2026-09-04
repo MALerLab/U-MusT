@@ -59,7 +59,7 @@ from demo.engine import (
 # quota (2 min anonymous, 5 min free account, 40 min PRO), so budgets are kept
 # tight: one autoregressive window (<= 20 s of audio) costs about
 # UMUST_SEC_PER_WINDOW seconds of GPU time. Raise it if tasks get cut off.
-SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
+SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "40"))
 SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
 
 
