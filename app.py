@@ -185,9 +185,19 @@ def _select(systems: List[SystemCrop], choice: Optional[str]) -> List[SystemCrop
   return list(systems)
 
 
-def _audio_out(result: AudioResult):
-  audio = np.clip(result.audio, -1.0, 1.0)
-  return (result.sample_rate, (audio * 32767).astype(np.int16))
+def _wav_path(audio: np.ndarray, sr: int, stem: str) -> str:
+  """Write 16-bit PCM WAV under OUT_DIR with a descriptive, unique name."""
+  import re
+  import soundfile as sf
+  stem = re.sub(r"[^A-Za-z0-9._-]+", "_", stem).strip("_") or "audio"
+  path = OUT_DIR / f"{stem}_{abs(hash(audio.tobytes())) % 10**8:08d}.wav"
+  sf.write(str(path), np.clip(audio, -1.0, 1.0), sr, subtype="PCM_16")
+  return str(path)
+
+
+def _audio_out(result: AudioResult, stem: str = "u-must") -> str:
+  """Path to a WAV file: shown in the player and offered as a download."""
+  return _wav_path(result.audio, result.sample_rate, stem)
 
 
 def _status(result: AudioResult, extra: str = "") -> str:
@@ -287,7 +297,7 @@ def preview_midi(midi_path: Optional[str]):
     ref_out = None
     if reference is not None:
       sr, audio = reference
-      ref_out = (sr, (np.clip(audio, -1, 1) * 32767).astype(np.int16))
+      ref_out = _wav_path(audio, sr, f"{Path(midi_path).stem}_soundfont-reference")
       how = f"Reference rendering: {how} (no expressive model involved)."
     else:
       how = f"Reference rendering unavailable: {how}."
@@ -300,14 +310,15 @@ def preview_midi(midi_path: Optional[str]):
 def run_midi_to_audio(midi_path: Optional[str], window_sec: float, overlap_sec: float, max_sec: float, seed: int,
                       progress=gr.Progress()):
   if not midi_path:
-    return None, "Upload a MIDI file first."
+    return None, None, "Upload a MIDI file first."
   try:
     res = ENGINE.midi_to_audio(midi_path, window_sec=window_sec, overlap_sec=overlap_sec,
                                max_duration_sec=max_sec if max_sec > 0 else None, seed=int(seed),
                                progress=_progress_adapter(progress))
-    return _audio_out(res), _status(res)
+    wav = _audio_out(res, f"{Path(midi_path).stem}_u-must_seed{int(seed)}")
+    return wav, wav, _status(res)
   except Exception as e:  # noqa: BLE001
-    return None, _error_md(e)
+    return None, None, _error_md(e)
 
 
 # --------------------------------------------------------------------------- #
@@ -318,15 +329,17 @@ def run_midi_to_audio(midi_path: Optional[str], window_sec: float, overlap_sec: 
 def run_image_to_audio(systems: List[SystemCrop], choice: str, seed: int, progress=gr.Progress()):
   chosen = _select(systems, choice)
   if not chosen:
-    return None, PLACEHOLDER_PREP, "Upload an image first."
+    return None, None, PLACEHOLDER_PREP, "Upload an image first."
   try:
     previews = [(ENGINE.preprocess_system(s.image)[1], s.label) for s in chosen]
     res = ENGINE.image_to_audio(chosen, seed=int(seed), progress=_progress_adapter(progress))
     mode = ("single window" if len(chosen) <= 2 else "Contin-U sliding window")
     preview_html = _strips_html(previews, max_height=320, max_width=OVERVIEW_W)
-    return _audio_out(res), preview_html, _status(res, f"{len(chosen)} system(s), {mode}.")
+    which = "all-systems" if len(chosen) > 1 else f"p{chosen[0].page + 1}s{chosen[0].index + 1}"
+    wav = _audio_out(res, f"image-to-audio_{which}_seed{int(seed)}")
+    return wav, wav, preview_html, _status(res, f"{len(chosen)} system(s), {mode}.")
   except Exception as e:  # noqa: BLE001
-    return None, PLACEHOLDER_PREP, _error_md(e)
+    return None, None, PLACEHOLDER_PREP, _error_md(e)
 
 
 # --------------------------------------------------------------------------- #
@@ -362,14 +375,16 @@ def run_contin_u(systems: List[SystemCrop], doc_path: Optional[str], first_page:
   if not systems:
     systems, gallery, msg = detect_from_document(doc_path, first_page, last_page, dpi)
     if not systems:
-      return None, gallery, msg, systems
+      return None, None, gallery, msg, systems
   else:
     gallery = gr.skip()  # the list is already on screen; do not re-encode it inside the GPU budget
   try:
     res = ENGINE.contin_u(systems, seed=int(seed), attn_threshold=attn_thr, progress=_progress_adapter(progress))
-    return _audio_out(res), gallery, _status(res, f"{len(systems)} systems stitched with Contin-U."), systems
+    stem = f"contin-u_{Path(doc_path).stem if doc_path else 'score'}_seed{int(seed)}"
+    wav = _audio_out(res, stem)
+    return wav, wav, gallery, _status(res, f"{len(systems)} systems stitched with Contin-U."), systems
   except Exception as e:  # noqa: BLE001
-    return None, gallery, _error_md(e), systems
+    return None, None, gallery, _error_md(e), systems
 
 
 # --------------------------------------------------------------------------- #
@@ -443,13 +458,15 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
         midi_btn = gr.Button("Synthesize", variant="primary")
         midi_status = gr.Markdown()
       with gr.Column(scale=2):
-        midi_audio = gr.Audio(label="Generated audio (U-MusT)", type="numpy")
-        midi_ref = gr.Audio(label="Input MIDI rendered with a GM soundfont (FluidSynth reference)", type="numpy")
+        midi_audio = gr.Audio(label="Generated audio (U-MusT)", type="filepath", show_download_button=True)
+        midi_dl = gr.File(label="Download WAV")
+        midi_ref = gr.Audio(label="Input MIDI rendered with a GM soundfont (FluidSynth reference)", type="filepath",
+                            show_download_button=True)
         midi_roll = gr.Image(label="Input piano roll", interactive=False)
     gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude.mid")]], inputs=[midi_file], label="Example")
     midi_file.change(preview_midi, [midi_file], [midi_roll, midi_ref, midi_status])
     midi_btn.click(run_midi_to_audio, [midi_file, midi_window, midi_overlap, midi_max, midi_seed],
-                   [midi_audio, midi_status])
+                   [midi_audio, midi_dl, midi_status])
 
   # -------------------------------------------------------- image -> audio --- #
   with gr.Tab("3 · Image → Audio"):
@@ -464,14 +481,15 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
         i2a_btn = gr.Button("Generate audio", variant="primary")
         i2a_status = gr.Markdown()
       with gr.Column(scale=2):
-        i2a_audio = gr.Audio(label="Generated audio", type="numpy")
+        i2a_audio = gr.Audio(label="Generated audio", type="filepath", show_download_button=True)
+        i2a_dl = gr.File(label="Download WAV")
         with gr.Accordion("Detected systems", open=True):
           i2a_gallery = gr.HTML(PLACEHOLDER_DETECT)
         with gr.Accordion("Model input (staff-height normalized, binarized)", open=False):
           i2a_prep = gr.HTML(PLACEHOLDER_PREP)
     gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude_page1.png")]], inputs=[i2a_image], label="Example")
     i2a_image.change(detect_from_image, [i2a_image], [i2a_state, i2a_gallery, i2a_choice, i2a_status])
-    i2a_btn.click(run_image_to_audio, [i2a_state, i2a_choice, i2a_seed], [i2a_audio, i2a_prep, i2a_status])
+    i2a_btn.click(run_image_to_audio, [i2a_state, i2a_choice, i2a_seed], [i2a_audio, i2a_dl, i2a_prep, i2a_status])
 
   # --------------------------------------------------------------- Contin-U --- #
   with gr.Tab("4 · Contin-U (PDF → full performance)"):
@@ -504,7 +522,8 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
           cu_btn = gr.Button("Generate full audio", variant="primary")
         cu_status = gr.Markdown()
       with gr.Column(scale=2):
-        cu_audio = gr.Audio(label="Continuous performance", type="numpy")
+        cu_audio = gr.Audio(label="Continuous performance", type="filepath", show_download_button=True)
+        cu_dl = gr.File(label="Download WAV")
         with gr.Accordion("Systems in playback order", open=True):
           cu_gallery = gr.HTML(PLACEHOLDER_DOC)
     gr.Examples(examples=[[str(EXAMPLES_DIR / "bach_bwv846_prelude.pdf")]], inputs=[cu_doc],
@@ -512,7 +531,7 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
     cu_doc.change(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
     cu_detect.click(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
     cu_btn.click(run_contin_u, [cu_state, cu_doc, cu_first, cu_last, cu_dpi, cu_seed, cu_thr],
-                 [cu_audio, cu_gallery, cu_status, cu_state])
+                 [cu_audio, cu_dl, cu_gallery, cu_status, cu_state])
 
   gr.Markdown(
     "Paper: [IEEE TASLP 10.1109/TASLPRO.2025.3648794](https://doi.org/10.1109/TASLPRO.2025.3648794) · "
