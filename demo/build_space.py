@@ -29,7 +29,7 @@ SPACE_TEMPLATE = ROOT / "demo" / "space"
 
 CODE_DIRS = ["umust", "rqvae", "vocab"]
 CODE_FILES = ["app.py", "LICENSE"]
-DEMO_FILES = ["__init__.py", "engine.py", "weights.py"]
+DEMO_FILES = ["__init__.py", "engine.py", "weights.py", "synth.py"]
 EXAMPLE_GLOB = ["*.pdf", "*.mid", "*.png"]
 
 IGNORE = shutil.ignore_patterns("__pycache__", "*.pyc", "*.pt", "*.pth", "*.ckpt", ".DS_Store")
@@ -71,7 +71,7 @@ def assemble(out: Path) -> Path:
   for f in CODE_FILES:
     shutil.copy2(ROOT / f, out / f)
   (out / "demo").mkdir()
-  for f in DEMO_FILES:
+  for f in sorted(set(DEMO_FILES) | {p.name for p in (ROOT / "demo").glob("*.py")}):
     shutil.copy2(ROOT / "demo" / f, out / "demo" / f)
   (out / "demo" / "examples").mkdir()
   for pattern in EXAMPLE_GLOB:
