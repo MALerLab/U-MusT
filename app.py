@@ -15,6 +15,25 @@ On HF Spaces:  see demo/space/README.md
 from __future__ import annotations
 
 import os
+
+# --------------------------------------------------------------------------- #
+# optional ZeroGPU support — `spaces` must be imported before torch (or anything
+# that initializes CUDA), so this block sits above every other import
+# --------------------------------------------------------------------------- #
+ZEROGPU = False
+try:  # pragma: no cover - only present on Hugging Face Spaces
+  import spaces  # type: ignore
+  ZEROGPU = bool(os.environ.get("SPACE_ID"))
+
+  def gpu(duration):
+    """`duration` is seconds, or a callable of the wrapped function's arguments."""
+    return spaces.GPU(duration=duration)
+except ImportError:  # local run
+  def gpu(duration):  # noqa: ARG001
+    def deco(fn):
+      return fn
+    return deco
+
 import tempfile
 import traceback
 from pathlib import Path
@@ -35,23 +54,6 @@ from demo.engine import (
   piano_roll_image,
   render_musicxml_svg,
 )
-
-# --------------------------------------------------------------------------- #
-# optional ZeroGPU support
-# --------------------------------------------------------------------------- #
-ZEROGPU = False
-try:  # pragma: no cover - only present on Hugging Face Spaces
-  import spaces  # type: ignore
-  ZEROGPU = bool(os.environ.get("SPACE_ID"))
-
-  def gpu(duration):
-    """`duration` is seconds, or a callable of the wrapped function's arguments."""
-    return spaces.GPU(duration=duration)
-except ImportError:  # local run
-  def gpu(duration):  # noqa: ARG001
-    def deco(fn):
-      return fn
-    return deco
 
 # ZeroGPU compares the *requested* duration with the visitor's remaining daily
 # quota (2 min anonymous, 5 min free account, 40 min PRO), so budgets are kept
