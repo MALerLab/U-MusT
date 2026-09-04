@@ -9,7 +9,7 @@ python_version: "3.12"
 app_file: app.py
 pinned: false
 license: cc-by-nc-sa-4.0
-short_description: Score image / MIDI → piano audio, OMR, and Contin-U full-score synthesis
+short_description: Score image / MIDI → piano audio, OMR, and Contin-U
 models:
   - malerlab/u-must
   - malerlab/unirqvae3-ytsv
