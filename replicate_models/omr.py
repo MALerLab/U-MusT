@@ -1,6 +1,6 @@
 """Replicate model: optical music recognition (score image -> LMX -> MusicXML).
 
-Output files, in order:
+Output files (order may vary):
   transcription.musicxml   (when the systems could be joined into one score)
   transcription.lmx        Linearized MusicXML text, one block per system
   meta.json                {"n_systems", "lmx_tokens", "error"}

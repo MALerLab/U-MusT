@@ -16,7 +16,7 @@ score-video/audio data (YTSV-P).
 
 ## Outputs
 
-A list of files, in this order: `u-must.wav`, `meta.json` (`duration_sec`, `n_systems`, `notes`) and
+A list of files (order may vary): `u-must.wav`, `meta.json` (`duration_sec`, `n_systems`, `notes`) and
 `system_NN.png` (the system crops that were played, in order).
 
 ## Notes

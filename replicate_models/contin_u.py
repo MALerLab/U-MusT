@@ -1,6 +1,6 @@
 """Replicate model: Contin-U — a PDF piano score -> one continuous performance.
 
-Output files, in order:
+Output files (order may vary):
   contin-u.wav     the whole performance
   meta.json        {"duration_sec", "n_pages", "n_systems", "notes"}
   pPP_sSS.png      the system crops in playback order (page, system)

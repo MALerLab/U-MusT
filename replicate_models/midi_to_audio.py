@@ -1,6 +1,6 @@
 """Replicate model: performance MIDI -> piano audio.
 
-Output files, in order:
+Output files (order may vary):
   u-must.wav       the model's rendition
   reference.wav    the input MIDI played with a General MIDI soundfont (when `reference` is on)
   meta.json        {"duration_sec", "n_tokens", "notes"}

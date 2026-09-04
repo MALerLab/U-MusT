@@ -25,7 +25,7 @@ https://futuremirex.com/portal/wp-content/uploads/2025/rencon/Contin-U.pdf
 
 ## Outputs
 
-A list of files, in this order: `contin-u.wav` (the whole performance), `meta.json` (`duration_sec`, `n_pages`,
+A list of files (order may vary): `contin-u.wav` (the whole performance), `meta.json` (`duration_sec`, `n_pages`,
 `n_systems`, `notes`) and `pPP_sSS.png` (the system crops in playback order).
 
 ## Notes

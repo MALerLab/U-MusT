@@ -1,6 +1,6 @@
 """Replicate model: score image -> piano audio (direct image-to-audio).
 
-Output files, in order:
+Output files (order may vary):
   u-must.wav       generated audio
   meta.json        {"duration_sec", "n_systems", "notes"}
   system_NN.png    the system crops that were played, in order
