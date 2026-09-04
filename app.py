@@ -61,7 +61,7 @@ SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
 SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
 
 
-def _omr_budget(systems, choice, *_):
+def _omr_budget(systems, choice, *_, **__):
   return int(10 + SEC_PER_OMR_SYSTEM * max(1, len(_select(systems, choice))))
 
 
@@ -71,15 +71,15 @@ def _midi_windows(window_sec, overlap_sec, max_sec):
   return max(1, int(max_sec // max(window_sec - overlap_sec, 1)) + 1)
 
 
-def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_):
+def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_, **__):
   return int(min(10 + SEC_PER_WINDOW * _midi_windows(window_sec, overlap_sec, max_sec), 3600))
 
 
-def _i2a_budget(systems, choice, *_):
+def _i2a_budget(systems, choice, *_, **__):
   return int(10 + SEC_PER_WINDOW * max(1, len(_select(systems, choice)) - 1))
 
 
-def _contin_u_budget(systems, *_):
+def _contin_u_budget(systems, *_, **__):
   return int(min(10 + SEC_PER_WINDOW * max(1, len(systems) - 1), 3600))
 
 EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
