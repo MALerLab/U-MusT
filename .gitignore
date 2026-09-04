@@ -35,3 +35,4 @@ multirun/
 
 # cog build artifacts
 /.cog/
+/.gradio/
