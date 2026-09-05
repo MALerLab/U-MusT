@@ -2,7 +2,13 @@
 
 [![Paper](https://img.shields.io/badge/IEEE%20TASLP-10.1109%2FTASLPRO.2025.3648794-blue)](https://doi.org/10.1109/TASLPRO.2025.3648794)
 [![IEEE Xplore](https://img.shields.io/badge/IEEE%20Xplore-11316398-00629B)](https://ieeexplore.ieee.org/document/11316398)
-[![Demo](https://img.shields.io/badge/Demo-sakem.in%2Fu--must-green)](https://sakem.in/u-must/)
+[![Project Page](https://img.shields.io/badge/Project%20Page-sakem.in%2Fu--must-green)](https://sakem.in/u-must/)
+
+[![Hugging Face demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Interactive%20demo-yellow)](https://huggingface.co/spaces/sakemin/u-must-demo)
+[![Replicate OMR](https://img.shields.io/badge/Replicate-OMR-black?logo=replicate)](https://replicate.com/malerlab/u-must-omr)
+[![Replicate MIDI to Audio](https://img.shields.io/badge/Replicate-MIDI%20%E2%86%92%20Audio-black?logo=replicate)](https://replicate.com/malerlab/u-must-midi-to-audio)
+[![Replicate Image to Audio](https://img.shields.io/badge/Replicate-Image%20%E2%86%92%20Audio-black?logo=replicate)](https://replicate.com/malerlab/u-must-image-to-audio)
+[![Replicate Contin-U](https://img.shields.io/badge/Replicate-Contin--U%20(PDF%20%E2%86%92%20Audio)-black?logo=replicate)](https://replicate.com/malerlab/u-must-contin-u)
 
 Official implementation of
 > **U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio**<br>
