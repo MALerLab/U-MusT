@@ -2,8 +2,13 @@
 
 [![Paper](https://img.shields.io/badge/IEEE%20TASLP-10.1109%2FTASLPRO.2025.3648794-blue)](https://doi.org/10.1109/TASLPRO.2025.3648794)
 [![IEEE Xplore](https://img.shields.io/badge/IEEE%20Xplore-11316398-00629B)](https://ieeexplore.ieee.org/document/11316398)
-[![Demo](https://img.shields.io/badge/Demo-sakem.in%2Fu--must-green)](https://sakem.in/u-must/)
-[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-U--MusT%20demo-yellow)](https://huggingface.co/spaces/malerlab/u-must-demo)
+[![Project Page](https://img.shields.io/badge/Project%20Page-sakem.in%2Fu--must-green)](https://sakem.in/u-must/)
+
+[![Hugging Face demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Interactive%20demo-yellow)](https://huggingface.co/spaces/sakemin/u-must-demo)
+[![Replicate OMR](https://img.shields.io/badge/Replicate-OMR-black?logo=replicate)](https://replicate.com/malerlab/u-must-omr)
+[![Replicate MIDI to Audio](https://img.shields.io/badge/Replicate-MIDI%20%E2%86%92%20Audio-black?logo=replicate)](https://replicate.com/malerlab/u-must-midi-to-audio)
+[![Replicate Image to Audio](https://img.shields.io/badge/Replicate-Image%20%E2%86%92%20Audio-black?logo=replicate)](https://replicate.com/malerlab/u-must-image-to-audio)
+[![Replicate Contin-U](https://img.shields.io/badge/Replicate-Contin--U%20(PDF%20%E2%86%92%20Audio)-black?logo=replicate)](https://replicate.com/malerlab/u-must-contin-u)
 
 Official implementation of
 > **U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio**<br>
@@ -68,7 +73,7 @@ python app.py                                 # http://localhost:7860
 
 `app.py` loads the I2A piano checkpoint once and serves four tabs — **OMR** (score image → LMX → MusicXML, engraved with Verovio), **MIDI → Audio**, **Image → Audio**, and **Contin-U** (a PDF score → one continuous performance, see below). Weights are resolved the same way as for `infer.py` (`models/`, `vq_models/`, `dac_models/`, `yolo/`) and downloaded on first run when missing; set `HF_TOKEN` to a token with access to the gated weights. `UMUST_DEVICE`, `GRADIO_SERVER_PORT` and `UMUST_RUN_PATH` override the defaults. MusicXML input in the Contin-U tab needs MuseScore 3.6.2 (`./setup.sh`, or `MSCORE_PATH`); PDF input needs nothing beyond pip.
 
-The same app runs on Hugging Face Spaces: `python demo/build_space.py --push <owner>/u-must-demo --hardware t4-small --secret-token <token-with-weight-access>` assembles the Space (code, vocabularies, example score) and uploads it; see [`demo/space/README.md`](demo/space/README.md).
+The same app runs on Hugging Face Spaces ([sakemin/u-must-demo](https://huggingface.co/spaces/sakemin/u-must-demo)): `python demo/build_space.py --push <owner>/u-must-demo --hardware t4-small --secret-token <token-with-weight-access>` assembles the Space (code, vocabularies, example score) and uploads it; see [`demo/space/README.md`](demo/space/README.md).
 
 **Replicate.** Each task is also packaged as its own [Cog](https://github.com/replicate/cog) model for Replicate: `cog.omr.yaml`, `cog.midi-to-audio.yaml`, `cog.image-to-audio.yaml` and `cog.contin-u.yaml` at the repository root, with the predictors in `replicate_models/`. Weights are downloaded into the image at build time (the Hugging Face token is passed as a build secret, never stored in the image). `replicate_models/push.sh [owner] [task ...] [--test]` creates the models when missing, optionally runs a local `cog predict` smoke test on the example score, and pushes them; see the script header for the required environment variables.
 
