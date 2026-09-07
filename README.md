@@ -26,7 +26,7 @@ Everything below ships in this repository unless the Location column says otherw
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
 | Token-baking scripts | Reproduce the image/audio token datasets | `scripts/bake_image_tokens.py`, `scripts/bake_audio_tokens.py` |
 | **YTSV dataset** | **1,341 h of paired score-image/audio — the paper's main dataset** | **[MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset)** |
-| Translation-model weights | Three checkpoints — I2A piano, I2A strings, A2I | [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) |
+| Translation-model weights | Six checkpoints — three multi-task, three task-specific | [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) |
 | Tokenized datasets | Image and audio tokens for every corpus except GrandStaff | [Hugging Face](#released-weights-and-data) |
 
 ## How the pieces fit together
@@ -188,7 +188,7 @@ The translation weights are **gated**: publicly listed, with access granted on r
 
 | Repository | What | Access | License |
 |---|---|---|---|
-| [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) | translation weights, all three runs | gated | CC BY-NC-SA 4.0 |
+| [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) | translation weights, all six runs | gated | CC BY-NC-SA 4.0 |
 | [malerlab/unirqvae3-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae3-ytsv) | score-image codec, paper results | public | CC BY-NC-SA 4.0 |
 | [malerlab/unirqvae-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae-ytsv) | score-image codec, earlier generation | public | CC BY-NC-SA 4.0 |
 | [malerlab/unidac4-ytsv (Hugging Face)](https://huggingface.co/malerlab/unidac4-ytsv) | audio codec | public | CC BY-NC-SA 4.0 |
@@ -204,6 +204,23 @@ The translation weights are **gated**: publicly listed, with access granted on r
 GrandStaff tokens carry an unresolved upstream licensing position; read [Known issues](#known-issues) before relying on them. The GrandStaff and YTSV token repositories are sharded as one gzipped tar per collection group, because the uncompressed form runs to over a million small files — each dataset card documents the extraction.
 
 Licenses differ per repository because each follows the corpus it derives from; see [License summary](#license-summary).
+
+### Which checkpoint is which
+
+Six runs are published. The multi-task models are the ones reported throughout the paper; the task-specific models are fine-tuned from them for the per-task numbers.
+
+| Run directory | Task | Image codec |
+|---|---|---|
+| `run-20250225_062905-9n1554as` | Image-to-Audio, multi-task, piano | `unirqvae3` |
+| `run-20250130_150202-x9znhap2` | Image-to-Audio, multi-task, multi-instrument | `unirqvae` |
+| `run-20250128_025927-ks0ibl4v` | Audio-to-Image, multi-task | `unirqvae` |
+| `run-20250302_101330-hhpxlltr` | Optical music recognition, fine-tuned (`singletask:p2l`) | `unirqvae3` |
+| `run-20250302_101041-b3eh34vt` | Automatic music transcription, fine-tuned (`singletask:d2m`) | `unirqvae3` |
+| `run-20250330_182257-cogdba9o` | MIDI-to-audio synthesis, fine-tuned (`singletask:m2d`) | `unirqvae3` |
+
+The MIDI-to-audio model is the M2A stage of the paper's **multi-stage** pipeline: over 427 BPSD segments it reproduces the Table IV "Multi-stage: OMR + I2A + M2A" row exactly, at onset F1 50.91 / 70.40 / 79.96 for 50 / 100 / 200 ms tolerance. It is a different model from the "MIDI-to-Audio Only" row of Table VI. Which iteration of that run the paper used is not recorded in its artifacts; the published checkpoint is the final iteration, and the runner-up differed in validation loss by 0.0017, within noise.
+
+Note the codec column: two of the six expect `unirqvae` while every published image-token dataset is `unirqvae3`. See [Known issues](#known-issues).
 
 Every script that loads a translation model takes a run directory laid out as `<run_dir>/files/config.yaml` plus `<run_dir>/files/checkpoints/*.pt`, which is what `train_multimodal.py` writes. Pass it with `--run_path` to `infer.py` and the evaluation scripts. `infer.py` also accepts `--instrument {piano,strings}` with `--models_dir`, which resolves a fixed run-directory name under that parent; `--run_path` takes precedence and is the right flag for a model you trained yourself. The tokenizer is read from the run's own `config.data.vq_model`, so runs of either tokenizer generation load correctly.
 
