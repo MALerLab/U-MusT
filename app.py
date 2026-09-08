@@ -59,15 +59,27 @@ from demo.engine import (
 )
 
 # ZeroGPU compares the *requested* duration with the visitor's remaining daily
-# quota (2 min anonymous, 5 min free account, 40 min PRO), so budgets are kept
-# tight: one autoregressive window (<= 20 s of audio) costs about
-# UMUST_SEC_PER_WINDOW seconds of GPU time. Raise it if tasks get cut off.
-SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "40"))
+# quota (2 min anonymous, 5 min free account, 40 min PRO) and refuses anything
+# above the per-task ceiling, so budgets are kept tight: one autoregressive
+# window (<= 20 s of audio) costs about UMUST_SEC_PER_WINDOW seconds of GPU
+# time. Raise it if tasks get cut off, and UMUST_GPU_MAX_SEC on an account
+# whose ceiling is higher.
+SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
 SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
+GPU_MAX_SEC = float(os.environ.get("UMUST_GPU_MAX_SEC", "290" if ZEROGPU else "3600"))
+
+
+def _budget(seconds: float) -> int:
+  return int(min(max(seconds, 10.0), GPU_MAX_SEC))
+
+
+def _windows_per_task() -> int:
+  """Generation windows that fit one GPU task."""
+  return max(1, int((GPU_MAX_SEC - 10) // SEC_PER_WINDOW))
 
 
 def _omr_budget(systems, choice, *_, **__):
-  return int(10 + SEC_PER_OMR_SYSTEM * max(1, len(_select(systems, choice))))
+  return _budget(10 + SEC_PER_OMR_SYSTEM * max(1, len(_select(systems, choice))))
 
 
 def _midi_windows(window_sec, overlap_sec, max_sec):
@@ -76,16 +88,27 @@ def _midi_windows(window_sec, overlap_sec, max_sec):
   return max(1, int(max_sec // max(window_sec - overlap_sec, 1)) + 1)
 
 
+def midi_render_limit(window_sec, overlap_sec) -> float:
+  """Longest stretch of MIDI one GPU task can render at this window length.
+
+  A shorter window means more windows for the same music, so the fine-tuned
+  MIDI-to-audio run (9.5 s windows) reaches the ceiling sooner than the
+  multi-task run (18 s).
+  """
+  hop = max(float(window_sec) - float(overlap_sec), 1.0)
+  return max(float(window_sec), (_windows_per_task() - 1) * hop)
+
+
 def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_, **__):
-  return int(min(10 + SEC_PER_WINDOW * _midi_windows(window_sec, overlap_sec, max_sec), 3600))
+  return _budget(10 + SEC_PER_WINDOW * _midi_windows(window_sec, overlap_sec, max_sec))
 
 
 def _i2a_budget(systems, choice, *_, **__):
-  return int(10 + SEC_PER_WINDOW * max(1, len(_select(systems, choice)) - 1))
+  return _budget(10 + SEC_PER_WINDOW * max(1, len(_select(systems, choice)) - 1))
 
 
 def _contin_u_budget(systems, *_, **__):
-  return int(min(10 + SEC_PER_WINDOW * max(1, len(systems) - 1), 3600))
+  return _budget(10 + SEC_PER_WINDOW * max(1, len(systems) - 1))
 
 EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
 OUT_DIR = Path(tempfile.mkdtemp(prefix="umust_demo_"))
@@ -108,6 +131,7 @@ MIDI_WINDOW_MAX = round(ENGINE_MIDI.midi_window_limit_sec(), 1)
 MIDI_OVERLAP_DEFAULT = min(2.0, round(MIDI_WINDOW_MAX / 4, 1))
 MIDI_WINDOW_DEFAULT = round(ENGINE_MIDI.midi_window_default_sec(MIDI_OVERLAP_DEFAULT), 1)
 MIDI_SLICE_LEN = float(ENGINE_MIDI.config.data.get("midi_slice_len", 20) or 20)
+MIDI_RENDER_LIMIT = midi_render_limit(MIDI_WINDOW_DEFAULT, MIDI_OVERLAP_DEFAULT)
 print(f"Loaded {ENGINE.checkpoint_name} (image-to-audio, Contin-U), {ENGINE_OMR.checkpoint_name} (OMR), "
       f"{ENGINE_MIDI.checkpoint_name} (MIDI-to-audio, window <= {MIDI_WINDOW_MAX}s) on {ENGINE.device}; MuseScore: {MSCORE or 'not found'}")
 
@@ -327,11 +351,16 @@ def run_midi_to_audio(midi_path: Optional[str], window_sec: float, overlap_sec: 
   if not midi_path:
     return None, None, "Upload a MIDI file first."
   try:
+    limit = midi_render_limit(window_sec, overlap_sec)
+    requested = float(max_sec) if max_sec and max_sec > 0 else None
+    capped = GPU_MAX_SEC < 3600 and (requested is None or requested > limit)
     res = ENGINE_MIDI.midi_to_audio(midi_path, window_sec=window_sec, overlap_sec=overlap_sec,
-                               max_duration_sec=max_sec if max_sec > 0 else None, seed=int(seed),
+                               max_duration_sec=limit if capped else requested, seed=int(seed),
                                progress=_progress_adapter(progress))
     wav = _audio_out(res, f"{Path(midi_path).stem}_u-must_seed{int(seed)}")
-    return wav, wav, _status(res)
+    extra = (f"Rendering stops at {limit:.0f} s: that is what one GPU task allows with "
+             f"{window_sec:g} s windows here." if capped else "")
+    return wav, wav, _status(res, extra)
   except Exception as e:  # noqa: BLE001
     return None, None, _error_md(e)
 
@@ -470,7 +499,8 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
                                 label=f"Window length (s) — this checkpoint was fine-tuned on {MIDI_SLICE_LEN:g} s slices")
         midi_overlap = gr.Slider(0, max(1.0, round(MIDI_WINDOW_MAX / 3, 1)), value=MIDI_OVERLAP_DEFAULT, step=0.5,
                                  label="Overlap / conditioning length (s)")
-        midi_max = gr.Slider(0, 300, value=20 if ZEROGPU else 60, step=10, label="Max duration to render (s, 0 = whole file)")
+        midi_max = gr.Slider(0, round(MIDI_RENDER_LIMIT) if ZEROGPU else 300, value=20 if ZEROGPU else 60, step=10,
+                             label="Max duration to render (s, 0 = whole file)")
         midi_seed = gr.Number(value=0, precision=0, label="Seed")
         midi_btn = gr.Button("Synthesize", variant="primary")
         midi_status = gr.Markdown()
