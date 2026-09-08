@@ -20,8 +20,8 @@ COMMON = {
   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
 }
 DESCRIPTIONS = {
-  "u-must-omr": "Optical music recognition for piano scores: a page or system image → Linearized MusicXML and MusicXML, engraved back to images (U-MusT, IEEE TASLP 2026).",
-  "u-must-midi-to-audio": "Piano audio synthesized from a performance MIDI file by the U-MusT translation model, with a plain soundfont rendering returned for comparison.",
+  "u-must-omr": "Optical music recognition for piano scores with the OMR fine-tuned U-MusT checkpoint: a page or system image → Linearized MusicXML and MusicXML, engraved back to images (IEEE TASLP 2026).",
+  "u-must-midi-to-audio": "Piano audio synthesized from a performance MIDI file by the MIDI-to-audio fine-tuned U-MusT checkpoint, with a plain soundfont rendering returned for comparison.",
   "u-must-image-to-audio": "Direct score-image-to-audio: a piano score page or system → performance audio with no symbolic step in between (U-MusT, IEEE TASLP 2026).",
   "u-must-contin-u": "Contin-U: a whole PDF piano score → one continuous performance, via the two-system sliding window of the U-MusT image-to-audio model (RenCon 2025 / MIREX).",
 }
