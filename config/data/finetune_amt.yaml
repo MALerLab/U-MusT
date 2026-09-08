@@ -1,9 +1,11 @@
 data_path: [
+  # name, path, modal_types, max weight, (start iter, max iter)
+  ['musicnet', 'musicnet/', ['midi', 'dac'], 2.0, [0,0]],
   ['maestro', 'maestro/', ['midi', 'dac'], 1.0, [0,0]],
 ]
 data_dir: dataset/
 metadata_dir: dataset_pair_paths
-exp_name: singletask:m2d
+exp_name: singletask:d2m
 
 dataset: MultimodalTokenDatasetMaker
 bucket:
@@ -17,11 +19,11 @@ codebook_size: 1024
 num_special_tokens: 1 #For multimodal_trans, this must be 1 since there is a universal pad token. single sos/eos token for each modality.
 image_height: 416 # max input height
 image_compress_factor: 16
-midi_max_shift: 2001
-in_modal_type: ['midi']
-out_modal_type: ['dac']
-modal_direction: 'omr'
-midi_slice_len: 10 # the released MIDI-to-audio fine-tune (run-20250330_182257-cogdba9o) records 10 s slices
+midi_max_shift: 1001
+in_modal_type: ['dac']
+out_modal_type: ['midi']
+modal_direction: 'amt'
+midi_slice_len: 10 # the released AMT fine-tune (run-20250302_101041-b3eh34vt) records 10 s slices
 lmx_vocab_path: vocab/lmx_vocab_singletoken.txt
 out_pt_height_token: True
 
