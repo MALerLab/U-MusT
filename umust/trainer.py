@@ -27,7 +27,7 @@ import wandb
 
 from .model_zoo import LatentScoreAMT, PianoRollAMT, LMX2VQAMT
 from . import data_utils
-from .data_utils import audio_token_collate_fn, pianoroll_collate_fn, lmx_vq_collate_fn, multimodal_collate_fn, CustomDistributedSampler, DistributedEvalSampler, MultimodalTokenDataset
+from .data_utils import audio_token_collate_fn, pianoroll_collate_fn, lmx_vq_collate_fn, multimodal_collate_fn, encoder_input_codebooks, CustomDistributedSampler, DistributedEvalSampler, MultimodalTokenDataset
 from .vocab_utils import VQVocab, RVQVocab
 from .lmx_utils import delinearize_lmx, render_xml_with_musescore
 from .evaluation_utils import LayerPeeper, use_attn_weights, draw_attention_map, Evaluator
@@ -456,10 +456,19 @@ class MultimodalTrainer(BaseTrainer):
     return modal_pairs, keys2idx
   
   def collate_wrapper(self, batch):
+    # The encoder input width comes from the recipe, not from the modalities a
+    # particular batch happens to draw, so a checkpoint always expects the same
+    # layout at inference (see encoder_input_codebooks).
+    if not hasattr(self, 'encoder_in_codebook'):
+      self.encoder_in_codebook = encoder_input_codebooks(self.config.data.get('data_path'),
+                                                         self.config.data.get('modal_direction', 'omr'),
+                                                         self.config.data.n_codebook)
+    in_n_codebook = self.encoder_in_codebook
     if hasattr(self.config.nn_params, 'compile') and self.config.nn_params.compile:
-      return multimodal_collate_fn(batch, self.loss_fn.n_codebook, self.in_vocab.max_tok_len, self.out_vocab.max_tok_len)
+      return multimodal_collate_fn(batch, self.loss_fn.n_codebook, self.in_vocab.max_tok_len, self.out_vocab.max_tok_len,
+                                   in_n_codebook=in_n_codebook)
     else:
-      return multimodal_collate_fn(batch, self.loss_fn.n_codebook)
+      return multimodal_collate_fn(batch, self.loss_fn.n_codebook, in_n_codebook=in_n_codebook)
 
         
   # def check_batch_size_fit_gpu(self):

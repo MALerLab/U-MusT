@@ -96,9 +96,53 @@ def lmx_vq_collate_fn(batch, lmx_pad_idx, vq_pad_idx, rvq=False):
   lmx_masks = torch.arange(lmx_tokens.shape[-1]).expand(len(batch), lmx_tokens.shape[-1]) < torch.tensor(lmx_lengths).unsqueeze(1)
   return lmx_tokens, lmx_masks, torch.cat(vq_tokens, dim=0).long()
 
-def multimodal_collate_fn(batch, target_n_codebook, max_len=None, max_out_len=None):
+# Translation chain of the 'omr' direction; 'amt' runs it backwards, and a
+# bidirectional run can start anywhere. A modality's tokens occupy one codebook
+# (MIDI, notation) or n_codebook of them (score images, audio).
+MODAL_CHAIN = ('pt', 'lmx', 'midi', 'dac')
+WIDE_MODALITIES = frozenset({'pt', 'dac'})
+
+
+def training_input_modalities(data_path, modal_direction='omr'):
+  """Modalities a recipe puts on the encoder side, one per dataset entry.
+
+  `MultimodalTokenDataset._get_modal_types` picks the input of a pair by its
+  place in the translation chain; this reads the same choice off the recipe
+  without loading any data.
+  """
+  direction = str(modal_direction or 'omr')
+  order = tuple(reversed(MODAL_CHAIN)) if direction == 'amt' else MODAL_CHAIN
+  inputs = set()
+  for entry in data_path or []:
+    kinds = [m for m in (entry[2] if len(entry) > 2 else []) if m in MODAL_CHAIN]
+    if not kinds:
+      continue
+    inputs.update(kinds if direction == 'bi' else [min(kinds, key=order.index)])
+  return inputs
+
+
+def encoder_input_codebooks(data_path, modal_direction, n_codebook):
+  """How many codebook columns the encoder input rows of this recipe have.
+
+  A batch is padded to the widest input it holds, so a recipe that mixes score
+  images or audio into the encoder side gives even its MIDI and notation rows
+  n_codebook columns, while a single-task MIDI-to-audio or OMR fine-tune keeps
+  one. The encoder embedding sums over that dimension, so a model trained one
+  way and fed the other way silently reads every token wrong: pass this width
+  to `multimodal_collate_fn` (and to any hand-built batch) instead of relying
+  on what a particular batch happens to contain.
+  """
+  inputs = training_input_modalities(data_path, modal_direction)
+  if not inputs:                                  # recipe unknown: the widest layout
+    return int(n_codebook)
+  return int(n_codebook) if inputs & WIDE_MODALITIES else 1
+
+
+def multimodal_collate_fn(batch, target_n_codebook, max_len=None, max_out_len=None, in_n_codebook=None):
   in_modal, target_in, target_out, modal_types, token_heights, in_pos, target_in_pos = zip(*batch)
-  max_codebook = max([x.shape[1] for x in in_modal])
+  # `in_n_codebook` (from encoder_input_codebooks) keeps the width the model was
+  # trained with even when a batch holds only narrow inputs.
+  max_codebook = max([x.shape[1] for x in in_modal] + [int(in_n_codebook or 0)])
   if max_len is None:
     max_len = max([x.shape[0] for x in in_modal])
   if max_out_len is None:
@@ -402,6 +446,7 @@ class MultimodalTokenDatasetMaker():
     self.modal_direction = modal_direction
     self.num_measure_to_slice = num_measure_to_slice
     self.midi_slice_len = midi_slice_len
+    self.encoder_in_codebook = encoder_input_codebooks(data_path, modal_direction, n_codebook)
 
     self.in_idx_handler, self.out_idx_handler = self.get_vocab(num_special_tokens, n_codebook, codebook_size, max_seq_len, max_pt_x_len, image_height, image_compress_factor, midi_max_shift, tps, lmx_vocab_path)
 
@@ -605,7 +650,8 @@ class MultimodalTokenDatasetMaker():
       path_pairs['asap'] = [pair for pair in path_pairs['asap'] if 'dac' in pair.keys()]
     test_dataset = TestDataset(path_pairs, self.max_seq_len, (self.in_idx_handler, self.out_idx_handler), self.in_modal_type, self.out_modal_type, is_valid=True, modal_direction=self.modal_direction, num_measure_to_slice=self.num_measure_to_slice, midi_slice_len=self.midi_slice_len)
     test_dataset.set_inout_modal(in_modal, out_modal)
-    return torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=shuffle, collate_fn=lambda x: multimodal_collate_fn(x, self.n_codebook))
+    return torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=shuffle,
+                                       collate_fn=lambda x: multimodal_collate_fn(x, self.n_codebook, in_n_codebook=self.encoder_in_codebook))
 
 class MultimodalTokenDataset():
   modal_order = {'pt': 0, 'lmx': 1, 'midi': 2, 'dac': 3}
