@@ -194,7 +194,7 @@ The translation weights are **gated**: publicly listed, with access granted on r
 
 | Repository | What | Access | License |
 |---|---|---|---|
-| [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) | translation weights, all three runs | gated | CC BY-NC-SA 4.0 |
+| [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) | translation weights, all three main runs + task-specific fine-tuned checkpoints | gated | CC BY-NC-SA 4.0 |
 | [malerlab/unirqvae3-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae3-ytsv) | score-image codec, paper results | public | CC BY-NC-SA 4.0 |
 | [malerlab/unirqvae-ytsv (Hugging Face)](https://huggingface.co/malerlab/unirqvae-ytsv) | score-image codec, earlier generation | public | CC BY-NC-SA 4.0 |
 | [malerlab/unidac4-ytsv (Hugging Face)](https://huggingface.co/malerlab/unidac4-ytsv) | audio codec | public | CC BY-NC-SA 4.0 |
