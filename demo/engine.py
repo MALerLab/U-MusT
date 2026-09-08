@@ -39,6 +39,7 @@ from umust.utils import (
   get_vq_model,
   load_model_state_dict,
 )
+from umust.data_utils import encoder_input_codebooks
 from umust.vocab_utils import LMXVocab, RVQVocab, TokenIdxHandler
 from umust.midi_utils.tokenizer import NoteEventTokenizer
 from umust.midi_utils.midi import midi2note
@@ -285,37 +286,11 @@ class UMusTEngine:
     self.sep_token_id = self.in_handler.img_crop_cat_sep_idx if "pt" in keys_in else None
     # MIDI shift tokens cover (midi_max_shift - 1) / tps seconds; windows must stay inside
     self.midi_max_window_sec = (int(self.config.data.get("midi_max_shift", 2001)) - 1) / float(self.config.data.get("tps", 100))
-    self.midi_input_codebooks = self._midi_input_codebooks()
-
-  def _midi_input_codebooks(self) -> int:
-    """How wide the encoder input rows were when this run saw MIDI.
-
-    A MIDI token occupies one codebook, an image or audio token four, and the
-    collate function pads every input of a batch to the widest one in it
-    (`multimodal_collate_fn` in umust/data_utils.py). A run trained on MIDI
-    together with score images therefore saw MIDI rows padded with three zeros,
-    while a MIDI-only fine-tune saw one-column rows. The encoder embedding sums
-    over the codebook dimension, so feeding the other width adds (or drops)
-    three times the pad embedding on every token and the rendered performance
-    drifts out of time with the score.
-
-    The width follows from the datasets the run was trained on: the input side
-    of each pair, resolved the way the dataset does it (`modal_direction`
-    picks the modality earliest in the translation chain).
-    """
-    order = ("pt", "lmx", "midi", "dac")                          # 'omr' direction
-    direction = str(self.config.data.get("modal_direction", "omr") or "omr")
-    if direction == "amt":
-      order = tuple(reversed(order))
-    inputs = set()
-    for entry in self.config.data.get("data_path") or []:
-      kinds = [m for m in (entry[2] if len(entry) > 2 else []) if m in order]
-      if not kinds:
-        continue
-      inputs.update(kinds if direction == "bi" else [min(kinds, key=order.index)])
-    if not inputs:                                                # unknown recipe: the multi-task layout
-      return int(self.config.data.n_codebook)
-    return int(self.config.data.n_codebook) if inputs & {"pt", "dac"} else 1
+    # How wide the encoder input rows were when this run saw MIDI: one column
+    # for a MIDI-only fine-tune, n_codebook for a run whose batches also held
+    # score images (umust.data_utils.encoder_input_codebooks).
+    self.midi_input_codebooks = encoder_input_codebooks(
+      self.config.data.get("data_path"), self.config.data.get("modal_direction", "omr"), self.config.data.n_codebook)
 
   @staticmethod
   def _codebook_embeddings_vq(vq_model):
