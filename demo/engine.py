@@ -76,6 +76,12 @@ def load_run_config(run_path: Path) -> OmegaConf:
     config.data.data_dir = "dummy"
     config.data.vq_model_dir = str(W.vq_models_dir())
     config.data.dac_model_dir = str(W.dac_models_dir())
+  # Fine-tuned runs record finetune_params.finetune=True with the path of the
+  # run they started from; we load this run's own checkpoint instead.
+  with open_dict(config):
+    if "finetune_params" not in config:
+      config.finetune_params = {}
+    config.finetune_params.finetune = False
   return config
 
 
@@ -162,19 +168,43 @@ class AudioResult:
 # --------------------------------------------------------------------------- #
 
 class UMusTEngine:
-  def __init__(self, run_path: Optional[Path] = None, device: Optional[str] = None, download: bool = True):
+  """One translation run plus the codecs it needs.
+
+  `run_name` selects a run directory under the models directory (the default
+  is the multi-task piano run); `run_path` overrides it with an explicit
+  directory. Task-specific fine-tuned runs may declare fewer modalities (e.g.
+  OMR: image -> notation only), so `supports(task)` tells which of the demo
+  tasks a run can serve. Codecs can be shared between engines with
+  `vq_model` / `dac_model`."""
+
+  def __init__(self, run_path: Optional[Path] = None, device: Optional[str] = None, download: bool = True,
+               run_name: Optional[str] = None, vq_model=None, dac_model=None):
     self.device = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
+    self.run_name = run_name or W.PIANO_RUN
     if run_path is None:
-      run_path = W.resolve_run_path()
+      run_path = W.resolve_run_path(self.run_name)
     run_path = Path(run_path)
     if download:
-      run_path, _, _ = W.ensure_all(config=load_run_config(run_path) if W.run_is_complete(run_path) else None)
+      run_path, _, _ = W.ensure_all(self.run_name, config=load_run_config(run_path) if W.run_is_complete(run_path) else None)
     self.run_path = run_path
     self.config = load_run_config(run_path)
 
     self.in_handler, self.out_handler = build_idx_handlers(self.config)
-    vq_model, vq_emb = get_vq_model(self.config)
-    dac_model, dac_emb = get_dac_model(self.config)
+    vq_emb, dac_emb = None, None
+    if self.config.data.get("vq_model"):
+      if vq_model is None:
+        vq_model, vq_emb = get_vq_model(self.config)
+      else:
+        _, vq_emb = self._codebook_embeddings_vq(vq_model)
+    else:
+      vq_model = None
+    if self.config.data.get("dac_model"):
+      if dac_model is None:
+        dac_model, dac_emb = get_dac_model(self.config)
+      else:
+        _, dac_emb = self._codebook_embeddings_dac(dac_model)
+    else:
+      dac_model = None
     dataset_ns = SimpleNamespace(in_idx_handler=self.in_handler, out_idx_handler=self.out_handler)
     model = get_model(self.config, vq_emb, dac_emb, dataset_ns)
 
@@ -187,27 +217,65 @@ class UMusTEngine:
     self.checkpoint_name = ckpt_path.name
 
     self.model = model.eval().to(self.device)
-    self.vq_model = vq_model.eval().to(self.device)
-    self.dac_model = dac_model.eval().to(self.device)
+    self.vq_model = vq_model.eval().to(self.device) if vq_model is not None else None
+    self.dac_model = dac_model.eval().to(self.device) if dac_model is not None else None
     self._yolo_system = None
     self._yolo_staff = None
     # The detectors are cheap; running them on CPU keeps them usable outside
     # GPU-decorated functions on ZeroGPU and off the model's GPU elsewhere.
     self.yolo_device = os.environ.get("UMUST_YOLO_DEVICE", "cpu")
 
-    self.vq_version = self.config.data.vq_model
+    self.vq_version = self.config.data.get("vq_model") or "unirqvae3"
     self.target_staff_height = 18 if self.vq_version == "unirqvae3" else 20
     self.max_token_height = self.in_handler.max_token_height
     self.compress = self.config.data.image_compress_factor
 
     keys_in, keys_out = self.in_handler.vocab_keys, self.out_handler.vocab_keys
+    def _index(keys, name):
+      return keys.index(name) if name in keys else None
     self.idx = SimpleNamespace(
-      pt_in=keys_in.index("pt"), midi_in=keys_in.index("midi"),
-      lmx_out=keys_out.index("lmx"), dac_out=keys_out.index("dac"),
+      pt_in=_index(keys_in, "pt"), midi_in=_index(keys_in, "midi"),
+      lmx_out=_index(keys_out, "lmx"), dac_out=_index(keys_out, "dac"),
     )
     self.max_len = dict(self.config.data.max_seq_len)
-    self.midi_tokenizer: NoteEventTokenizer = self.in_handler.vocabs["midi"]
-    self.sep_token_id = self.in_handler.img_crop_cat_sep_idx
+    self.midi_tokenizer: Optional[NoteEventTokenizer] = self.in_handler.vocabs.get("midi")
+    self.sep_token_id = self.in_handler.img_crop_cat_sep_idx if "pt" in keys_in else None
+    # MIDI shift tokens cover (midi_max_shift - 1) / tps seconds; windows must stay inside
+    self.midi_max_window_sec = (int(self.config.data.get("midi_max_shift", 2001)) - 1) / float(self.config.data.get("tps", 100))
+
+  @staticmethod
+  def _codebook_embeddings_vq(vq_model):
+    """Codebook vectors used to initialize the token embeddings (as in
+    umust.utils.get_vq_model), on CPU because the model is built there."""
+    emb = {i: vq_model.quantizer.codebooks[i].weight.detach().cpu().clone()[:1024]
+           for i in range(len(vq_model.quantizer.codebooks))}
+    return vq_model, emb
+
+  @staticmethod
+  def _codebook_embeddings_dac(dac_model):
+    emb = {}
+    for i, q in enumerate(dac_model.quantizer.quantizers):
+      weight = q.out_proj.weight.detach().cpu().clone()
+      bias = q.out_proj.bias.detach().cpu().clone()
+      codebook = q.codebook.weight.detach().cpu().clone()
+      emb[i] = (weight.squeeze(-1) @ codebook.T).T + bias
+    return dac_model, emb
+
+  def supports(self, task: str) -> bool:
+    """Which demo tasks this run can serve: omr, image_to_audio, contin_u, midi_to_audio."""
+    has_pt, has_midi = self.idx.pt_in is not None, self.idx.midi_in is not None
+    has_lmx, has_dac = self.idx.lmx_out is not None, self.idx.dac_out is not None and self.dac_model is not None
+    return {
+      "omr": has_pt and has_lmx and self.vq_model is not None,
+      "image_to_audio": has_pt and has_dac and self.vq_model is not None,
+      "contin_u": has_pt and has_dac and self.vq_model is not None,
+      "midi_to_audio": has_midi and has_dac and self.midi_tokenizer is not None,
+    }.get(task, False)
+
+  def _require(self, task: str):
+    if not self.supports(task):
+      raise ValueError(f"run {self.run_name} ({self.checkpoint_name}) does not support {task}: "
+                       f"inputs {self.in_handler.vocab_keys}, outputs {self.out_handler.vocab_keys}")
 
   # ----------------------------------------------------------------------- #
   # YOLO: system detection and staff-height estimation
@@ -386,6 +454,7 @@ class UMusTEngine:
   # ----------------------------------------------------------------------- #
   @torch.no_grad()
   def omr_system(self, crop_rgb: np.ndarray, greedy: bool = True, temperature: float = 0.1, seed: int = 0) -> str:
+    self._require("omr")
     pt, _ = self.tokenize_system(crop_rgb)
     in_modal, in_pos, in_mask, height = self._pt_batch([pt])
     out = self._generate(
@@ -419,6 +488,7 @@ class UMusTEngine:
   @torch.no_grad()
   def image_to_audio(self, systems: Sequence[SystemCrop], seed: int = 0,
                      progress: ProgressFn = _noop_progress) -> AudioResult:
+    self._require("image_to_audio")
     if len(systems) == 0:
       raise ValueError("no system images given")
     if len(systems) > 2:
@@ -442,6 +512,7 @@ class UMusTEngine:
   @torch.no_grad()
   def contin_u(self, systems: Sequence[SystemCrop], seed: int = 0, attn_threshold: float = 0.5,
                min_run: int = 3, progress: ProgressFn = _noop_progress) -> AudioResult:
+    self._require("contin_u")
     n = len(systems)
     if n == 0:
       raise ValueError("no system images given")
@@ -504,6 +575,14 @@ class UMusTEngine:
   # ----------------------------------------------------------------------- #
   # task 4: MIDI -> audio (windowed, audio-prefix conditioned)
   # ----------------------------------------------------------------------- #
+  def midi_window_limit_sec(self) -> float:
+    """Longest MIDI window this run can render: the decoder's audio-token
+    budget (minus SOS/EOS margin) and the MIDI shift-token range, whichever is
+    shorter. 20.2 s for the multi-task piano run; shorter for the single-task
+    MIDI-to-audio run, which was fine-tuned on 5 s slices."""
+    budget = (self.max_len["dac"] - 8) / DAC_TOKENS_PER_SEC
+    return float(min(budget, self.midi_max_window_sec))
+
   def load_midi_notes(self, midi_path: str):
     notes, duration = midi2note(
       midi_path, binary_velocity=True, ch_9_as_drum=False, force_all_drum=False, force_all_program_to=0,
@@ -549,12 +628,13 @@ class UMusTEngine:
     prefix (`condition`), which keeps the performance continuous across the
     seams. A short final window is extended backwards to a full-length one.
     """
+    self._require("midi_to_audio")
     notes, note_events, duration = self.load_midi_notes(midi_path)
     if not notes:
       raise ValueError("the MIDI file contains no notes")
     rate = DAC_TOKENS_PER_SEC
-    max_window = (self.max_len["dac"] - 8) / rate                  # ~20.2 s incl. SOS/EOS margin
-    window_sec = float(min(max(window_sec, 2.0), max_window))
+    max_window = self.midi_window_limit_sec()
+    window_sec = float(min(max(window_sec, 1.0), max_window))
     overlap_sec = float(min(max(overlap_sec, 0.0), window_sec / 2))
     total = duration if max_duration_sec is None else min(duration, float(max_duration_sec))
 

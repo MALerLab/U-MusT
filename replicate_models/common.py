@@ -28,8 +28,16 @@ os.environ.setdefault("UMUST_YOLO_DEVICE", "cpu")
 from demo.engine import AudioResult, SystemCrop, UMusTEngine, load_image_rgb, pdf_to_page_images  # noqa: E402
 
 
+def run_name_for_image() -> Optional[str]:
+  """The run baked into this image (written by the cog.yaml build step)."""
+  marker = _WEIGHTS / "run_name.txt"
+  if marker.exists():
+    return marker.read_text().strip() or None
+  return os.environ.get("UMUST_RUN_NAME") or None
+
+
 def load_engine() -> UMusTEngine:
-  return UMusTEngine(device="cuda", download=False)
+  return UMusTEngine(device="cuda", download=False, run_name=run_name_for_image())
 
 
 def out_dir() -> Path:

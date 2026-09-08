@@ -22,7 +22,12 @@ import requests
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-PIANO_RUN = "run-20250225_062905-9n1554as"
+PIANO_RUN = "run-20250225_062905-9n1554as"          # multi-task I2A piano run (OMR + M2A + I2A)
+# Task-specific fine-tuned runs (50k further steps at 1e-5, paper Sec. VII-B),
+# selected by the demo through UMUST_RUN_OMR / UMUST_RUN_MIDI; the multi-task
+# run stays the default for every task until they are configured.
+OMR_RUN = os.environ.get("UMUST_RUN_OMR", "")
+MIDI_RUN = os.environ.get("UMUST_RUN_MIDI", "")
 # Hub repository holding the translation weights. Override with
 # UMUST_HF_WEIGHTS_REPO to point a Space at a mirror the deploying account can
 # read (the run directory layout must be the same).
@@ -69,7 +74,7 @@ def resolve_run_path(run_name: str = PIANO_RUN) -> Path:
   Accepts both `models/<run>/files/...` and the `models/<run>/<run>/files/...`
   layout produced by unzipping the archived release."""
   explicit = os.environ.get("UMUST_RUN_PATH")
-  if explicit:
+  if explicit and run_name == PIANO_RUN:
     return Path(explicit).expanduser().resolve()
   base = models_dir() / run_name
   nested = base / run_name

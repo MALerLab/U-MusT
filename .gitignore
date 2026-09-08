@@ -37,3 +37,4 @@ multirun/
 /.cog/
 /.gradio/
 /output.*
+/cog.*.build.yaml

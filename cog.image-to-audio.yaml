@@ -1,6 +1,7 @@
 # Cog configuration for the Replicate model malerlab/u-must-image-to-audio.
 # Build context is the repository root; weights are fetched at build time
 # (HF token passed as a build secret, see replicate_models/push.sh).
+# Uses the multi-task piano run.
 build:
   gpu: true
   cuda: "12.4"
@@ -11,7 +12,7 @@ build:
     - fluid-soundfont-gm
   python_requirements: replicate_models/requirements.txt
   run:
-    - command: pip install -q "huggingface_hub[cli]" && export HF_TOKEN=$(cat /run/secrets/hf_token) && mkdir -p /weights/yolo && hf download ${UMUST_HF_WEIGHTS_REPO:-MALer-Lab/u-must-i2a-piano} --local-dir /weights/models && hf download malerlab/unirqvae3-ytsv --local-dir /weights/vq_models/unirqvae3_f16_c1024_k4 && hf download malerlab/unidac4-ytsv --local-dir /weights/dac_models/unidac4 && curl -fsSL -o /weights/yolo/ls-yolo-system-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/system-v2/ls-yolo-system-v2.0.0.pt && curl -fsSL -o /weights/yolo/ls-yolo-staff-height-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/staff-height-v2/ls-yolo-staff-height-v2.0.0.pt && rm -rf /weights/models/.cache /weights/vq_models/*/.cache /weights/dac_models/*/.cache && du -sh /weights
+    - command: pip install -q "huggingface_hub[cli]" && export HF_TOKEN=$(cat /run/secrets/hf_token) && mkdir -p /weights/yolo && echo "run-20250225_062905-9n1554as" > /weights/run_name.txt && hf download ${UMUST_HF_WEIGHTS_REPO:-MALer-Lab/u-must-i2a-piano} --include "run-20250225_062905-9n1554as/*" --local-dir /weights/models && hf download malerlab/unirqvae3-ytsv --local-dir /weights/vq_models/unirqvae3_f16_c1024_k4 && hf download malerlab/unidac4-ytsv --local-dir /weights/dac_models/unidac4 && curl -fsSL -o /weights/yolo/ls-yolo-system-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/system-v2/ls-yolo-system-v2.0.0.pt && curl -fsSL -o /weights/yolo/ls-yolo-staff-height-v2.0.0.pt https://github.com/MALerLab/ls-yolo/releases/download/staff-height-v2/ls-yolo-staff-height-v2.0.0.pt && rm -rf /weights/models/.cache /weights/vq_models/*/.cache /weights/dac_models/*/.cache && du -sh /weights
       mounts:
         - type: secret
           id: hf_token

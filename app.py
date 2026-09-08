@@ -92,9 +92,23 @@ OUT_DIR = Path(tempfile.mkdtemp(prefix="umust_demo_"))
 DEVICE = os.environ.get("UMUST_DEVICE")  # None -> cuda if available
 
 print("Loading U-MusT engine ...")
-ENGINE = UMusTEngine(device=DEVICE)
+ENGINE = UMusTEngine(device=DEVICE)                       # multi-task piano run: image-to-audio, Contin-U
+# Task-specific fine-tuned runs (UMUST_RUN_OMR / UMUST_RUN_MIDI) share the codecs with the base engine.
+ENGINE_OMR = ENGINE
+if W.OMR_RUN and W.OMR_RUN != ENGINE.run_name:
+  ENGINE_OMR = UMusTEngine(device=DEVICE, run_name=W.OMR_RUN, vq_model=ENGINE.vq_model, dac_model=ENGINE.dac_model)
+ENGINE_MIDI = ENGINE
+if W.MIDI_RUN and W.MIDI_RUN != ENGINE.run_name:
+  ENGINE_MIDI = UMusTEngine(device=DEVICE, run_name=W.MIDI_RUN, vq_model=ENGINE.vq_model, dac_model=ENGINE.dac_model)
+for task, eng in (("omr", ENGINE_OMR), ("midi_to_audio", ENGINE_MIDI), ("image_to_audio", ENGINE), ("contin_u", ENGINE)):
+  if not eng.supports(task):
+    raise RuntimeError(f"run {eng.run_name} cannot serve {task}")
 MSCORE = find_musescore()
-print(f"Loaded {ENGINE.checkpoint_name} on {ENGINE.device}; MuseScore: {MSCORE or 'not found'}")
+MIDI_WINDOW_MAX = round(ENGINE_MIDI.midi_window_limit_sec(), 1)
+MIDI_WINDOW_DEFAULT = min(18.0, MIDI_WINDOW_MAX)
+MIDI_OVERLAP_DEFAULT = min(2.0, round(MIDI_WINDOW_MAX / 4, 1))
+print(f"Loaded {ENGINE.checkpoint_name} (image-to-audio, Contin-U), {ENGINE_OMR.checkpoint_name} (OMR), "
+      f"{ENGINE_MIDI.checkpoint_name} (MIDI-to-audio, window <= {MIDI_WINDOW_MAX}s) on {ENGINE.device}; MuseScore: {MSCORE or 'not found'}")
 
 ALL_SYSTEMS = "All systems"
 
@@ -246,7 +260,7 @@ def run_omr(systems: List[SystemCrop], choice: str, greedy: bool, temperature: f
   if not chosen:
     return PLACEHOLDER_PAIRS, PLACEHOLDER_PAGES, None, "", "Upload an image first."
   try:
-    res = ENGINE.omr(chosen, greedy=greedy, temperature=temperature, seed=int(seed), progress=_progress_adapter(progress))
+    res = ENGINE_OMR.omr(chosen, greedy=greedy, temperature=temperature, seed=int(seed), progress=_progress_adapter(progress))
   except Exception as e:  # noqa: BLE001
     return PLACEHOLDER_PAIRS, PLACEHOLDER_PAGES, None, "", _error_md(e)
 
@@ -292,7 +306,7 @@ def preview_midi(midi_path: Optional[str]):
   if not midi_path:
     return None, None, ""
   try:
-    _, _, duration = ENGINE.load_midi_notes(midi_path)
+    _, _, duration = ENGINE_MIDI.load_midi_notes(midi_path)
     reference, how = render_midi_reference(midi_path)
     ref_out = None
     if reference is not None:
@@ -312,7 +326,7 @@ def run_midi_to_audio(midi_path: Optional[str], window_sec: float, overlap_sec: 
   if not midi_path:
     return None, None, "Upload a MIDI file first."
   try:
-    res = ENGINE.midi_to_audio(midi_path, window_sec=window_sec, overlap_sec=overlap_sec,
+    res = ENGINE_MIDI.midi_to_audio(midi_path, window_sec=window_sec, overlap_sec=overlap_sec,
                                max_duration_sec=max_sec if max_sec > 0 else None, seed=int(seed),
                                progress=_progress_adapter(progress))
     wav = _audio_out(res, f"{Path(midi_path).stem}_u-must_seed{int(seed)}")
@@ -402,7 +416,7 @@ One encoder–decoder Transformer performs every task below; only the target mod
 Score images are cropped into musical systems with the fine-tuned **ls-yolo** system detector and rescaled with the
 **staff-height** detector before RQ-VAE tokenization. Audio is decoded with the retrained 44.1 kHz DAC codec.
 
-<sub>Checkpoint `{ENGINE.checkpoint_name}` · device `{ENGINE.device}` · outputs are for research use (CC BY-NC-SA 4.0 weights).</sub>
+<sub>Checkpoints: image-to-audio / Contin-U `{ENGINE.run_name}` · OMR `{ENGINE_OMR.run_name}` · MIDI-to-audio `{ENGINE_MIDI.run_name}` · device `{ENGINE.device}` · outputs are for research use (CC BY-NC-SA 4.0 weights).</sub>
 """ + ("""
 > **Running on ZeroGPU.** Each generation window (≤ 20 s of audio) takes roughly half a minute of GPU time, and the
 > daily GPU quota is about 2 min for anonymous visitors, 5 min for free accounts and 40 min for PRO. Log in to
@@ -451,8 +465,10 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
     with gr.Row():
       with gr.Column(scale=1):
         midi_file = gr.File(label="MIDI file", file_types=[".mid", ".midi"], type="filepath")
-        midi_window = gr.Slider(8, 20, value=18, step=0.5, label="Window length (s) — the model was trained on 19–20 s slices")
-        midi_overlap = gr.Slider(0, 6, value=2, step=0.5, label="Overlap / conditioning length (s)")
+        midi_window = gr.Slider(1, MIDI_WINDOW_MAX, value=MIDI_WINDOW_DEFAULT, step=0.5,
+                                label=f"Window length (s) — this checkpoint renders up to {MIDI_WINDOW_MAX} s per window")
+        midi_overlap = gr.Slider(0, max(1.0, round(MIDI_WINDOW_MAX / 3, 1)), value=MIDI_OVERLAP_DEFAULT, step=0.5,
+                                 label="Overlap / conditioning length (s)")
         midi_max = gr.Slider(0, 300, value=20 if ZEROGPU else 60, step=10, label="Max duration to render (s, 0 = whole file)")
         midi_seed = gr.Number(value=0, precision=0, label="Seed")
         midi_btn = gr.Button("Synthesize", variant="primary")

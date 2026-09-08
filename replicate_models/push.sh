@@ -34,7 +34,7 @@ done
 : "${REPLICATE_API_TOKEN:?set REPLICATE_API_TOKEN}"
 : "${HF_TOKEN:?set HF_TOKEN (read access to the weight repository)}"
 
-SECRET_FILE=$(mktemp); trap 'rm -f "$SECRET_FILE"' EXIT
+SECRET_FILE=$(mktemp)
 printf '%s' "$HF_TOKEN" > "$SECRET_FILE"
 # r8.im accepts an API token as the registry password (cog login wants the
 # separate CLI token from replicate.com/auth/token instead)
@@ -63,18 +63,30 @@ ensure_model() {  # create the Replicate model if it does not exist
   echo "created https://replicate.com/$OWNER/$name"
 }
 
+# Fine-tuned checkpoints for the single-task models: exported run names are
+# substituted into a temporary copy of the yaml (default: the multi-task run).
+BASE_RUN="run-20250225_062905-9n1554as"
+UMUST_RUN_OMR="${UMUST_RUN_OMR:-$BASE_RUN}"; UMUST_RUN_MIDI="${UMUST_RUN_MIDI:-$BASE_RUN}"
+yaml_for() {  # task -> path of the yaml to build with
+  local src="cog.$1.yaml" tmp="cog.$1.build.yaml"
+  sed -e "s#\${UMUST_RUN_OMR}#$UMUST_RUN_OMR#g" -e "s#\${UMUST_RUN_MIDI}#$UMUST_RUN_MIDI#g" "$src" > "$tmp"
+  echo "$tmp"
+}
+trap 'rm -f "$SECRET_FILE" cog.*.build.yaml' EXIT
+
 for task in "${TASKS[@]}"; do
   name="u-must-$task"
   ensure_model "$name"
-  echo "== $OWNER/$name  (cog.$task.yaml)"
+  yaml=$(yaml_for "$task")
+  echo "== $OWNER/$name  ($yaml; OMR run $UMUST_RUN_OMR, MIDI run $UMUST_RUN_MIDI)"
   if [ "$TEST" = 1 ]; then
-    "$COG_BIN" build -f "cog.$task.yaml" -t "u-must-$task:test" --secret "id=hf_token,src=$SECRET_FILE"
+    "$COG_BIN" build -f "$yaml" -t "u-must-$task:test" --secret "id=hf_token,src=$SECRET_FILE"
     case "$task" in
-      omr)            "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
-      midi-to-audio)  "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i midi=@demo/examples/bach_bwv846_prelude.mid -i max_duration_sec=20 ;;
-      image-to-audio) "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
-      contin-u)       "$COG_BIN" predict -f "cog.$task.yaml" "u-must-$task:test" -i score=@demo/examples/bach_bwv846_prelude.pdf -i last_page=1 -i max_systems=3 ;;
+      omr)            "$COG_BIN" predict -f "$yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
+      midi-to-audio)  "$COG_BIN" predict -f "$yaml" "u-must-$task:test" -i midi=@demo/examples/bach_bwv846_prelude.mid -i max_duration_sec=20 ;;
+      image-to-audio) "$COG_BIN" predict -f "$yaml" "u-must-$task:test" -i image=@demo/examples/bach_bwv846_prelude_page1.png -i system=1 ;;
+      contin-u)       "$COG_BIN" predict -f "$yaml" "u-must-$task:test" -i score=@demo/examples/bach_bwv846_prelude.pdf -i last_page=1 -i max_systems=3 ;;
     esac
   fi
-  "$COG_BIN" push -f "cog.$task.yaml" "r8.im/$OWNER/$name" --secret "id=hf_token,src=$SECRET_FILE"
+  "$COG_BIN" push -f "$yaml" "r8.im/$OWNER/$name" --secret "id=hf_token,src=$SECRET_FILE"
 done
