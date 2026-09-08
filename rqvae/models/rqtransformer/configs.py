@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from typing import List, Optional, Any
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from omegaconf import OmegaConf, MISSING
 
@@ -32,7 +32,7 @@ class AttentionBlockConfig:
 @dataclass
 class AttentionStackConfig:
     n_layer: int = MISSING
-    block: AttentionBlockConfig = AttentionBlockConfig()
+    block: AttentionBlockConfig = field(default_factory=AttentionBlockConfig)
 
 
 @dataclass
@@ -60,8 +60,8 @@ class RQTransformerConfig:
 
     embd_pdrop: float = 0.0
 
-    body: AttentionStackConfig = AttentionStackConfig()
-    head: AttentionStackConfig = AttentionStackConfig()
+    body: AttentionStackConfig = field(default_factory=AttentionStackConfig)
+    head: AttentionStackConfig = field(default_factory=AttentionStackConfig)
 
     shared_cls_emb: bool = False
 

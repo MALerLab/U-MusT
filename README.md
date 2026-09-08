@@ -146,7 +146,7 @@ Because a one-pixel or one-sample offset changes token assignments entirely, tra
 
 ## Installation
 
-Python 3.10 or newer is required (the data pipeline uses `match`).
+Python 3.10 or newer is required (the data pipeline uses `match`); inference is exercised on 3.11 and 3.12.
 
 ```bash
 pip install -r requirements.txt
@@ -215,7 +215,7 @@ Every script that loads a translation model takes a run directory laid out as `<
 
 ### Released runs
 
-Six runs are published: the three multi-task models the paper reports, and three single-task fine-tunes of the piano I2A model, which the interactive demos use for those tasks.
+Six runs are published: the three multi-task models the paper reports, and three single-task fine-tunes, two of which the interactive demos use for their task. The OMR and MIDI-to-audio fine-tunes start from the piano I2A run; the AMT fine-tune starts from an A2I run that is not published, so its recipe retrains from whichever A2I checkpoint you point `finetune_params.finetune_path` at rather than reproducing it exactly.
 
 | Run | Recipe | Task | Image tokenizer | Encoder input width |
 |---|---|---|---|---|
@@ -224,7 +224,7 @@ Six runs are published: the three multi-task models the paper reports, and three
 | `run-20250128_025927-ks0ibl4v` | `multimodal_amt_direction` | A2I | `unirqvae` | 4 |
 | `run-20250302_101330-hhpxlltr` | `finetune_omr` | OMR: image → notation | `unirqvae3` | 4 |
 | `run-20250330_182257-cogdba9o` | `finetune_m2d` | MIDI → audio | `unirqvae3` | **1** |
-| `run-20250302_101041-b3eh34vt` | single-task AMT, no shipped recipe | audio → MIDI | `unirqvae3` | 4 |
+| `run-20250302_101041-b3eh34vt` | `finetune_amt` | AMT: audio → MIDI | `unirqvae3` | 4 |
 
 **The encoder input width is part of a checkpoint, and it is not the same for all of them.** MIDI and notation tokens occupy one codebook column, score-image and audio tokens `n_codebook` of them, and a batch is padded to the widest input it holds. A run trained on a mixture that puts score images or audio on the encoder side therefore saw its MIDI rows padded to four columns, while the MIDI-only fine-tune saw one. The encoder embedding sums over that dimension, so feeding a checkpoint the width it was not trained on adds or drops three pad embeddings on every token: nothing raises, the model simply misreads the input, and rendered audio drifts out of time with the score. `encoder_input_codebooks()` in `umust/data_utils.py` derives the width from a run's own `data.data_path`, and the loaders and the trainer pass it to `multimodal_collate_fn`, so this only bites code that assembles encoder batches by hand.
 
@@ -262,6 +262,7 @@ The shipped recipes, all using the `unirqvae3` image tokenizer and `unidac4` aud
 | `multimodal_trans` | bidirectional (experimental) | all four → all four |
 | `finetune_omr` | single-task OMR | image → notation |
 | `finetune_m2d` | single-task MIDI-to-audio | MIDI → audio |
+| `finetune_amt` | single-task AMT | audio → MIDI |
 
 Each recipe defines its dataset mixture, sampling weights, curriculum start steps, and sequence-length caps. Paper settings are `train_params.world_size=2` with per-GPU batch 12 (total 24) for 600k steps; the defaults match. Per-task fine-tuning is enabled with `finetune_params.finetune=True finetune_params.finetune_path=<run_dir>/files train_params.initial_lr=1e-5` — note the path points at the `files/` subdirectory, not the run directory itself.
 
