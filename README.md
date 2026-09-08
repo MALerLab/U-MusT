@@ -32,7 +32,7 @@ Everything below ships in this repository unless the Location column says otherw
 | Dataset split manifests | Every train/valid/test split used in the paper | `dataset_pair_paths/` |
 | Token-baking scripts | Reproduce the image/audio token datasets | `scripts/bake_image_tokens.py`, `scripts/bake_audio_tokens.py` |
 | **YTSV dataset** | **1,341 h of paired score-image/audio — the paper's main dataset** | **[MALerLab/youtube-score-video-dataset](https://github.com/MALerLab/youtube-score-video-dataset)** |
-| Translation-model weights | Three checkpoints — I2A piano, I2A strings, A2I | [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) |
+| Translation-model weights | Three multi-task checkpoints — I2A piano, I2A strings, A2I — and three single-task fine-tunes | [malerlab/u-must (Hugging Face)](https://huggingface.co/malerlab/u-must) |
 | Tokenized datasets | Image and audio tokens for every corpus except GrandStaff | [Hugging Face](#released-weights-and-data) |
 
 ## How the pieces fit together
@@ -213,6 +213,21 @@ Licenses differ per repository because each follows the corpus it derives from; 
 
 Every script that loads a translation model takes a run directory laid out as `<run_dir>/files/config.yaml` plus `<run_dir>/files/checkpoints/*.pt`, which is what `train_multimodal.py` writes. Pass it with `--run_path` to `infer.py` and the evaluation scripts. `infer.py` also accepts `--instrument {piano,strings}` with `--models_dir`, which resolves a fixed run-directory name under that parent; `--run_path` takes precedence and is the right flag for a model you trained yourself. The tokenizer is read from the run's own `config.data.vq_model`, so runs of either tokenizer generation load correctly.
 
+### Released runs
+
+Six runs are published: the three multi-task models the paper reports, and three single-task fine-tunes of the piano I2A model, which the interactive demos use for those tasks.
+
+| Run | Recipe | Task | Image tokenizer | Encoder input width |
+|---|---|---|---|---|
+| `run-20250225_062905-9n1554as` | `omr_piano_synth_long` | I2A, piano | `unirqvae3` | 4 |
+| `run-20250130_150202-x9znhap2` | `omr_direction_all` | I2A, all instrumentation | `unirqvae` | 4 |
+| `run-20250128_025927-ks0ibl4v` | `multimodal_amt_direction` | A2I | `unirqvae` | 4 |
+| `run-20250302_101330-hhpxlltr` | `finetune_omr` | OMR: image → notation | `unirqvae3` | 4 |
+| `run-20250330_182257-cogdba9o` | `finetune_m2d` | MIDI → audio | `unirqvae3` | **1** |
+| `run-20250302_101041-b3eh34vt` | single-task AMT, no shipped recipe | audio → MIDI | `unirqvae3` | 4 |
+
+**The encoder input width is part of a checkpoint, and it is not the same for all of them.** MIDI and notation tokens occupy one codebook column, score-image and audio tokens `n_codebook` of them, and a batch is padded to the widest input it holds. A run trained on a mixture that puts score images or audio on the encoder side therefore saw its MIDI rows padded to four columns, while the MIDI-only fine-tune saw one. The encoder embedding sums over that dimension, so feeding a checkpoint the width it was not trained on adds or drops three pad embeddings on every token: nothing raises, the model simply misreads the input, and rendered audio drifts out of time with the score. `encoder_input_codebooks()` in `umust/data_utils.py` derives the width from a run's own `data.data_path`, and the loaders and the trainer pass it to `multimodal_collate_fn`, so this only bites code that assembles encoder batches by hand.
+
 ## Data preparation
 
 Datasets go under one root, passed as `data.data_dir`. Split manifests live in `dataset_pair_paths/` and are referenced by name from each recipe; paths inside them are relative to `data.data_dir`.
@@ -257,6 +272,7 @@ Logging uses [Weights & Biases](https://wandb.ai); set your entity and project i
 - `multimodal_trans` is the Hydra default recipe but sets `modal_direction: omr`, so it never reaches the bidirectional code path despite its name and modality lists. Pass an explicit `data=` override rather than relying on the default.
 - **Two of the three released checkpoints use the earlier `unirqvae` image tokenizer, while the published image-token datasets are `unirqvae3`.** The piano I2A run (`run-20250225_062905-9n1554as`) declares `unirqvae3` and pairs with the published tokens; the strings I2A run (`run-20250130_150202-x9znhap2`) and the A2I run (`run-20250128_025927-ks0ibl4v`) both declare `unirqvae`. Image tokens are not interchangeable between codec generations — the codebooks differ, so the token indices mean different things. Feeding `unirqvae3` tokens to either of those two checkpoints, or evaluating the A2I model's image-token output against them, produces meaningless results. `infer.py` reads the tokenizer from each run's own config, so inference on a downloaded checkpoint selects correctly; the mismatch only bites when pairing a checkpoint with a token dataset by hand.
 - `omr_direction_all` and `multimodal_amt_direction` now specify `unirqvae3`, matching the shipped manifests. Retraining from either therefore produces a `unirqvae3`-generation model rather than a reproduction of the released strings or A2I checkpoint. To reproduce those, re-bake image tokens with the `unirqvae` codec using `scripts/bake_image_tokens.py` and set `vq_model: unirqvae` in the recipe.
+- MIDI fed to the piano I2A checkpoint needs four codebook columns, the same MIDI fed to the MIDI-to-audio fine-tune needs one, and neither combination fails loudly. Build encoder batches with the width from `encoder_input_codebooks()`; see [Released runs](#released-runs).
 - `dataset_pair_paths/` ships `asap.json`, `lsyt_multiinst_test.json`, and `lsyt_piano_test_segments.json`, which no shipped recipe references.
 - BPSD is used for evaluation in the paper but no shipped evaluation script targets it directly.
 - `+data.dac_model_dir` overrides the DAC location for training only; the decode path resolves `dac_models/` relative to the working directory.
