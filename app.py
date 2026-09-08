@@ -59,14 +59,15 @@ from demo.engine import (
 )
 
 # ZeroGPU compares the *requested* duration with the visitor's remaining daily
-# quota (2 min anonymous, 5 min free account, 40 min PRO) and refuses anything
-# above the per-task ceiling, so budgets are kept tight: one autoregressive
-# window (<= 20 s of audio) costs about UMUST_SEC_PER_WINDOW seconds of GPU
-# time. Raise it if tasks get cut off, and UMUST_GPU_MAX_SEC on an account
-# whose ceiling is higher.
+# quota (2 min anonymous, 5 min free account, 40 min PRO) and refuses a task
+# whose request exceeds the per-task ceiling, so budgets are kept tight: one
+# autoregressive window (<= 20 s of audio) costs about UMUST_SEC_PER_WINDOW
+# seconds of GPU time, twice what it measures. ZeroGPU asks for half again as
+# much as the budget returned here, so UMUST_GPU_MAX_SEC stays at two thirds
+# of the 300 s ceiling a free account gets; raise it on a PRO account.
 SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
 SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
-GPU_MAX_SEC = float(os.environ.get("UMUST_GPU_MAX_SEC", "290" if ZEROGPU else "3600"))
+GPU_MAX_SEC = float(os.environ.get("UMUST_GPU_MAX_SEC", "190" if ZEROGPU else "3600"))
 
 
 def _budget(seconds: float) -> int:
