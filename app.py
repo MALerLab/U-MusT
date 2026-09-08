@@ -105,8 +105,9 @@ for task, eng in (("omr", ENGINE_OMR), ("midi_to_audio", ENGINE_MIDI), ("image_t
     raise RuntimeError(f"run {eng.run_name} cannot serve {task}")
 MSCORE = find_musescore()
 MIDI_WINDOW_MAX = round(ENGINE_MIDI.midi_window_limit_sec(), 1)
-MIDI_WINDOW_DEFAULT = min(18.0, MIDI_WINDOW_MAX)
 MIDI_OVERLAP_DEFAULT = min(2.0, round(MIDI_WINDOW_MAX / 4, 1))
+MIDI_WINDOW_DEFAULT = round(ENGINE_MIDI.midi_window_default_sec(MIDI_OVERLAP_DEFAULT), 1)
+MIDI_SLICE_LEN = float(ENGINE_MIDI.config.data.get("midi_slice_len", 20) or 20)
 print(f"Loaded {ENGINE.checkpoint_name} (image-to-audio, Contin-U), {ENGINE_OMR.checkpoint_name} (OMR), "
       f"{ENGINE_MIDI.checkpoint_name} (MIDI-to-audio, window <= {MIDI_WINDOW_MAX}s) on {ENGINE.device}; MuseScore: {MSCORE or 'not found'}")
 
@@ -459,14 +460,14 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
 
   # --------------------------------------------------------- MIDI -> audio --- #
   with gr.Tab("2 · MIDI → Audio"):
-    gr.Markdown("Upload a **piano MIDI** file. The model was trained on ≤20 s segments, so the piece is rendered in "
-                "overlapping windows: each window's audio is cut to the duration of its MIDI content, the tokens for "
-                "the overlap prime the next window as a decoder prefix, and the joined stream is decoded once.")
+    gr.Markdown(f"Upload a **piano MIDI** file. The model was trained on ≤{MIDI_SLICE_LEN:g} s segments, so the piece is "
+                "rendered in overlapping windows: each window's audio is cut to the duration of its MIDI content, the "
+                "tokens for the overlap prime the next window as a decoder prefix, and the joined stream is decoded once.")
     with gr.Row():
       with gr.Column(scale=1):
         midi_file = gr.File(label="MIDI file", file_types=[".mid", ".midi"], type="filepath")
         midi_window = gr.Slider(1, MIDI_WINDOW_MAX, value=MIDI_WINDOW_DEFAULT, step=0.5,
-                                label=f"Window length (s) — this checkpoint renders up to {MIDI_WINDOW_MAX} s per window")
+                                label=f"Window length (s) — this checkpoint was fine-tuned on {MIDI_SLICE_LEN:g} s slices")
         midi_overlap = gr.Slider(0, max(1.0, round(MIDI_WINDOW_MAX / 3, 1)), value=MIDI_OVERLAP_DEFAULT, step=0.5,
                                  label="Overlap / conditioning length (s)")
         midi_max = gr.Slider(0, 300, value=20 if ZEROGPU else 60, step=10, label="Max duration to render (s, 0 = whole file)")

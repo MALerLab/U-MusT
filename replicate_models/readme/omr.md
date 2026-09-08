@@ -6,8 +6,9 @@ translated by the U-MusT encoder–decoder Transformer into **Linearized MusicXM
 into one MusicXML file, and each transcription is engraved again with Verovio so it can be compared with the input.
 
 Model: *U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance
-Audio* (Jung, Kim et al., IEEE TASLP 2026) — the released Image-to-Audio piano checkpoint, which was trained
-jointly on OMR, MIDI-to-audio and image-to-audio (OLiMPiC scanned SER 13.67 %).
+Audio* (Jung, Kim et al., IEEE TASLP 2026) — the **OMR fine-tuned checkpoint** (`run-20250302_101330-hhpxlltr`):
+the multi-task Image-to-Audio piano model, further fine-tuned for 50k steps on the OMR task alone (GrandStaff +
+OLiMPiC), which is the configuration reported for OMR in the paper (OLiMPiC scanned SER 13.67 %).
 
 ## Inputs
 

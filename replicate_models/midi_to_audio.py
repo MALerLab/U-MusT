@@ -25,7 +25,7 @@ class Predictor(BasePredictor):
   def predict(
     self,
     midi: Path = Input(description="Piano MIDI file (.mid)."),
-    window_sec: float = Input(default=18.0, ge=8.0, le=20.0, description="Generation window length in seconds (the model was trained on 19-20 s slices)."),
+    window_sec: float = Input(default=0.0, ge=0.0, le=20.0, description="Generation window length in seconds; 0 = the checkpoint's native slice length (10 s for the fine-tuned MIDI-to-audio run)."),
     overlap_sec: float = Input(default=2.0, ge=0.0, le=6.0, description="Overlap between windows; its generated audio primes the next window."),
     max_duration_sec: float = Input(default=0.0, ge=0.0, description="Only render the first N seconds of the MIDI; 0 = whole file."),
     seed: int = Input(default=0, description="Random seed."),

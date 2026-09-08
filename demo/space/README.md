@@ -23,7 +23,7 @@ tags:
 
 # U-MusT demo
 
-Interactive demo of the **Image-to-Audio (piano)** model from
+Interactive demo of the **Image-to-Audio (piano)** models from
 
 > **U-MusT: A Unified Framework for Cross-Modal Translation of Score Images, Symbolic Music, and Performance Audio**
 > Jongmin Jung\*, Dongmin Kim\*, Sihun Lee, Seola Cho, Hyungjoon Soh, Irmak Bukey, Chris Donahue, Dasaem Jeong
@@ -42,6 +42,11 @@ rendering contest held as a MIREX task at ISMIR 2025 ([paper](https://futuremire
 
 Score images are cropped into systems with the [ls-yolo](https://github.com/MALerLab/ls-yolo) system detector and
 rescaled to an 18 px staff height with the staff-height detector before RQ-VAE tokenization.
+
+Three checkpoints from [malerlab/u-must](https://huggingface.co/malerlab/u-must) serve the tabs, as in the paper:
+the multi-task piano run (`run-20250225_062905-9n1554as`) for image-to-audio and Contin-U, and its per-task
+fine-tuned runs for OMR (`run-20250302_101330-hhpxlltr`) and MIDI-to-audio (`run-20250330_182257-cogdba9o`),
+selected with the `UMUST_RUN_OMR` / `UMUST_RUN_MIDI` variables.
 
 ## Deploying this Space
 

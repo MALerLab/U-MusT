@@ -77,12 +77,55 @@ def load_run_config(run_path: Path) -> OmegaConf:
     config.data.vq_model_dir = str(W.vq_models_dir())
     config.data.dac_model_dir = str(W.dac_models_dir())
   # Fine-tuned runs record finetune_params.finetune=True with the path of the
-  # run they started from; we load this run's own checkpoint instead.
+  # run they started from. Their checkpoints keep the *pre-training* vocabulary
+  # layout (the fine-tuning script copied the base run's modality settings even
+  # when the recipe lists a single task), so the token-layout fields are taken
+  # from the base run's config; only the slicing settings stay the run's own.
+  ft = config.get("finetune_params") or {}
+  if ft.get("finetune") and ft.get("finetune_path"):
+    base_run = next((seg for seg in reversed(Path(str(ft.finetune_path)).parts) if seg.startswith("run-")), None)
+    if base_run and base_run != run_path.name:
+      base_cfg = _base_run_config(base_run)
+      layout_keys = ["in_modal_type", "out_modal_type", "modal_direction", "image_height", "image_compress_factor",
+                     "max_seq_len", "lmx_vocab_path", "midi_max_shift", "max_pt_x_len", "out_pt_height_token",
+                     "num_special_tokens", "n_codebook", "codebook_size", "vq_model", "dac_model", "tps"]
+      with open_dict(config.data):
+        for k in layout_keys:
+          if k in base_cfg.data:
+            config.data[k] = base_cfg.data[k]
+          elif k in config.data and k in ("max_pt_x_len", "out_pt_height_token", "tps"):
+            del config.data[k]   # fall back to the same defaults the base run gets
+        config.data.setdefault("max_pt_x_len", config.data.max_seq_len["pt"])
+        config.data.setdefault("out_pt_height_token", False)
+        config.data.setdefault("tps", 100)
+        config.data.setdefault("dac_model", "unidac4")
+        config.data.pretrained_run = base_run
   with open_dict(config):
     if "finetune_params" not in config:
       config.finetune_params = {}
     config.finetune_params.finetune = False
   return config
+
+
+def _base_run_config(base_run: str) -> OmegaConf:
+  """Config of the run a fine-tuned checkpoint started from: from the models
+  directory when present, otherwise just its config.yaml from the Hub."""
+  cfg_path = W.resolve_run_path(base_run) / "files" / "config.yaml"
+  if not cfg_path.exists():
+    from huggingface_hub import hf_hub_download
+    try:
+      cfg_path = Path(hf_hub_download(W.HF_WEIGHTS_REPO, f"{base_run}/files/config.yaml",
+                                      local_dir=str(W.models_dir()), token=W.hf_token()))
+    except Exception as e:  # noqa: BLE001
+      raise FileNotFoundError(
+        f"config.yaml of the pre-training run {base_run} is needed to load this fine-tuned checkpoint "
+        f"(expected at {W.models_dir() / base_run / 'files'}); download failed: {e}") from e
+  cfg = OmegaConf.load(cfg_path)
+  try:
+    cfg = convert_wandb_style_config_to_omega_config(cfg)
+  except Exception:
+    pass
+  return cfg
 
 
 def build_idx_handlers(config) -> Tuple[TokenIdxHandler, TokenIdxHandler]:
@@ -578,10 +621,18 @@ class UMusTEngine:
   def midi_window_limit_sec(self) -> float:
     """Longest MIDI window this run can render: the decoder's audio-token
     budget (minus SOS/EOS margin) and the MIDI shift-token range, whichever is
-    shorter. 20.2 s for the multi-task piano run; shorter for the single-task
-    MIDI-to-audio run, which was fine-tuned on 5 s slices."""
+    shorter (20.2 s for the released piano runs)."""
     budget = (self.max_len["dac"] - 8) / DAC_TOKENS_PER_SEC
     return float(min(budget, self.midi_max_window_sec))
+
+  def midi_window_default_sec(self, overlap_sec: float = 2.0) -> float:
+    """Window length matching the slices the run was trained on
+    (`midi_slice_len`, minus the random margin used in training), kept within
+    the decoder budget together with the overlap prefix: 18 s for the
+    multi-task run (20 s slices), 9.5 s for the MIDI-to-audio run fine-tuned
+    on 10 s slices."""
+    slice_len = float(self.config.data.get("midi_slice_len", 20) or 20)
+    return float(max(2.0, min(slice_len - 0.5, self.midi_window_limit_sec() - overlap_sec)))
 
   def load_midi_notes(self, midi_path: str):
     notes, duration = midi2note(
@@ -615,7 +666,7 @@ class UMusTEngine:
     return in_modal, in_pos, in_mask
 
   @torch.no_grad()
-  def midi_to_audio(self, midi_path: str, window_sec: float = 18.0, overlap_sec: float = 2.0,
+  def midi_to_audio(self, midi_path: str, window_sec: float = 0.0, overlap_sec: float = 2.0,
                     max_duration_sec: Optional[float] = None, seed: int = 0,
                     progress: ProgressFn = _noop_progress) -> AudioResult:
     """Render a performance MIDI file with overlapping windows.
@@ -634,6 +685,8 @@ class UMusTEngine:
       raise ValueError("the MIDI file contains no notes")
     rate = DAC_TOKENS_PER_SEC
     max_window = self.midi_window_limit_sec()
+    if not window_sec or window_sec <= 0:                      # 0 = the run's native window
+      window_sec = self.midi_window_default_sec(overlap_sec)
     window_sec = float(min(max(window_sec, 1.0), max_window))
     overlap_sec = float(min(max(overlap_sec, 0.0), window_sec / 2))
     total = duration if max_duration_sec is None else min(duration, float(max_duration_sec))
