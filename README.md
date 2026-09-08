@@ -215,7 +215,7 @@ Every script that loads a translation model takes a run directory laid out as `<
 
 ### Released runs
 
-Six runs are published: the three multi-task models the paper reports, and three single-task fine-tunes, two of which the interactive demos use for their task. The OMR and MIDI-to-audio fine-tunes start from the piano I2A run; the AMT fine-tune starts from an A2I run that is not published, so its recipe retrains from whichever A2I checkpoint you point `finetune_params.finetune_path` at rather than reproducing it exactly.
+Six runs are published: the three multi-task models the paper reports, and three single-task fine-tunes, two of which the interactive demos use for their task. The OMR and MIDI-to-audio fine-tunes start from the piano I2A run, at 150k steps each. The AMT fine-tune starts from `run-20250227_084202-jkscs1f1`, an A2I run on the `unirqvae3` tokenizer that is not published and is not the released A2I checkpoint, which is a `unirqvae` model: `finetune_amt` therefore retrains from whichever A2I checkpoint `finetune_params.finetune_path` names rather than reproducing `run-20250302_101041-b3eh34vt` exactly.
 
 | Run | Recipe | Task | Image tokenizer | Encoder input width |
 |---|---|---|---|---|
