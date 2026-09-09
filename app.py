@@ -109,6 +109,12 @@ def _i2a_budget(systems, choice, *_, **__):
 
 
 def _contin_u_budget(systems, *_, **__):
+  # The systems are detected inside the task when the caller has not detected
+  # them yet (an API call, or Generate pressed straight away), and ZeroGPU kills
+  # a task that outruns the duration asked for here, so an unknown page is
+  # budgeted for as much as one task may take.
+  if not systems:
+    return _budget(GPU_MAX_SEC)
   return _budget(10 + SEC_PER_WINDOW * max(1, len(systems) - 1))
 
 EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
@@ -424,10 +430,17 @@ def run_contin_u(systems: List[SystemCrop], doc_path: Optional[str], first_page:
   else:
     gallery = gr.skip()  # the list is already on screen; do not re-encode it inside the GPU budget
   try:
+    limit = _windows_per_task() + 1                    # one window per pair of systems
+    dropped = max(0, len(systems) - limit)
+    if dropped:
+      systems = systems[:limit]
     res = ENGINE.contin_u(systems, seed=int(seed), attn_threshold=attn_thr, progress=_progress_adapter(progress))
     stem = f"contin-u_{Path(doc_path).stem if doc_path else 'score'}_seed{int(seed)}"
     wav = _audio_out(res, stem)
-    return wav, wav, gallery, _status(res, f"{len(systems)} systems stitched with Contin-U."), systems
+    note = f"{len(systems)} systems stitched with Contin-U."
+    if dropped:
+      note += f" The last {dropped} system(s) were left out: that is what one GPU task allows here."
+    return wav, wav, gallery, _status(res, note), systems
   except Exception as e:  # noqa: BLE001
     return None, None, gallery, _error_md(e), systems
 
