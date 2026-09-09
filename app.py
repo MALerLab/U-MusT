@@ -65,7 +65,12 @@ from demo.engine import (
 # seconds of GPU time, twice what it measures. ZeroGPU asks for half again as
 # much as the budget returned here, so UMUST_GPU_MAX_SEC stays at two thirds
 # of the 300 s ceiling a free account gets; raise it on a PRO account.
+# A MIDI window covers the run's slice length (9.5 s of audio for the
+# fine-tuned run) while a score window covers a whole system, up to 20 s, so
+# the two cost different amounts of GPU time. Both estimates sit at roughly
+# twice what they measure.
 SEC_PER_WINDOW = float(os.environ.get("UMUST_SEC_PER_WINDOW", "25"))
+SEC_PER_SCORE_WINDOW = float(os.environ.get("UMUST_SEC_PER_SCORE_WINDOW", "45"))
 SEC_PER_OMR_SYSTEM = float(os.environ.get("UMUST_SEC_PER_OMR_SYSTEM", "8"))
 GPU_MAX_SEC = float(os.environ.get("UMUST_GPU_MAX_SEC", "190" if ZEROGPU else "3600"))
 
@@ -74,9 +79,14 @@ def _budget(seconds: float) -> int:
   return int(min(max(seconds, 10.0), GPU_MAX_SEC))
 
 
-def _windows_per_task() -> int:
+def _windows_per_task(sec_per_window: float = None) -> int:
   """Generation windows that fit one GPU task."""
-  return max(1, int((GPU_MAX_SEC - 10) // SEC_PER_WINDOW))
+  return max(1, int((GPU_MAX_SEC - 10) // (sec_per_window or SEC_PER_WINDOW)))
+
+
+def _systems_per_task() -> int:
+  """Systems one GPU task can stitch: one window joins each pair."""
+  return _windows_per_task(SEC_PER_SCORE_WINDOW) + 1
 
 
 def _omr_budget(systems, choice, *_, **__):
@@ -105,17 +115,30 @@ def _midi_budget(midi_path, window_sec, overlap_sec, max_sec, *_, **__):
 
 
 def _i2a_budget(systems, choice, *_, **__):
-  return _budget(10 + SEC_PER_WINDOW * max(1, len(_select(systems, choice)) - 1))
+  return _budget(10 + SEC_PER_SCORE_WINDOW * max(1, len(_select(systems, choice)) - 1))
 
 
-def _contin_u_budget(systems, *_, **__):
-  # The systems are detected inside the task when the caller has not detected
-  # them yet (an API call, or Generate pressed straight away), and ZeroGPU kills
-  # a task that outruns the duration asked for here, so an unknown page is
-  # budgeted for as much as one task may take.
-  if not systems:
-    return _budget(GPU_MAX_SEC)
-  return _budget(10 + SEC_PER_WINDOW * max(1, len(systems) - 1))
+def _contin_u_systems(systems, doc_path, first_page, last_page, dpi, max_systems):
+  """The systems this run will actually render.
+
+  The caller may not have pressed Detect, in which case the task detects them
+  itself; the detectors run on CPU, so counting them here costs a few seconds
+  and buys an exact GPU budget instead of asking for a whole task.
+  """
+  if not systems and doc_path:
+    try:
+      systems, _, _ = detect_from_document(doc_path, first_page, last_page, dpi)
+    except Exception:  # noqa: BLE001 - the task reports the real error
+      systems = []
+  n = len(systems) or 1
+  if max_systems and max_systems > 0:
+    n = min(n, int(max_systems))
+  return min(n, _systems_per_task())
+
+
+def _contin_u_budget(systems, doc_path=None, first_page=1, last_page=1, dpi=300, max_systems=0, *_, **__):
+  n = _contin_u_systems(systems, doc_path, first_page, last_page, dpi, max_systems)
+  return _budget(10 + SEC_PER_SCORE_WINDOW * max(1, n - 1))
 
 EXAMPLES_DIR = W.REPO_ROOT / "demo" / "examples"
 OUT_DIR = Path(tempfile.mkdtemp(prefix="umust_demo_"))
@@ -422,7 +445,7 @@ def detect_from_document(doc_path: Optional[str], first_page: int, last_page: in
 
 @gpu(duration=_contin_u_budget)
 def run_contin_u(systems: List[SystemCrop], doc_path: Optional[str], first_page: int, last_page: int, dpi: int,
-                 seed: int, attn_thr: float, progress=gr.Progress()):
+                 max_systems: int, seed: int, attn_thr: float, progress=gr.Progress()):
   if not systems:
     systems, gallery, msg = detect_from_document(doc_path, first_page, last_page, dpi)
     if not systems:
@@ -430,16 +453,19 @@ def run_contin_u(systems: List[SystemCrop], doc_path: Optional[str], first_page:
   else:
     gallery = gr.skip()  # the list is already on screen; do not re-encode it inside the GPU budget
   try:
-    limit = _windows_per_task() + 1                    # one window per pair of systems
-    dropped = max(0, len(systems) - limit)
-    if dropped:
-      systems = systems[:limit]
-    res = ENGINE.contin_u(systems, seed=int(seed), attn_threshold=attn_thr, progress=_progress_adapter(progress))
+    task_limit = _systems_per_task()                   # one window per pair of systems
+    limit = min(task_limit, int(max_systems)) if max_systems and int(max_systems) > 0 else task_limit
+    chosen = systems[:limit]                           # the detected list stays whole in the state
+    dropped = len(systems) - len(chosen)
+    res = ENGINE.contin_u(chosen, seed=int(seed), attn_threshold=attn_thr, progress=_progress_adapter(progress))
     stem = f"contin-u_{Path(doc_path).stem if doc_path else 'score'}_seed{int(seed)}"
     wav = _audio_out(res, stem)
-    note = f"{len(systems)} systems stitched with Contin-U."
+    note = f"{len(chosen)} of {len(systems)} systems stitched with Contin-U." if dropped else \
+           f"{len(chosen)} systems stitched with Contin-U."
     if dropped:
-      note += f" The last {dropped} system(s) were left out: that is what one GPU task allows here."
+      note += (" Raise \u201cSystems to render\u201d for more"
+               if limit < task_limit else
+               f" That is as many as one GPU task allows here; the rest of the score needs a second run.")
     return wav, wav, gallery, _status(res, note), systems
   except Exception as e:  # noqa: BLE001
     return None, None, gallery, _error_md(e), systems
@@ -575,6 +601,8 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
           cu_first = gr.Number(value=1, precision=0, label="First page")
           cu_last = gr.Number(value=1 if ZEROGPU else 0, precision=0, label="Last page (0 = end)")
         cu_dpi = gr.Slider(150, 300, value=300, step=50, label="Rasterization DPI")
+        cu_max = gr.Slider(1, _systems_per_task(), value=min(3, _systems_per_task()) if ZEROGPU else _systems_per_task(),
+                           step=1, label="Systems to render (each one costs GPU time)")
         with gr.Accordion("Generation options", open=False):
           cu_seed = gr.Number(value=0, precision=0, label="Seed")
           cu_thr = gr.Slider(0.3, 0.8, value=0.5, step=0.05, label="Attention boundary threshold")
@@ -591,7 +619,7 @@ with gr.Blocks(title="U-MusT demo", theme=gr.themes.Soft()) as demo:
                 label="Example (J. S. Bach, Prelude in C major BWV 846 — Mutopia Project, public domain)")
     cu_doc.change(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
     cu_detect.click(detect_from_document, [cu_doc, cu_first, cu_last, cu_dpi], [cu_state, cu_gallery, cu_status])
-    cu_btn.click(run_contin_u, [cu_state, cu_doc, cu_first, cu_last, cu_dpi, cu_seed, cu_thr],
+    cu_btn.click(run_contin_u, [cu_state, cu_doc, cu_first, cu_last, cu_dpi, cu_max, cu_seed, cu_thr],
                  [cu_audio, cu_dl, cu_gallery, cu_status, cu_state])
 
   gr.Markdown(
